@@ -18,12 +18,15 @@ namespace ClimbingRecords
             public double locX, locY, sizeX, sizeY;
         };
 
+        public List<String> leftHandHoldsDataSource = new List<string>();
+
         private Dictionary< Control, Ratio > highlightRatios = new Dictionary< Control, Ratio >();
         private double hangboardOriginalRatio = 0.0;
         private List<PictureBox> highlights = new List<PictureBox>();
         private Bitmap[] highlightImages = new Bitmap[2] { ClimbingRecords.Properties.Resources.Highlight, ClimbingRecords.Properties.Resources.Highlight2 };
         private PictureBox leftHand = null, rightHand = null;
         private bool placingRightHand = false;
+        private bool ignoreComboChange = false;
 
         public Form1()
         {
@@ -31,6 +34,10 @@ namespace ClimbingRecords
 
             hangboardOriginalRatio = hangboardImage.Image.Size.Width / Convert.ToDouble( hangboardImage.Image.Size.Height );
             InitialiseHighlightsArray();
+            InitialiseDataSources();
+
+            SetComboSelectedIndex( leftHand_Combo, 18 );
+            SetComboSelectedIndex( rightHand_Combo, 18 );
 
             // Add highlights as children to the hangboard
             foreach( var highlight in highlights )
@@ -95,6 +102,40 @@ namespace ClimbingRecords
             highlights.Add( hangboardImage31 );
         }
 
+        private void InitialiseDataSources()
+        {
+            String[] holds = new String[]
+            {
+                "1: Top Left Jug",
+                "2: Outside Sloper (Square)",
+                "3: Inside Sloper (Round)",
+                "4: Top Deep Pocket (3 Finger)",
+                "5: Medium Edge (4 Finger)",
+                "6: Shallow Edge (4 Finger)",
+                "7: Deep Flat Edge (4 Finger)",
+                "8: Extra Shallow Edge (3 Finger)",
+                "9: Deep Flat Pocket (3 Finger)",
+                "10: Medium Edge (4 Finger)",
+                "11: Extra Shallow Edge (4 Finger)",
+                "12: Deep Flat Pocket (2 Finger)",
+                "13: Extra Shallow Pocket (2 Finger)",
+                "14: Top Centre Jug",
+                "15: Top Centre Pocket (4 Finger)",
+                "16: Top Centre Pocket (3 Finger)",
+                "17: Bottom Centre Pocket (3 Finger)",
+                "18: Bottom Centre Pocket (2 Finger)",
+                "None",
+             };
+
+            foreach( var hold in holds )
+                leftHand_Combo.Items.Add( hold );
+
+            holds[0] = "1: Top Right Jug";
+
+            foreach( var hold in holds )
+                rightHand_Combo.Items.Add( hold );
+        }
+
         private Bitmap RotateImage( Bitmap image, float angle )
         {
             if( Math.Abs( angle ) <= 2.0f )
@@ -141,6 +182,13 @@ namespace ClimbingRecords
             highlight.Image = RotateImage( highlightImages[Convert.ToInt32( isRightHand )], offset / 40.0f );
         }
 
+        private void SetComboSelectedIndex( ComboBox cb, int index )
+        {
+            ignoreComboChange = true;
+            cb.SelectedIndex = index;
+            ignoreComboChange = false;
+        }
+
         private void HighlightMouseDown( object sender, MouseEventArgs e )
         {
             PictureBox highlight = sender as PictureBox;
@@ -150,18 +198,26 @@ namespace ClimbingRecords
                 if( rightHand != null )
                     rightHand.Image = null;
                 if( highlight == leftHand )
+                {
                     leftHand = null;
+                    SetComboSelectedIndex( leftHand_Combo, 18 );
+                }
 
                 rightHand = highlight;
+                SetComboSelectedIndex( rightHand_Combo, highlights.FindIndex( ( PictureBox p ) => p == rightHand ) % 18 );
             }
             else
             {
                 if( leftHand != null )
                     leftHand.Image = null;
                 if( highlight == rightHand )
+                {
                     rightHand = null;
+                    SetComboSelectedIndex( rightHand_Combo, 18 );
+                }
 
                 leftHand = highlight;
+                SetComboSelectedIndex( leftHand_Combo, highlights.FindIndex( ( PictureBox p ) => p == leftHand ) % 18 );
             }
 
             placingRightHand = !placingRightHand;
@@ -180,6 +236,54 @@ namespace ClimbingRecords
                 Size newLoc = new Size( Convert.ToInt32( hangboardTrueSize.Width * ratios.locX ), Convert.ToInt32( hangboardTrueSize.Height * ratios.locY ) );
                 highlight.Location = new Point( hangboardCentre.X + newLoc.Width, hangboardCentre.Y + newLoc.Height );
                 highlight.Size = new Size( Convert.ToInt32( hangboardTrueSize.Width * ratios.sizeX ), Convert.ToInt32( hangboardTrueSize.Height * ratios.sizeY ) );
+            }
+        }
+
+        private void leftHand_Combo_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            if( ignoreComboChange )
+                return;
+
+            if( leftHand != null )
+            {
+                leftHand.Image = null;
+                leftHand = null;
+            }
+
+            if( leftHand_Combo.SelectedIndex == 18 )
+                return;
+
+            leftHand = highlights[leftHand_Combo.SelectedIndex];
+            SetHighlight( leftHand, false );
+
+            if( leftHand == rightHand )
+            {
+                rightHand = null;
+                SetComboSelectedIndex( rightHand_Combo, 18 );
+            }
+        }
+
+        private void rightHand_Combo_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            if( ignoreComboChange )
+                return;
+
+            if( rightHand != null )
+            {
+                rightHand.Image = null;
+                rightHand = null;
+            }
+
+            if( rightHand_Combo.SelectedIndex == 18 )
+                return;
+
+            rightHand = highlights[rightHand_Combo.SelectedIndex + ( rightHand_Combo.SelectedIndex < 13 ? 18 : 0 )];
+            SetHighlight( rightHand, true );
+
+            if( rightHand == leftHand )
+            {
+                leftHand = null;
+                SetComboSelectedIndex( leftHand_Combo, 18 );
             }
         }
 
