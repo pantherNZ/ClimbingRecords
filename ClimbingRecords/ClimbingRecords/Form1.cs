@@ -20,13 +20,15 @@ namespace ClimbingRecords
 
         public List<String> leftHandHoldsDataSource = new List<string>();
 
-        private Dictionary< Control, Ratio > highlightRatios = new Dictionary< Control, Ratio >();
-        private double hangboardOriginalRatio = 0.0;
-        private List<PictureBox> highlights = new List<PictureBox>();
-        private Bitmap[] highlightImages = new Bitmap[2] { ClimbingRecords.Properties.Resources.Highlight, ClimbingRecords.Properties.Resources.Highlight2 };
-        private PictureBox leftHand = null, rightHand = null;
-        private bool placingRightHand = false;
-        private bool ignoreComboChange = false;
+        Dictionary< Control, Ratio > highlightRatios = new Dictionary< Control, Ratio >();
+        double hangboardOriginalRatio = 0.0;
+        List<PictureBox> highlights = new List<PictureBox>();
+        Bitmap[] highlightImages = new Bitmap[2] { ClimbingRecords.Properties.Resources.Highlight, ClimbingRecords.Properties.Resources.Highlight2 };
+        PictureBox leftHand = null, rightHand = null;
+        bool placingRightHand = false;
+        bool ignoreComboChange = false;
+        bool addingRow = false;
+        List<Records.GridRecord> recordsData;
 
         public Form1()
         {
@@ -104,36 +106,35 @@ namespace ClimbingRecords
 
         private void InitialiseDataSources()
         {
-            String[] holds = new String[]
-            {
-                "1: Top Left Jug",
-                "2: Outside Sloper (Square)",
-                "3: Inside Sloper (Round)",
-                "4: Top Deep Pocket (3 Finger)",
-                "5: Medium Edge (4 Finger)",
-                "6: Shallow Edge (4 Finger)",
-                "7: Deep Flat Edge (4 Finger)",
-                "8: Extra Shallow Edge (3 Finger)",
-                "9: Deep Flat Pocket (3 Finger)",
-                "10: Medium Edge (4 Finger)",
-                "11: Extra Shallow Edge (4 Finger)",
-                "12: Deep Flat Pocket (2 Finger)",
-                "13: Extra Shallow Pocket (2 Finger)",
-                "14: Top Centre Jug",
-                "15: Top Centre Pocket (4 Finger)",
-                "16: Top Centre Pocket (3 Finger)",
-                "17: Bottom Centre Pocket (3 Finger)",
-                "18: Bottom Centre Pocket (2 Finger)",
-                "None",
-             };
-
-            foreach( var hold in holds )
+            foreach( var hold in Records.leftHoldNames )
                 leftHand_Combo.Items.Add( hold );
 
-            holds[0] = "1: Top Right Jug";
-
-            foreach( var hold in holds )
+            foreach( var hold in Records.rightHoldNames )
                 rightHand_Combo.Items.Add( hold );
+
+            recordsData = Records.LoadRecords();
+
+            foreach( var x in recordsData )
+                AddToRecordsTable( x );
+        }
+
+        private void AddToRecordsTable( Records.GridRecord record )
+        {
+            recordsGrid.Rows.Add();
+            var cells = recordsGrid.Rows[recordsGrid.Rows.Count - 1].Cells;
+            cells[0].Value = record.Category;
+            cells[1].Value = record.LeftHandHold;
+            cells[2].Value = record.RightHandHold;
+            cells[3].Value = record.Person;
+            cells[4].Value = record.Record;
+            cells[5].Value = record.Units;
+            cells[6].Value = record.Description;
+        }
+
+        private void ClearRecordsTable()
+        {
+            while( recordsGrid.Rows.Count > 0 )
+                recordsGrid.Rows.RemoveAt( 0 );
         }
 
         private Bitmap RotateImage( Bitmap image, float angle )
@@ -284,6 +285,62 @@ namespace ClimbingRecords
             {
                 leftHand = null;
                 SetComboSelectedIndex( leftHand_Combo, 18 );
+            }
+        }
+
+        private void saveBtn_Click( object sender, EventArgs e )
+        {
+            Records.SaveRecords( recordsData );
+        }
+
+        private void addBtn_Click( object sender, EventArgs e )
+        {
+            addingRow = true;
+            ClearRecordsTable();
+            var newRecord = new Records.GridRecord();
+            newRecord.LeftHandHold = leftHand_Combo.SelectedItem.ToString();
+            newRecord.RightHandHold = rightHand_Combo.SelectedItem.ToString();
+            AddToRecordsTable( newRecord );
+        }
+
+        private void recordsGrid_CellValueChanged( object sender, DataGridViewCellEventArgs e )
+        {
+            if( addingRow )
+            {
+                var name = recordsGrid.Rows[0].Cells[3];
+                var record = recordsGrid.Rows[0].Cells[4];
+                saveBtn.Enabled = name.Value != null && name.Value.ToString().Length > 0 &&
+                    record.Value != null && Convert.ToInt32( record.Value ) != 0;
+            }
+        }
+
+        private void recordsGrid_CurrentCellDirtyStateChanged( object sender, EventArgs e )
+        {
+            if( addingRow && recordsGrid.IsCurrentCellDirty )
+            {
+                recordsGrid.CommitEdit( DataGridViewDataErrorContexts.Commit );
+            }
+        }
+
+        private void recordsGrid_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+
+            if( recordsGrid.CurrentCell.ColumnIndex == 4 )
+            {
+                TextBox tb = e.Control as TextBox;
+                if( tb != null )
+                {
+                    tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
+                }
+            }
+        }
+
+        private void RecordKeyPress( object sender, KeyPressEventArgs e )
+        {
+            if( !char.IsControl( e.KeyChar ) && !char.IsDigit( e.KeyChar ) && e.KeyChar != '.' )
+            {
+                e.Handled = true;
             }
         }
 

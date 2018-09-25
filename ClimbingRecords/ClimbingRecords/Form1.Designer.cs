@@ -64,17 +64,19 @@
             this.rightHand_Combo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.recordsGrid = new System.Windows.Forms.DataGridView();
-            this.Category = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.LeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.RightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Person = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecordUnits = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchTerm_Entry = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.recordsGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).BeginInit();
@@ -107,8 +109,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // hangboardImage14
@@ -187,7 +189,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage28.BackColor = System.Drawing.Color.White;
-            this.hangboardImage28.Location = new System.Drawing.Point(800, 250);
+            this.hangboardImage28.Location = new System.Drawing.Point(803, 245);
             this.hangboardImage28.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage28.Name = "hangboardImage28";
             this.hangboardImage28.Size = new System.Drawing.Size(113, 44);
@@ -201,7 +203,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage10.BackColor = System.Drawing.Color.White;
-            this.hangboardImage10.Location = new System.Drawing.Point(541, 250);
+            this.hangboardImage10.Location = new System.Drawing.Point(542, 249);
             this.hangboardImage10.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage10.Name = "hangboardImage10";
             this.hangboardImage10.Size = new System.Drawing.Size(113, 44);
@@ -258,7 +260,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage25.BackColor = System.Drawing.Color.White;
-            this.hangboardImage25.Location = new System.Drawing.Point(805, 168);
+            this.hangboardImage25.Location = new System.Drawing.Point(806, 167);
             this.hangboardImage25.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage25.Name = "hangboardImage25";
             this.hangboardImage25.Size = new System.Drawing.Size(135, 57);
@@ -602,108 +604,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Right Hand Hold";
             // 
-            // recordsGrid
-            // 
-            this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Category,
-            this.LeftHandHold,
-            this.RightHandHold,
-            this.Person,
-            this.Record,
-            this.RecordUnits,
-            this.Description});
-            this.recordsGrid.Location = new System.Drawing.Point(8, 89);
-            this.recordsGrid.Name = "recordsGrid";
-            this.recordsGrid.Size = new System.Drawing.Size(1402, 282);
-            this.recordsGrid.TabIndex = 6;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Items.AddRange(new object[] {
-            "Hangboard",
-            "Misc"});
-            this.Category.Name = "Category";
-            this.Category.Width = 150;
-            // 
-            // LeftHandHold
-            // 
-            this.LeftHandHold.HeaderText = "Left Hand Hold";
-            this.LeftHandHold.Items.AddRange(new object[] {
-            "1: Top Left Jug",
-            "2: Outside Sloper (Square)",
-            "3: Inside Sloper (Round)",
-            "4: Top Deep Pocket (3 Finger)",
-            "5: Medium Edge (4 Finger)",
-            "6: Shallow Edge (4 Finger)",
-            "7: Deep Flat Edge (4 Finger)",
-            "8: Extra Shallow Edge (3 Finger)",
-            "9: Deep Flat Pocket (3 Finger)",
-            "10: Medium Edge (4 Finger)",
-            "11: Extra Shallow Edge (4 Finger)",
-            "12: Deep Flat Pocket (2 Finger)",
-            "13: Extra Shallow Pocket (2 Finger)",
-            "14: Top Centre Jug",
-            "15: Top Centre Pocket (4 Finger)",
-            "16: Top Centre Pocket (3 Finger)",
-            "17: Bottom Centre Pocket (3 Finger)",
-            "18: Bottom Centre Pocket (2 Finger)",
-            "None"});
-            this.LeftHandHold.Name = "LeftHandHold";
-            this.LeftHandHold.Width = 200;
-            // 
-            // RightHandHold
-            // 
-            this.RightHandHold.HeaderText = "Right Hand Hold";
-            this.RightHandHold.Items.AddRange(new object[] {
-            "1: Top Right Jug",
-            "2: Outside Sloper (Square)",
-            "3: Inside Sloper (Round)",
-            "4: Top Deep Pocket (3 Finger)",
-            "5: Medium Edge (4 Finger)",
-            "6: Shallow Edge (4 Finger)",
-            "7: Deep Flat Edge (4 Finger)",
-            "8: Extra Shallow Edge (3 Finger)",
-            "9: Deep Flat Pocket (3 Finger)",
-            "10: Medium Edge (4 Finger)",
-            "11: Extra Shallow Edge (4 Finger)",
-            "12: Deep Flat Pocket (2 Finger)",
-            "13: Extra Shallow Pocket (2 Finger)",
-            "14: Top Centre Jug",
-            "15: Top Centre Pocket (4 Finger)",
-            "16: Top Centre Pocket (3 Finger)",
-            "17: Bottom Centre Pocket (3 Finger)",
-            "18: Bottom Centre Pocket (2 Finger)",
-            "None"});
-            this.RightHandHold.Name = "RightHandHold";
-            this.RightHandHold.Width = 200;
-            // 
-            // Person
-            // 
-            this.Person.HeaderText = "Person";
-            this.Person.Name = "Person";
-            this.Person.Width = 150;
-            // 
-            // Record
-            // 
-            this.Record.HeaderText = "Record";
-            this.Record.Name = "Record";
-            this.Record.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Record.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // RecordUnits
-            // 
-            this.RecordUnits.HeaderText = "Units";
-            this.RecordUnits.Name = "RecordUnits";
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            // 
             // searchTerm_Entry
             // 
             this.searchTerm_Entry.Location = new System.Drawing.Point(417, 20);
@@ -726,9 +626,11 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.recordsGrid);
+            this.groupBox2.Controls.Add(this.addBtn);
+            this.groupBox2.Controls.Add(this.saveBtn);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.searchTerm_Entry);
-            this.groupBox2.Controls.Add(this.recordsGrid);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.rightHand_Combo);
@@ -738,6 +640,139 @@
             this.groupBox2.Size = new System.Drawing.Size(1420, 381);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(417, 47);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(90, 23);
+            this.addBtn.TabIndex = 10;
+            this.addBtn.Text = "Add Record";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Enabled = false;
+            this.saveBtn.Location = new System.Drawing.Point(517, 47);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(90, 23);
+            this.saveBtn.TabIndex = 9;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // recordsGrid
+            // 
+            this.recordsGrid.AllowUserToAddRows = false;
+            this.recordsGrid.AllowUserToDeleteRows = false;
+            this.recordsGrid.AllowUserToResizeRows = false;
+            this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewComboBoxColumn1,
+            this.dataGridViewComboBoxColumn2,
+            this.dataGridViewComboBoxColumn3,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewComboBoxColumn4,
+            this.dataGridViewTextBoxColumn3});
+            this.recordsGrid.Location = new System.Drawing.Point(12, 81);
+            this.recordsGrid.Name = "recordsGrid";
+            this.recordsGrid.Size = new System.Drawing.Size(1394, 286);
+            this.recordsGrid.TabIndex = 11;
+            this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
+            this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
+            this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.HeaderText = "Category";
+            this.dataGridViewComboBoxColumn1.Items.AddRange(new object[] {
+            "Hangboard",
+            "Misc"});
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.Width = 150;
+            // 
+            // dataGridViewComboBoxColumn2
+            // 
+            this.dataGridViewComboBoxColumn2.HeaderText = "Left Hand Hold";
+            this.dataGridViewComboBoxColumn2.Items.AddRange(new object[] {
+            "1: Top Left Jug",
+            "2: Outside Sloper (Square)",
+            "3: Inside Sloper (Round)",
+            "4: Top Deep Pocket (3 Finger)",
+            "5: Medium Edge (4 Finger)",
+            "6: Shallow Edge (4 Finger)",
+            "7: Deep Flat Edge (4 Finger)",
+            "8: Extra Shallow Edge (3 Finger)",
+            "9: Deep Flat Pocket (3 Finger)",
+            "10: Medium Edge (4 Finger)",
+            "11: Extra Shallow Edge (4 Finger)",
+            "12: Deep Flat Pocket (2 Finger)",
+            "13: Extra Shallow Pocket (2 Finger)",
+            "14: Top Centre Jug",
+            "15: Top Centre Pocket (4 Finger)",
+            "16: Top Centre Pocket (3 Finger)",
+            "17: Bottom Centre Pocket (3 Finger)",
+            "18: Bottom Centre Pocket (2 Finger)",
+            "None"});
+            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.Width = 200;
+            // 
+            // dataGridViewComboBoxColumn3
+            // 
+            this.dataGridViewComboBoxColumn3.HeaderText = "Right Hand Hold";
+            this.dataGridViewComboBoxColumn3.Items.AddRange(new object[] {
+            "1: Top Right Jug",
+            "2: Outside Sloper (Square)",
+            "3: Inside Sloper (Round)",
+            "4: Top Deep Pocket (3 Finger)",
+            "5: Medium Edge (4 Finger)",
+            "6: Shallow Edge (4 Finger)",
+            "7: Deep Flat Edge (4 Finger)",
+            "8: Extra Shallow Edge (3 Finger)",
+            "9: Deep Flat Pocket (3 Finger)",
+            "10: Medium Edge (4 Finger)",
+            "11: Extra Shallow Edge (4 Finger)",
+            "12: Deep Flat Pocket (2 Finger)",
+            "13: Extra Shallow Pocket (2 Finger)",
+            "14: Top Centre Jug",
+            "15: Top Centre Pocket (4 Finger)",
+            "16: Top Centre Pocket (3 Finger)",
+            "17: Bottom Centre Pocket (3 Finger)",
+            "18: Bottom Centre Pocket (2 Finger)",
+            "None"});
+            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
+            this.dataGridViewComboBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Record";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewComboBoxColumn4
+            // 
+            this.dataGridViewComboBoxColumn4.HeaderText = "Units";
+            this.dataGridViewComboBoxColumn4.Items.AddRange(new object[] {
+            "seconds",
+            "minutes",
+            "reps"});
+            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // Form1
             // 
@@ -812,9 +847,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -856,17 +891,19 @@
         private System.Windows.Forms.ComboBox rightHand_Combo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView recordsGrid;
         private System.Windows.Forms.TextBox searchTerm_Entry;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Category;
-        private System.Windows.Forms.DataGridViewComboBoxColumn LeftHandHold;
-        private System.Windows.Forms.DataGridViewComboBoxColumn RightHandHold;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Person;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Record;
-        private System.Windows.Forms.DataGridViewComboBoxColumn RecordUnits;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.DataGridView recordsGrid;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
 
