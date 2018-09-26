@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Records>
+  <Record>
+    <Category>Hangboard</Category>
+    <LeftHandHold>2: Outside Sloper (Square)</LeftHandHold>
+    <RightHandHold>2: Outside Sloper (Square)</RightHandHold>
+    <Person>Alex</Person>
+    <Record>18</Record>
+    <Units>seconds</Units>
+    <Description></Description>
+  </Record>
+  <Record>
+    <Category>Hangboard</Category>
+    <LeftHandHold>3: Inside Sloper (Round)</LeftHandHold>
+    <RightHandHold>3: Inside Sloper (Round)</RightHandHold>
+    <Person>Alex</Person>
+    <Record>38</Record>
+    <Units>seconds</Units>
+    <Description></Description>
+  </Record>
+  <Record>
+    <Category>Misc</Category>
+    <LeftHandHold>None</LeftHandHold>
+    <RightHandHold>None</RightHandHold>
+    <Person>Olly</Person>
+    <Record>4:43</Record>
+    <Units>minutes</Units>
+    <Description>Plank (male)</Description>
+  </Record>
+  <Record>
+    <Category>Misc</Category>
+    <LeftHandHold>None</LeftHandHold>
+    <RightHandHold>None</RightHandHold>
+    <Person>Ellie</Person>
+    <Record>3:01</Record>
+    <Units>minutes</Units>
+    <Description>Plank (female)</Description>
+  </Record>
+</Records>

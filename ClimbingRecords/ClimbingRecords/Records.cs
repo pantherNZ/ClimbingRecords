@@ -15,7 +15,7 @@ namespace ClimbingRecords
             public string LeftHandHold { get; set; } = "None";
             public string RightHandHold { get; set; } = "None";
             public string Person { get; set; }
-            public int Record { get; set; }
+            public string Record { get; set; }
             public string Units { get; set; } = "seconds";
             public string Description { get; set; }
         }
@@ -59,13 +59,10 @@ namespace ClimbingRecords
             if( file.IsEmpty )
                 return records;
 
-            var recordsXML = file.Element( "Records" );
-
-            foreach( var x in recordsXML.Elements() )
+            foreach( var record in file.Elements() )
             {
-                var record = x.Element( "Record" );
                 var newRecord = new GridRecord();
-
+            
                 foreach( var y in record.Elements() )
                 {
                     switch( y.Name.ToString() )
@@ -74,12 +71,12 @@ namespace ClimbingRecords
                         case "LeftHandHold": newRecord.LeftHandHold = y.Value; break;
                         case "RightHandHold": newRecord.RightHandHold = y.Value; break;
                         case "Person": newRecord.Person = y.Value; break;
-                        case "Record": newRecord.Record = Convert.ToInt32( y.Value ); break;
+                        case "Record": newRecord.Record = y.Value; break;
                         case "Units": newRecord.Units = y.Value; break;
                         case "Description": newRecord.Description = y.Value; break;
                     }
                 }
-
+            
                 records.Add( newRecord );
             }
 

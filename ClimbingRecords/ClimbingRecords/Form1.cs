@@ -290,12 +290,26 @@ namespace ClimbingRecords
 
         private void saveBtn_Click( object sender, EventArgs e )
         {
+            var newRecord = new Records.GridRecord();
+            var cells = recordsGrid.Rows[0].Cells;
+            newRecord.Category = cells[0].Value.ToString();
+            newRecord.LeftHandHold = cells[1].Value.ToString();
+            newRecord.RightHandHold = cells[2].Value.ToString();
+            newRecord.Person = cells[3].Value.ToString();
+            newRecord.Record = cells[4].Value.ToString();
+            newRecord.Units = cells[5].Value.ToString();
+            newRecord.Description = cells[6].Value != null ? cells[6].Value.ToString() : "";
+            recordsData.Add( newRecord );
             Records.SaveRecords( recordsData );
+            addingRow = false;
+            saveBtn.Enabled = false;
+            recordsGrid.ReadOnly = true;
         }
 
         private void addBtn_Click( object sender, EventArgs e )
         {
             addingRow = true;
+            recordsGrid.ReadOnly = false;
             ClearRecordsTable();
             var newRecord = new Records.GridRecord();
             newRecord.LeftHandHold = leftHand_Combo.SelectedItem.ToString();
@@ -309,8 +323,12 @@ namespace ClimbingRecords
             {
                 var name = recordsGrid.Rows[0].Cells[3];
                 var record = recordsGrid.Rows[0].Cells[4];
-                saveBtn.Enabled = name.Value != null && name.Value.ToString().Length > 0 &&
-                    record.Value != null && Convert.ToInt32( record.Value ) != 0;
+
+                saveBtn.Enabled = name.Value != null && 
+                    name.Value.ToString().Length > 0 &&
+                    record.Value != null && 
+                    name.Value.ToString().Length > 0 && 
+                    name.Value.ToString() != "0";
             }
         }
 
@@ -338,7 +356,7 @@ namespace ClimbingRecords
 
         private void RecordKeyPress( object sender, KeyPressEventArgs e )
         {
-            if( !char.IsControl( e.KeyChar ) && !char.IsDigit( e.KeyChar ) && e.KeyChar != '.' )
+            if( !char.IsControl( e.KeyChar ) && !char.IsDigit( e.KeyChar ) && e.KeyChar != '.' && e.KeyChar != ':' )
             {
                 e.Handled = true;
             }
