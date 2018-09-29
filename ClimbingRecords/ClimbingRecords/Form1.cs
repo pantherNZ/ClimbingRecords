@@ -29,6 +29,8 @@ namespace ClimbingRecords
         bool ignoreComboChange = false;
         bool addingRow = false;
         List<Records.GridRecord> recordsData;
+        List<Records.GridRecord> filteredData;
+        string searchTerm; 
 
         public Form1()
         {
@@ -113,22 +115,29 @@ namespace ClimbingRecords
                 rightHand_Combo.Items.Add( hold );
 
             recordsData = Records.LoadRecords();
-
-            foreach( var x in recordsData )
-                AddToRecordsTable( x );
+            filteredData = recordsData;
+            RefreshRecordsTable();
         }
 
         private void AddToRecordsTable( Records.GridRecord record )
         {
             recordsGrid.Rows.Add();
             var cells = recordsGrid.Rows[recordsGrid.Rows.Count - 1].Cells;
-            cells[0].Value = record.Category;
-            cells[1].Value = record.LeftHandHold;
-            cells[2].Value = record.RightHandHold;
-            cells[3].Value = record.Person;
-            cells[4].Value = record.Record;
-            cells[5].Value = record.Units;
-            cells[6].Value = record.Description;
+            cells[0].Value = record.category;
+            cells[1].Value = record.leftHandHold;
+            cells[2].Value = record.rightHandHold;
+            cells[3].Value = record.name;
+            cells[4].Value = record.record;
+            cells[5].Value = record.units;
+            cells[6].Value = record.description;
+        }
+
+        private void RefreshRecordsTable()
+        {
+            ClearRecordsTable();
+
+            foreach( var x in filteredData )
+                AddToRecordsTable( x );
         }
 
         private void ClearRecordsTable()
@@ -290,31 +299,42 @@ namespace ClimbingRecords
 
         private void saveBtn_Click( object sender, EventArgs e )
         {
+            cancelBtn.Enabled = false;
             var newRecord = new Records.GridRecord();
             var cells = recordsGrid.Rows[0].Cells;
-            newRecord.Category = cells[0].Value.ToString();
-            newRecord.LeftHandHold = cells[1].Value.ToString();
-            newRecord.RightHandHold = cells[2].Value.ToString();
-            newRecord.Person = cells[3].Value.ToString();
-            newRecord.Record = cells[4].Value.ToString();
-            newRecord.Units = cells[5].Value.ToString();
-            newRecord.Description = cells[6].Value != null ? cells[6].Value.ToString() : "";
+            newRecord.category = cells[0].Value.ToString();
+            newRecord.leftHandHold = cells[1].Value.ToString();
+            newRecord.rightHandHold = cells[2].Value.ToString();
+            newRecord.name = cells[3].Value.ToString();
+            newRecord.record = cells[4].Value.ToString();
+            newRecord.units = cells[5].Value.ToString();
+            newRecord.description = cells[6].Value != null ? cells[6].Value.ToString() : "";
             recordsData.Add( newRecord );
+            filteredData = new List<Records.GridRecord>( recordsData );
             Records.SaveRecords( recordsData );
             addingRow = false;
             saveBtn.Enabled = false;
             recordsGrid.ReadOnly = true;
+
+            RefreshRecordsTable();
         }
 
         private void addBtn_Click( object sender, EventArgs e )
         {
+            cancelBtn.Enabled = true;
             addingRow = true;
             recordsGrid.ReadOnly = false;
             ClearRecordsTable();
             var newRecord = new Records.GridRecord();
-            newRecord.LeftHandHold = leftHand_Combo.SelectedItem.ToString();
-            newRecord.RightHandHold = rightHand_Combo.SelectedItem.ToString();
+            newRecord.leftHandHold = leftHand_Combo.SelectedItem.ToString();
+            newRecord.rightHandHold = rightHand_Combo.SelectedItem.ToString();
             AddToRecordsTable( newRecord );
+        }
+
+        private void cancelBtn_Click( object sender, EventArgs e )
+        {
+            cancelBtn.Enabled = false;
+            RefreshRecordsTable();
         }
 
         private void recordsGrid_CellValueChanged( object sender, DataGridViewCellEventArgs e )
@@ -360,6 +380,57 @@ namespace ClimbingRecords
             {
                 e.Handled = true;
             }
+        }
+
+        private void searchTerm_Entry_TextChanged( object sender, EventArgs e )
+        {
+            var text = ( sender as TextBox ).Text;
+
+            // Add to our current search term
+            if( searchTerm == null ||
+                searchTerm.Length == 0 ||
+                text.Length <= searchTerm.Length ||
+                text.Substring( 0, searchTerm.Length ) != searchTerm ||
+                text.Contains( "=" ) )
+            {
+                filteredData = new List<Records.GridRecord>( recordsData );
+            }
+
+            filteredData.RemoveAll( ( Records.GridRecord record ) => !RecordContains( record, text ) );
+            searchTerm = text;
+
+            ClearRecordsTable();
+
+            foreach( var x in filteredData )
+                AddToRecordsTable( x );
+        }
+
+        private bool RecordContains( Records.GridRecord record, string search )
+        {
+            search = search.ToLower();
+
+            if( record.ToString().ToLower().Contains( search ) )
+                return true;
+
+            // Add specific searching
+            var columns = record.GetAllColumns();
+            var searchTerms = search.Split( ',' );
+
+            foreach( var x in searchTerms )
+            {
+                var split = search.Split( '=' );
+
+                if( split.Length != 2 )
+                    continue;
+
+                var index = Array.IndexOf( columns.Select( ( y ) => {  return y.ToLower(); } ).ToArray(), ClimbingRecords.Records.RemoveWhitespace( split[0] ) );
+
+                if( index != -1 )
+                    if( record.GetColumnValueByIndex( index ).ToLower().Contains( split[1].Trim() ) )
+                        return true;
+            }
+
+            return false;
         }
 
         private Size GetHangboardTrueSize()

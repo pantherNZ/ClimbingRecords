@@ -9,15 +9,38 @@ namespace ClimbingRecords
 {
     static class Records
     {
+        public static string RemoveWhitespace( this string str )
+        {
+            return String.Join( "", str.Split( default( string[] ), StringSplitOptions.RemoveEmptyEntries ) );
+        }
+
         public class GridRecord
         {
-            public string Category { get; set; } = "Hangboard";
-            public string LeftHandHold { get; set; } = "None";
-            public string RightHandHold { get; set; } = "None";
-            public string Person { get; set; }
-            public string Record { get; set; }
-            public string Units { get; set; } = "seconds";
-            public string Description { get; set; }
+            public string category = "Hangboard";
+            public string leftHandHold = "None";
+            public string rightHandHold = "None";
+            public string name;
+            public string record;
+            public string units = "seconds";
+            public string description;
+
+            // Used for searching
+            public override string ToString()// => $"{category} {leftHandHold} {rightHandHold} {name} {record} {units} {description}";
+            {
+                return string.Join( " ", this.GetType().GetFields().Select( ( x ) => { return x.GetValue( this ); } ) );
+            }
+
+            public string[] GetAllColumns()
+            {
+                return this.GetType().GetFields().Select( ( x ) => { return x.Name; } ).ToArray();
+            }
+
+            public string GetColumnValueByIndex( int index )
+            {
+                var dataField = RemoveWhitespace( GetAllColumns()[index] );
+                var field = this.GetType().GetField( dataField );
+                return field.GetValue( this ) as string;
+            }
         }
 
         static string xmlFilePath = "records.xml";
@@ -67,13 +90,13 @@ namespace ClimbingRecords
                 {
                     switch( y.Name.ToString() )
                     {
-                        case "Category": newRecord.Category = y.Value; break;
-                        case "LeftHandHold": newRecord.LeftHandHold = y.Value; break;
-                        case "RightHandHold": newRecord.RightHandHold = y.Value; break;
-                        case "Person": newRecord.Person = y.Value; break;
-                        case "Record": newRecord.Record = y.Value; break;
-                        case "Units": newRecord.Units = y.Value; break;
-                        case "Description": newRecord.Description = y.Value; break;
+                        case "Category": newRecord.category = y.Value; break;
+                        case "LeftHandHold": newRecord.leftHandHold = y.Value; break;
+                        case "RightHandHold": newRecord.rightHandHold = y.Value; break;
+                        case "Person": newRecord.name = y.Value; break;
+                        case "Record": newRecord.record = y.Value; break;
+                        case "Units": newRecord.units = y.Value; break;
+                        case "Description": newRecord.description = y.Value; break;
                     }
                 }
             
@@ -90,13 +113,13 @@ namespace ClimbingRecords
             foreach( var x in records )
             {
                 var record = new XElement( "Record" );
-                record.Add( new XElement( "Category", x.Category ) );
-                record.Add( new XElement( "LeftHandHold", x.LeftHandHold ) );
-                record.Add( new XElement( "RightHandHold", x.RightHandHold ) );
-                record.Add( new XElement( "Person", x.Person ) );
-                record.Add( new XElement( "Record", x.Record.ToString() ) );
-                record.Add( new XElement( "Units", x.Units ) );
-                record.Add( new XElement( "Description", x.Description ) );
+                record.Add( new XElement( "Category", x.category ) );
+                record.Add( new XElement( "LeftHandHold", x.leftHandHold ) );
+                record.Add( new XElement( "RightHandHold", x.rightHandHold ) );
+                record.Add( new XElement( "Person", x.name ) );
+                record.Add( new XElement( "Record", x.record.ToString() ) );
+                record.Add( new XElement( "Units", x.units ) );
+                record.Add( new XElement( "Description", x.description ) );
                 root.Add( record );
             }
 

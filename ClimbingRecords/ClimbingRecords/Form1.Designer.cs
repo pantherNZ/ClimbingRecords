@@ -67,6 +67,7 @@
             this.searchTerm_Entry = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.recordsGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -606,16 +607,17 @@
             // 
             // searchTerm_Entry
             // 
-            this.searchTerm_Entry.Location = new System.Drawing.Point(417, 20);
+            this.searchTerm_Entry.Location = new System.Drawing.Point(435, 20);
             this.searchTerm_Entry.Name = "searchTerm_Entry";
-            this.searchTerm_Entry.Size = new System.Drawing.Size(190, 20);
+            this.searchTerm_Entry.Size = new System.Drawing.Size(217, 20);
             this.searchTerm_Entry.TabIndex = 7;
+            this.searchTerm_Entry.TextChanged += new System.EventHandler(this.searchTerm_Entry_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(345, 23);
+            this.label3.Location = new System.Drawing.Point(363, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 8;
@@ -623,9 +625,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cancelBtn);
             this.groupBox2.Controls.Add(this.recordsGrid);
             this.groupBox2.Controls.Add(this.addBtn);
             this.groupBox2.Controls.Add(this.saveBtn);
@@ -641,11 +643,25 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Enabled = false;
+            this.cancelBtn.Location = new System.Drawing.Point(464, 47);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(90, 23);
+            this.cancelBtn.TabIndex = 12;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // recordsGrid
             // 
             this.recordsGrid.AllowUserToAddRows = false;
             this.recordsGrid.AllowUserToDeleteRows = false;
             this.recordsGrid.AllowUserToResizeRows = false;
+            this.recordsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -763,7 +779,7 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(417, 47);
+            this.addBtn.Location = new System.Drawing.Point(366, 47);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(90, 23);
             this.addBtn.TabIndex = 10;
@@ -774,7 +790,7 @@
             // saveBtn
             // 
             this.saveBtn.Enabled = false;
-            this.saveBtn.Location = new System.Drawing.Point(517, 47);
+            this.saveBtn.Location = new System.Drawing.Point(562, 47);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(90, 23);
             this.saveBtn.TabIndex = 9;
@@ -912,6 +928,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }
 
