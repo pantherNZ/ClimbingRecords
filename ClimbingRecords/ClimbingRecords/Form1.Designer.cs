@@ -67,6 +67,7 @@
             this.searchTerm_Entry = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.editBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.recordsGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -564,9 +565,11 @@
             this.hangboardImage.TabIndex = 0;
             this.hangboardImage.TabStop = false;
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
+            this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
             // 
             // leftHand_Combo
             // 
+            this.leftHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.leftHand_Combo.FormattingEnabled = true;
             this.leftHand_Combo.ItemHeight = 13;
             this.leftHand_Combo.Location = new System.Drawing.Point(101, 20);
@@ -577,6 +580,7 @@
             // 
             // rightHand_Combo
             // 
+            this.rightHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rightHand_Combo.FormattingEnabled = true;
             this.rightHand_Combo.ItemHeight = 13;
             this.rightHand_Combo.Location = new System.Drawing.Point(101, 47);
@@ -609,7 +613,7 @@
             // 
             this.searchTerm_Entry.Location = new System.Drawing.Point(435, 20);
             this.searchTerm_Entry.Name = "searchTerm_Entry";
-            this.searchTerm_Entry.Size = new System.Drawing.Size(217, 20);
+            this.searchTerm_Entry.Size = new System.Drawing.Size(310, 20);
             this.searchTerm_Entry.TabIndex = 7;
             this.searchTerm_Entry.TextChanged += new System.EventHandler(this.searchTerm_Entry_TextChanged);
             // 
@@ -627,6 +631,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.editBtn);
             this.groupBox2.Controls.Add(this.cancelBtn);
             this.groupBox2.Controls.Add(this.recordsGrid);
             this.groupBox2.Controls.Add(this.addBtn);
@@ -642,14 +647,28 @@
             this.groupBox2.Size = new System.Drawing.Size(1420, 381);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
+            // 
+            // editBtn
+            // 
+            this.editBtn.Enabled = false;
+            this.editBtn.Location = new System.Drawing.Point(462, 46);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(90, 23);
+            this.editBtn.TabIndex = 13;
+            this.editBtn.TabStop = false;
+            this.editBtn.Text = "Edit Record";
+            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // cancelBtn
             // 
             this.cancelBtn.Enabled = false;
-            this.cancelBtn.Location = new System.Drawing.Point(464, 47);
+            this.cancelBtn.Location = new System.Drawing.Point(558, 46);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(90, 23);
             this.cancelBtn.TabIndex = 12;
+            this.cancelBtn.TabStop = false;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -675,11 +694,13 @@
             this.recordsGrid.Location = new System.Drawing.Point(12, 81);
             this.recordsGrid.Name = "recordsGrid";
             this.recordsGrid.ReadOnly = true;
+            this.recordsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.recordsGrid.Size = new System.Drawing.Size(1394, 286);
             this.recordsGrid.TabIndex = 11;
             this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
             this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
             this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
+            this.recordsGrid.SelectionChanged += new System.EventHandler(this.recordsGrid_SelectionChanged);
             // 
             // dataGridViewComboBoxColumn1
             // 
@@ -779,10 +800,11 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(366, 47);
+            this.addBtn.Location = new System.Drawing.Point(366, 46);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(90, 23);
             this.addBtn.TabIndex = 10;
+            this.addBtn.TabStop = false;
             this.addBtn.Text = "Add Record";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
@@ -790,10 +812,11 @@
             // saveBtn
             // 
             this.saveBtn.Enabled = false;
-            this.saveBtn.Location = new System.Drawing.Point(562, 47);
+            this.saveBtn.Location = new System.Drawing.Point(655, 46);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(90, 23);
             this.saveBtn.TabIndex = 9;
+            this.saveBtn.TabStop = false;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -839,6 +862,7 @@
             this.Controls.Add(this.hangboardImage);
             this.Name = "Form1";
             this.Text = "Hang Board Records";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).EndInit();
@@ -929,6 +953,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button editBtn;
     }
 }
 

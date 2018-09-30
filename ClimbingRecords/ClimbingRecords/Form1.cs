@@ -28,9 +28,10 @@ namespace ClimbingRecords
         bool placingRightHand = false;
         bool ignoreComboChange = false;
         bool addingRow = false;
+        int editRowIndex = -1;
         List<Records.GridRecord> recordsData;
         List<Records.GridRecord> filteredData;
-        string searchTerm; 
+        string searchTerm;
 
         public Form1()
         {
@@ -38,10 +39,6 @@ namespace ClimbingRecords
 
             hangboardOriginalRatio = hangboardImage.Image.Size.Width / Convert.ToDouble( hangboardImage.Image.Size.Height );
             InitialiseHighlightsArray();
-            InitialiseDataSources();
-
-            SetComboSelectedIndex( leftHand_Combo, 18 );
-            SetComboSelectedIndex( rightHand_Combo, 18 );
 
             // Add highlights as children to the hangboard
             foreach( var highlight in highlights )
@@ -71,39 +68,28 @@ namespace ClimbingRecords
             }
         }
 
+
+        private void Form1_Load( object sender, EventArgs e )
+        {
+            InitialiseDataSources();
+
+            SetComboSelectedIndex( leftHand_Combo, 18 );
+            SetComboSelectedIndex( rightHand_Combo, 18 );
+
+            recordsGrid.ClearSelection();
+            recordsGrid.CurrentRow.Selected = false;
+
+            editBtn.Enabled = false;
+        }
+
         private void InitialiseHighlightsArray()
         {
-            highlights.Add( hangboardImage1 );
-            highlights.Add( hangboardImage2 );
-            highlights.Add( hangboardImage3 );
-            highlights.Add( hangboardImage4 );
-            highlights.Add( hangboardImage5 );
-            highlights.Add( hangboardImage6 );
-            highlights.Add( hangboardImage7 );
-            highlights.Add( hangboardImage8 );
-            highlights.Add( hangboardImage9 );
-            highlights.Add( hangboardImage10 );
-            highlights.Add( hangboardImage11 );
-            highlights.Add( hangboardImage12 );
-            highlights.Add( hangboardImage13 );
-            highlights.Add( hangboardImage14 );
-            highlights.Add( hangboardImage15 );
-            highlights.Add( hangboardImage16 );
-            highlights.Add( hangboardImage17 );
-            highlights.Add( hangboardImage18 );
-            highlights.Add( hangboardImage19 );
-            highlights.Add( hangboardImage20 );
-            highlights.Add( hangboardImage21 );
-            highlights.Add( hangboardImage22 );
-            highlights.Add( hangboardImage23 );
-            highlights.Add( hangboardImage24 );
-            highlights.Add( hangboardImage25 );
-            highlights.Add( hangboardImage26 );
-            highlights.Add( hangboardImage27 );
-            highlights.Add( hangboardImage28 );
-            highlights.Add( hangboardImage29 );
-            highlights.Add( hangboardImage30 );
-            highlights.Add( hangboardImage31 );
+            for( int i = 1; i <= 31; ++i )
+            {
+                var fieldName = "hangboardImage" + i;
+                var field = this.GetType().GetField( fieldName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance );
+                highlights.Add( field.GetValue( this ) as PictureBox );
+            }
         }
 
         private void InitialiseDataSources()
@@ -130,6 +116,8 @@ namespace ClimbingRecords
             cells[4].Value = record.record;
             cells[5].Value = record.units;
             cells[6].Value = record.description;
+
+            recordsGrid.ClearSelection();
         }
 
         private void RefreshRecordsTable()
@@ -142,6 +130,8 @@ namespace ClimbingRecords
 
         private void ClearRecordsTable()
         {
+            editBtn.Enabled = false;
+
             while( recordsGrid.Rows.Count > 0 )
                 recordsGrid.Rows.RemoveAt( 0 );
         }
@@ -192,6 +182,25 @@ namespace ClimbingRecords
             highlight.Image = RotateImage( highlightImages[Convert.ToInt32( isRightHand )], offset / 40.0f );
         }
 
+        private void hangboardImage_MouseClick( object sender, MouseEventArgs e )
+        {
+            if( rightHand != null )
+            {
+                rightHand.Image = null;
+                rightHand = null;
+            }
+
+            if( leftHand != null )
+            {
+                leftHand.Image = null;
+                leftHand = null;
+            }
+
+            SetComboSelectedIndex( leftHand_Combo, 18 );
+            SetComboSelectedIndex( rightHand_Combo, 18 );
+            placingRightHand = false;
+        }
+
         private void SetComboSelectedIndex( ComboBox cb, int index )
         {
             ignoreComboChange = true;
@@ -205,7 +214,7 @@ namespace ClimbingRecords
 
             if( placingRightHand )
             {
-                if( rightHand != null )
+                if( rightHand != null && highlight != rightHand )
                     rightHand.Image = null;
                 if( highlight == leftHand )
                 {
@@ -218,7 +227,7 @@ namespace ClimbingRecords
             }
             else
             {
-                if( leftHand != null )
+                if( leftHand != null && highlight != leftHand )
                     leftHand.Image = null;
                 if( highlight == rightHand )
                 {
@@ -299,9 +308,28 @@ namespace ClimbingRecords
 
         private void saveBtn_Click( object sender, EventArgs e )
         {
+            var newRecord = GetRecordFromGrid( recordsGrid.Rows[0].Cells );
+
+            if( addingRow )
+                recordsData.Add( newRecord );
+            else
+                recordsData[editRowIndex] = newRecord;
+
+            Records.SaveRecords( recordsData );
+
+            addingRow = false;
+            saveBtn.Enabled = false;
             cancelBtn.Enabled = false;
+            editBtn.Enabled = false;
+
+            SetGridEditMode( false );
+            filteredData = new List<Records.GridRecord>( recordsData );
+            RefreshRecordsTable();
+        }
+
+        private Records.GridRecord GetRecordFromGrid( DataGridViewCellCollection cells )
+        {
             var newRecord = new Records.GridRecord();
-            var cells = recordsGrid.Rows[0].Cells;
             newRecord.category = cells[0].Value.ToString();
             newRecord.leftHandHold = cells[1].Value.ToString();
             newRecord.rightHandHold = cells[2].Value.ToString();
@@ -309,37 +337,51 @@ namespace ClimbingRecords
             newRecord.record = cells[4].Value.ToString();
             newRecord.units = cells[5].Value.ToString();
             newRecord.description = cells[6].Value != null ? cells[6].Value.ToString() : "";
-            recordsData.Add( newRecord );
-            filteredData = new List<Records.GridRecord>( recordsData );
-            Records.SaveRecords( recordsData );
-            addingRow = false;
-            saveBtn.Enabled = false;
-            recordsGrid.ReadOnly = true;
-
-            RefreshRecordsTable();
+            return newRecord;
         }
 
         private void addBtn_Click( object sender, EventArgs e )
         {
             cancelBtn.Enabled = true;
             addingRow = true;
-            recordsGrid.ReadOnly = false;
             ClearRecordsTable();
+            SetGridEditMode( true );
+
             var newRecord = new Records.GridRecord();
             newRecord.leftHandHold = leftHand_Combo.SelectedItem.ToString();
             newRecord.rightHandHold = rightHand_Combo.SelectedItem.ToString();
             AddToRecordsTable( newRecord );
         }
 
+        private void editBtn_Click( object sender, EventArgs e )
+        {
+            saveBtn.Enabled = true;
+            cancelBtn.Enabled = true;
+            var record = GetRecordFromGrid( recordsGrid.CurrentRow.Cells );
+            editRowIndex = recordsData.FindIndex( ( x ) => { return x == record; } );
+            SetGridEditMode( true );
+            ClearRecordsTable();
+            AddToRecordsTable( record );
+        }
+
         private void cancelBtn_Click( object sender, EventArgs e )
         {
             cancelBtn.Enabled = false;
+            editBtn.Enabled = false;
+            addingRow = false;
             RefreshRecordsTable();
+            SetGridEditMode( false );
+        }
+
+        private void SetGridEditMode( bool edit )
+        {
+            recordsGrid.ReadOnly = !edit;
+            recordsGrid.SelectionMode = edit ? System.Windows.Forms.DataGridViewSelectionMode.CellSelect : System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void recordsGrid_CellValueChanged( object sender, DataGridViewCellEventArgs e )
         {
-            if( addingRow )
+            if( addingRow || editRowIndex != -1 )
             {
                 var name = recordsGrid.Rows[0].Cells[3];
                 var record = recordsGrid.Rows[0].Cells[4];
@@ -415,10 +457,11 @@ namespace ClimbingRecords
             // Add specific searching
             var columns = record.GetAllColumns();
             var searchTerms = search.Split( ',' );
+            var valid = false;
 
             foreach( var x in searchTerms )
             {
-                var split = search.Split( '=' );
+                var split = x.Split( '=' );
 
                 if( split.Length != 2 )
                     continue;
@@ -426,16 +469,38 @@ namespace ClimbingRecords
                 var index = Array.IndexOf( columns.Select( ( y ) => {  return y.ToLower(); } ).ToArray(), ClimbingRecords.Records.RemoveWhitespace( split[0] ) );
 
                 if( index != -1 )
-                    if( record.GetColumnValueByIndex( index ).ToLower().Contains( split[1].Trim() ) )
-                        return true;
+                {
+                    valid = record.GetColumnValueByIndex( index ).ToLower().Contains( split[1].Trim() );
+                    
+                    if( !valid )
+                        return false;
+                }
             }
 
-            return false;
+            return valid;
+        }
+
+        private void recordsGrid_SelectionChanged( object sender, EventArgs e )
+        {
+            if( recordsGrid.SelectedRows.Count > 0 ) 
+                editBtn.Enabled = !addingRow;
+        }
+
+        private void groupBox2_Paint( object sender, PaintEventArgs e )
+        {
+            var size = 2;
+            System.Drawing.Rectangle rect = new Rectangle( leftHand_Combo.Location.X, leftHand_Combo.Location.Y, leftHand_Combo.ClientSize.Width, leftHand_Combo.ClientSize.Height );
+            rect.Inflate( size, size );
+            System.Windows.Forms.ControlPaint.DrawBorder( e.Graphics, rect, Color.Yellow, ButtonBorderStyle.Solid );
+
+            rect = new Rectangle( rightHand_Combo.Location.X, rightHand_Combo.Location.Y, rightHand_Combo.ClientSize.Width, rightHand_Combo.ClientSize.Height );
+            rect.Inflate( size, size );
+            System.Windows.Forms.ControlPaint.DrawBorder( e.Graphics, rect, Color.LimeGreen, ButtonBorderStyle.Solid );
         }
 
         private Size GetHangboardTrueSize()
         {
-            var hangboardTrueSize = hangboardImage.Size;
+            var hangboardTrueSize = hangboardImage.Size; 
             var parentAspectRatio = hangboardTrueSize.Width / Convert.ToDouble( hangboardTrueSize.Height );
 
             // More square (lower aspect ratio than the image) means we are limiting by width

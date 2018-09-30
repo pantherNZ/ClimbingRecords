@@ -41,6 +41,13 @@ namespace ClimbingRecords
                 var field = this.GetType().GetField( dataField );
                 return field.GetValue( this ) as string;
             }
+
+            // Helper / boilerplate functionality
+            public bool Equals( GridRecord other ) { return ToString() == other.ToString(); }
+            public override bool Equals( object obj ) { return false; }
+            public static bool operator ==( GridRecord left, GridRecord right ) { return left.Equals( right ); }
+            public static bool operator !=( GridRecord left, GridRecord right ) { return !left.Equals( right ); }
+            public override int GetHashCode() { return ToString().GetHashCode(); }
         }
 
         static string xmlFilePath = "records.xml";
