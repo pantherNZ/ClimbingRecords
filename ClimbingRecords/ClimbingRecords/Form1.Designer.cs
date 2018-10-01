@@ -28,6 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.leftHand_Combo = new System.Windows.Forms.ComboBox();
+            this.rightHand_Combo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.searchTerm_Entry = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.recordsGroupBox = new System.Windows.Forms.GroupBox();
+            this.startTrainingBtn = new System.Windows.Forms.Button();
+            this.editBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.recordsGrid = new System.Windows.Forms.DataGridView();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.showHoldNumbersCheckBox = new System.Windows.Forms.CheckBox();
             this.hangboardImage14 = new System.Windows.Forms.PictureBox();
             this.hangboardImage8 = new System.Windows.Forms.PictureBox();
             this.hangboardImage26 = new System.Windows.Forms.PictureBox();
@@ -60,25 +74,36 @@
             this.hangboardImage17 = new System.Windows.Forms.PictureBox();
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
-            this.leftHand_Combo = new System.Windows.Forms.ComboBox();
-            this.rightHand_Combo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.searchTerm_Entry = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.editBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
-            this.recordsGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.saveBtn = new System.Windows.Forms.Button();
+            this.mainTitle = new System.Windows.Forms.Label();
+            this.trainingCombo = new System.Windows.Forms.ComboBox();
+            this.customRoutineBtn = new System.Windows.Forms.Button();
+            this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.intervalTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.createRoutineButton = new System.Windows.Forms.Button();
+            this.routinesGrid = new System.Windows.Forms.DataGridView();
+            this.nameText = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
+            this.gridCategory = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridUnits = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routinesExercise = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routinesLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.routinesRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.routinesDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recordsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).BeginInit();
@@ -111,9 +136,194 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
+            this.routinesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // leftHand_Combo
+            // 
+            this.leftHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.leftHand_Combo.FormattingEnabled = true;
+            this.leftHand_Combo.ItemHeight = 13;
+            this.leftHand_Combo.Location = new System.Drawing.Point(102, 20);
+            this.leftHand_Combo.Name = "leftHand_Combo";
+            this.leftHand_Combo.Size = new System.Drawing.Size(232, 21);
+            this.leftHand_Combo.TabIndex = 2;
+            this.leftHand_Combo.SelectedIndexChanged += new System.EventHandler(this.leftHand_Combo_SelectedIndexChanged);
+            // 
+            // rightHand_Combo
+            // 
+            this.rightHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rightHand_Combo.FormattingEnabled = true;
+            this.rightHand_Combo.ItemHeight = 13;
+            this.rightHand_Combo.Location = new System.Drawing.Point(102, 47);
+            this.rightHand_Combo.Name = "rightHand_Combo";
+            this.rightHand_Combo.Size = new System.Drawing.Size(232, 21);
+            this.rightHand_Combo.TabIndex = 4;
+            this.rightHand_Combo.SelectedIndexChanged += new System.EventHandler(this.rightHand_Combo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(17, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Left Hand Hold";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(10, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Right Hand Hold";
+            // 
+            // searchTerm_Entry
+            // 
+            this.searchTerm_Entry.Location = new System.Drawing.Point(584, 20);
+            this.searchTerm_Entry.Name = "searchTerm_Entry";
+            this.searchTerm_Entry.Size = new System.Drawing.Size(310, 20);
+            this.searchTerm_Entry.TabIndex = 7;
+            this.searchTerm_Entry.TextChanged += new System.EventHandler(this.searchTerm_Entry_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(512, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Search Term";
+            // 
+            // recordsGroupBox
+            // 
+            this.recordsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordsGroupBox.Controls.Add(this.customRoutineBtn);
+            this.recordsGroupBox.Controls.Add(this.trainingCombo);
+            this.recordsGroupBox.Controls.Add(this.editBtn);
+            this.recordsGroupBox.Controls.Add(this.cancelBtn);
+            this.recordsGroupBox.Controls.Add(this.recordsGrid);
+            this.recordsGroupBox.Controls.Add(this.addBtn);
+            this.recordsGroupBox.Controls.Add(this.startTrainingBtn);
+            this.recordsGroupBox.Controls.Add(this.saveBtn);
+            this.recordsGroupBox.Controls.Add(this.label3);
+            this.recordsGroupBox.Controls.Add(this.searchTerm_Entry);
+            this.recordsGroupBox.Controls.Add(this.label2);
+            this.recordsGroupBox.Controls.Add(this.label1);
+            this.recordsGroupBox.Controls.Add(this.rightHand_Combo);
+            this.recordsGroupBox.Controls.Add(this.leftHand_Combo);
+            this.recordsGroupBox.Location = new System.Drawing.Point(12, 441);
+            this.recordsGroupBox.Name = "recordsGroupBox";
+            this.recordsGroupBox.Size = new System.Drawing.Size(1420, 381);
+            this.recordsGroupBox.TabIndex = 7;
+            this.recordsGroupBox.TabStop = false;
+            this.recordsGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
+            // 
+            // startTrainingBtn
+            // 
+            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 45);
+            this.startTrainingBtn.Name = "startTrainingBtn";
+            this.startTrainingBtn.Size = new System.Drawing.Size(90, 23);
+            this.startTrainingBtn.TabIndex = 14;
+            this.startTrainingBtn.Text = "Start Training";
+            this.startTrainingBtn.UseVisualStyleBackColor = true;
+            this.startTrainingBtn.Click += new System.EventHandler(this.startTrainingBtn_Click);
+            // 
+            // editBtn
+            // 
+            this.editBtn.Enabled = false;
+            this.editBtn.Location = new System.Drawing.Point(611, 46);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(90, 23);
+            this.editBtn.TabIndex = 13;
+            this.editBtn.TabStop = false;
+            this.editBtn.Text = "Edit Record";
+            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Enabled = false;
+            this.cancelBtn.Location = new System.Drawing.Point(707, 46);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(90, 23);
+            this.cancelBtn.TabIndex = 12;
+            this.cancelBtn.TabStop = false;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // recordsGrid
+            // 
+            this.recordsGrid.AllowUserToAddRows = false;
+            this.recordsGrid.AllowUserToDeleteRows = false;
+            this.recordsGrid.AllowUserToResizeRows = false;
+            this.recordsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridCategory,
+            this.gridLeftHandHold,
+            this.gridRightHandHold,
+            this.gridName,
+            this.gridRecord,
+            this.gridUnits,
+            this.gridDescription});
+            this.recordsGrid.Location = new System.Drawing.Point(12, 81);
+            this.recordsGrid.Name = "recordsGrid";
+            this.recordsGrid.ReadOnly = true;
+            this.recordsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.recordsGrid.Size = new System.Drawing.Size(1394, 286);
+            this.recordsGrid.TabIndex = 11;
+            this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
+            this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
+            this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
+            this.recordsGrid.SelectionChanged += new System.EventHandler(this.recordsGrid_SelectionChanged);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(515, 46);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(90, 23);
+            this.addBtn.TabIndex = 10;
+            this.addBtn.TabStop = false;
+            this.addBtn.Text = "Add Record";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Enabled = false;
+            this.saveBtn.Location = new System.Drawing.Point(804, 46);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(90, 23);
+            this.saveBtn.TabIndex = 9;
+            this.saveBtn.TabStop = false;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // showHoldNumbersCheckBox
+            // 
+            this.showHoldNumbersCheckBox.AutoSize = true;
+            this.showHoldNumbersCheckBox.ForeColor = System.Drawing.Color.White;
+            this.showHoldNumbersCheckBox.Location = new System.Drawing.Point(12, 13);
+            this.showHoldNumbersCheckBox.Name = "showHoldNumbersCheckBox";
+            this.showHoldNumbersCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.showHoldNumbersCheckBox.TabIndex = 38;
+            this.showHoldNumbersCheckBox.Text = "Show Hold Numbers";
+            this.showHoldNumbersCheckBox.UseVisualStyleBackColor = true;
+            this.showHoldNumbersCheckBox.CheckedChanged += new System.EventHandler(this.showHoldNumbersCheckBox_CheckedChanged);
             // 
             // hangboardImage14
             // 
@@ -121,7 +331,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage14.BackColor = System.Drawing.Color.White;
-            this.hangboardImage14.Location = new System.Drawing.Point(658, 18);
+            this.hangboardImage14.Location = new System.Drawing.Point(658, 5);
             this.hangboardImage14.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage14.Name = "hangboardImage14";
             this.hangboardImage14.Size = new System.Drawing.Size(140, 71);
@@ -149,7 +359,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage26.BackColor = System.Drawing.Color.White;
-            this.hangboardImage26.Location = new System.Drawing.Point(1061, 265);
+            this.hangboardImage26.Location = new System.Drawing.Point(1061, 269);
             this.hangboardImage26.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage26.Name = "hangboardImage26";
             this.hangboardImage26.Size = new System.Drawing.Size(113, 50);
@@ -177,7 +387,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage27.BackColor = System.Drawing.Color.White;
-            this.hangboardImage27.Location = new System.Drawing.Point(934, 256);
+            this.hangboardImage27.Location = new System.Drawing.Point(934, 253);
             this.hangboardImage27.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage27.Name = "hangboardImage27";
             this.hangboardImage27.Size = new System.Drawing.Size(113, 44);
@@ -304,7 +514,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage22.BackColor = System.Drawing.Color.White;
-            this.hangboardImage22.Location = new System.Drawing.Point(1160, 146);
+            this.hangboardImage22.Location = new System.Drawing.Point(1160, 147);
             this.hangboardImage22.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage22.Name = "hangboardImage22";
             this.hangboardImage22.Size = new System.Drawing.Size(95, 52);
@@ -567,259 +777,276 @@
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
             this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
             // 
-            // leftHand_Combo
+            // mainTitle
             // 
-            this.leftHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.leftHand_Combo.FormattingEnabled = true;
-            this.leftHand_Combo.ItemHeight = 13;
-            this.leftHand_Combo.Location = new System.Drawing.Point(101, 20);
-            this.leftHand_Combo.Name = "leftHand_Combo";
-            this.leftHand_Combo.Size = new System.Drawing.Size(232, 21);
-            this.leftHand_Combo.TabIndex = 2;
-            this.leftHand_Combo.SelectedIndexChanged += new System.EventHandler(this.leftHand_Combo_SelectedIndexChanged);
-            // 
-            // rightHand_Combo
-            // 
-            this.rightHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rightHand_Combo.FormattingEnabled = true;
-            this.rightHand_Combo.ItemHeight = 13;
-            this.rightHand_Combo.Location = new System.Drawing.Point(101, 47);
-            this.rightHand_Combo.Name = "rightHand_Combo";
-            this.rightHand_Combo.Size = new System.Drawing.Size(232, 21);
-            this.rightHand_Combo.TabIndex = 4;
-            this.rightHand_Combo.SelectedIndexChanged += new System.EventHandler(this.rightHand_Combo_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(16, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Left Hand Hold";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(9, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Right Hand Hold";
-            // 
-            // searchTerm_Entry
-            // 
-            this.searchTerm_Entry.Location = new System.Drawing.Point(435, 20);
-            this.searchTerm_Entry.Name = "searchTerm_Entry";
-            this.searchTerm_Entry.Size = new System.Drawing.Size(310, 20);
-            this.searchTerm_Entry.TabIndex = 7;
-            this.searchTerm_Entry.TextChanged += new System.EventHandler(this.searchTerm_Entry_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(363, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Search Term";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.mainTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.editBtn);
-            this.groupBox2.Controls.Add(this.cancelBtn);
-            this.groupBox2.Controls.Add(this.recordsGrid);
-            this.groupBox2.Controls.Add(this.addBtn);
-            this.groupBox2.Controls.Add(this.saveBtn);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.searchTerm_Entry);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.rightHand_Combo);
-            this.groupBox2.Controls.Add(this.leftHand_Combo);
-            this.groupBox2.Location = new System.Drawing.Point(12, 441);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1420, 381);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
+            this.mainTitle.AutoSize = true;
+            this.mainTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainTitle.ForeColor = System.Drawing.Color.White;
+            this.mainTitle.Location = new System.Drawing.Point(530, 391);
+            this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
+            this.mainTitle.Name = "mainTitle";
+            this.mainTitle.Size = new System.Drawing.Size(400, 39);
+            this.mainTitle.TabIndex = 39;
+            this.mainTitle.Text = "Hangboard Records";
+            this.mainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // editBtn
+            // trainingCombo
             // 
-            this.editBtn.Enabled = false;
-            this.editBtn.Location = new System.Drawing.Point(462, 46);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(90, 23);
-            this.editBtn.TabIndex = 13;
-            this.editBtn.TabStop = false;
-            this.editBtn.Text = "Edit Record";
-            this.editBtn.UseVisualStyleBackColor = true;
-            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            this.trainingCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.trainingCombo.FormattingEnabled = true;
+            this.trainingCombo.ItemHeight = 13;
+            this.trainingCombo.Location = new System.Drawing.Point(1218, 19);
+            this.trainingCombo.Name = "trainingCombo";
+            this.trainingCombo.Size = new System.Drawing.Size(186, 21);
+            this.trainingCombo.TabIndex = 24;
             // 
-            // cancelBtn
+            // customRoutineBtn
             // 
-            this.cancelBtn.Enabled = false;
-            this.cancelBtn.Location = new System.Drawing.Point(558, 46);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(90, 23);
-            this.cancelBtn.TabIndex = 12;
-            this.cancelBtn.TabStop = false;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.customRoutineBtn.Location = new System.Drawing.Point(1218, 45);
+            this.customRoutineBtn.Name = "customRoutineBtn";
+            this.customRoutineBtn.Size = new System.Drawing.Size(90, 23);
+            this.customRoutineBtn.TabIndex = 25;
+            this.customRoutineBtn.Text = "Custom Routine";
+            this.customRoutineBtn.UseVisualStyleBackColor = true;
+            this.customRoutineBtn.Click += new System.EventHandler(this.customRoutineBtn_Click);
             // 
-            // recordsGrid
+            // routinesGroupBox
             // 
-            this.recordsGrid.AllowUserToAddRows = false;
-            this.recordsGrid.AllowUserToDeleteRows = false;
-            this.recordsGrid.AllowUserToResizeRows = false;
-            this.recordsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.routinesGroupBox.Controls.Add(this.backButton);
+            this.routinesGroupBox.Controls.Add(this.label8);
+            this.routinesGroupBox.Controls.Add(this.label7);
+            this.routinesGroupBox.Controls.Add(this.label6);
+            this.routinesGroupBox.Controls.Add(this.trackBar2);
+            this.routinesGroupBox.Controls.Add(this.label5);
+            this.routinesGroupBox.Controls.Add(this.nameText);
+            this.routinesGroupBox.Controls.Add(this.createRoutineButton);
+            this.routinesGroupBox.Controls.Add(this.intervalTextBox);
+            this.routinesGroupBox.Controls.Add(this.label4);
+            this.routinesGroupBox.Controls.Add(this.trackBar1);
+            this.routinesGroupBox.Controls.Add(this.routinesGrid);
+            this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
+            this.routinesGroupBox.Name = "routinesGroupBox";
+            this.routinesGroupBox.Size = new System.Drawing.Size(1420, 381);
+            this.routinesGroupBox.TabIndex = 26;
+            this.routinesGroupBox.TabStop = false;
+            this.routinesGroupBox.Visible = false;
+            // 
+            // intervalTextBox
+            // 
+            this.intervalTextBox.Location = new System.Drawing.Point(142, 50);
+            this.intervalTextBox.Name = "intervalTextBox";
+            this.intervalTextBox.ReadOnly = true;
+            this.intervalTextBox.Size = new System.Drawing.Size(70, 20);
+            this.intervalTextBox.TabIndex = 26;
+            this.intervalTextBox.Text = "60 seconds";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(26, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Exercise Rest Interval";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(19, 23);
+            this.trackBar1.Maximum = 24;
+            this.trackBar1.Minimum = 2;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(201, 45);
+            this.trackBar1.SmallChange = 5;
+            this.trackBar1.TabIndex = 24;
+            this.trackBar1.TickFrequency = 5;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 12;
+            // 
+            // createRoutineButton
+            // 
+            this.createRoutineButton.Location = new System.Drawing.Point(652, 50);
+            this.createRoutineButton.Name = "createRoutineButton";
+            this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
+            this.createRoutineButton.TabIndex = 27;
+            this.createRoutineButton.Text = "Create";
+            this.createRoutineButton.UseVisualStyleBackColor = true;
+            // 
+            // routinesGrid
+            // 
+            this.routinesGrid.AllowUserToOrderColumns = true;
+            this.routinesGrid.AllowUserToResizeRows = false;
+            this.routinesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewComboBoxColumn1,
-            this.dataGridViewComboBoxColumn2,
-            this.dataGridViewComboBoxColumn3,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewComboBoxColumn4,
-            this.dataGridViewTextBoxColumn3});
-            this.recordsGrid.Location = new System.Drawing.Point(12, 81);
-            this.recordsGrid.Name = "recordsGrid";
-            this.recordsGrid.ReadOnly = true;
-            this.recordsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.recordsGrid.Size = new System.Drawing.Size(1394, 286);
-            this.recordsGrid.TabIndex = 11;
-            this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
-            this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
-            this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
-            this.recordsGrid.SelectionChanged += new System.EventHandler(this.recordsGrid_SelectionChanged);
+            this.routinesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.routinesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.routinesExercise,
+            this.routinesLeftHandHold,
+            this.routinesRightHandHold,
+            this.routinesDuration,
+            this.routinesDescription});
+            this.routinesGrid.Location = new System.Drawing.Point(12, 81);
+            this.routinesGrid.Name = "routinesGrid";
+            this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
+            this.routinesGrid.TabIndex = 28;
+            this.routinesGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.routinesGrid_EditingControlShowing);
             // 
-            // dataGridViewComboBoxColumn1
+            // nameText
             // 
-            this.dataGridViewComboBoxColumn1.HeaderText = "Category";
-            this.dataGridViewComboBoxColumn1.Items.AddRange(new object[] {
+            this.nameText.Location = new System.Drawing.Point(531, 23);
+            this.nameText.Name = "nameText";
+            this.nameText.Size = new System.Drawing.Size(211, 20);
+            this.nameText.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(494, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Name";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(259, 23);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(201, 45);
+            this.trackBar2.SmallChange = 5;
+            this.trackBar2.TabIndex = 31;
+            this.trackBar2.Value = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(339, 55);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Difficulty";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(266, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(13, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(436, 55);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "10";
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(1315, 48);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(90, 23);
+            this.backButton.TabIndex = 35;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // gridCategory
+            // 
+            this.gridCategory.HeaderText = "Category";
+            this.gridCategory.Items.AddRange(new object[] {
             "Hangboard",
             "Misc"});
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            this.dataGridViewComboBoxColumn1.ReadOnly = true;
-            this.dataGridViewComboBoxColumn1.Width = 150;
+            this.gridCategory.Name = "gridCategory";
+            this.gridCategory.ReadOnly = true;
+            this.gridCategory.Width = 150;
             // 
-            // dataGridViewComboBoxColumn2
+            // gridLeftHandHold
             // 
-            this.dataGridViewComboBoxColumn2.HeaderText = "Left Hand Hold";
-            this.dataGridViewComboBoxColumn2.Items.AddRange(new object[] {
-            "1: Top Left Jug",
-            "2: Outside Sloper (Square)",
-            "3: Inside Sloper (Round)",
-            "4: Top Deep Pocket (3 Finger)",
-            "5: Medium Edge (4 Finger)",
-            "6: Shallow Edge (4 Finger)",
-            "7: Deep Flat Edge (4 Finger)",
-            "8: Extra Shallow Edge (3 Finger)",
-            "9: Deep Flat Pocket (3 Finger)",
-            "10: Medium Edge (4 Finger)",
-            "11: Extra Shallow Edge (4 Finger)",
-            "12: Deep Flat Pocket (2 Finger)",
-            "13: Extra Shallow Pocket (2 Finger)",
-            "14: Top Centre Jug",
-            "15: Top Centre Pocket (4 Finger)",
-            "16: Top Centre Pocket (3 Finger)",
-            "17: Bottom Centre Pocket (3 Finger)",
-            "18: Bottom Centre Pocket (2 Finger)",
-            "None"});
-            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
-            this.dataGridViewComboBoxColumn2.ReadOnly = true;
-            this.dataGridViewComboBoxColumn2.Width = 200;
+            this.gridLeftHandHold.HeaderText = "Left Hand Hold";
+            this.gridLeftHandHold.Name = "gridLeftHandHold";
+            this.gridLeftHandHold.ReadOnly = true;
+            this.gridLeftHandHold.Width = 200;
             // 
-            // dataGridViewComboBoxColumn3
+            // gridRightHandHold
             // 
-            this.dataGridViewComboBoxColumn3.HeaderText = "Right Hand Hold";
-            this.dataGridViewComboBoxColumn3.Items.AddRange(new object[] {
-            "1: Top Right Jug",
-            "2: Outside Sloper (Square)",
-            "3: Inside Sloper (Round)",
-            "4: Top Deep Pocket (3 Finger)",
-            "5: Medium Edge (4 Finger)",
-            "6: Shallow Edge (4 Finger)",
-            "7: Deep Flat Edge (4 Finger)",
-            "8: Extra Shallow Edge (3 Finger)",
-            "9: Deep Flat Pocket (3 Finger)",
-            "10: Medium Edge (4 Finger)",
-            "11: Extra Shallow Edge (4 Finger)",
-            "12: Deep Flat Pocket (2 Finger)",
-            "13: Extra Shallow Pocket (2 Finger)",
-            "14: Top Centre Jug",
-            "15: Top Centre Pocket (4 Finger)",
-            "16: Top Centre Pocket (3 Finger)",
-            "17: Bottom Centre Pocket (3 Finger)",
-            "18: Bottom Centre Pocket (2 Finger)",
-            "None"});
-            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
-            this.dataGridViewComboBoxColumn3.ReadOnly = true;
-            this.dataGridViewComboBoxColumn3.Width = 200;
+            this.gridRightHandHold.HeaderText = "Right Hand Hold";
+            this.gridRightHandHold.Name = "gridRightHandHold";
+            this.gridRightHandHold.ReadOnly = true;
+            this.gridRightHandHold.Width = 200;
             // 
-            // dataGridViewTextBoxColumn1
+            // gridName
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 150;
+            this.gridName.HeaderText = "Name";
+            this.gridName.Name = "gridName";
+            this.gridName.ReadOnly = true;
+            this.gridName.Width = 150;
             // 
-            // dataGridViewTextBoxColumn2
+            // gridRecord
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Record";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.gridRecord.HeaderText = "Record";
+            this.gridRecord.Name = "gridRecord";
+            this.gridRecord.ReadOnly = true;
+            this.gridRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // dataGridViewComboBoxColumn4
+            // gridUnits
             // 
-            this.dataGridViewComboBoxColumn4.HeaderText = "Units";
-            this.dataGridViewComboBoxColumn4.Items.AddRange(new object[] {
+            this.gridUnits.HeaderText = "Units";
+            this.gridUnits.Items.AddRange(new object[] {
             "seconds",
             "minutes",
             "reps"});
-            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
-            this.dataGridViewComboBoxColumn4.ReadOnly = true;
+            this.gridUnits.Name = "gridUnits";
+            this.gridUnits.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // gridDescription
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.gridDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gridDescription.HeaderText = "Description";
+            this.gridDescription.Name = "gridDescription";
+            this.gridDescription.ReadOnly = true;
             // 
-            // addBtn
+            // routinesExercise
             // 
-            this.addBtn.Location = new System.Drawing.Point(366, 46);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(90, 23);
-            this.addBtn.TabIndex = 10;
-            this.addBtn.TabStop = false;
-            this.addBtn.Text = "Add Record";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            this.routinesExercise.HeaderText = "Exercise";
+            this.routinesExercise.Name = "routinesExercise";
             // 
-            // saveBtn
+            // routinesLeftHandHold
             // 
-            this.saveBtn.Enabled = false;
-            this.saveBtn.Location = new System.Drawing.Point(655, 46);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(90, 23);
-            this.saveBtn.TabIndex = 9;
-            this.saveBtn.TabStop = false;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.routinesLeftHandHold.HeaderText = "Left Hand Hold";
+            this.routinesLeftHandHold.Name = "routinesLeftHandHold";
+            this.routinesLeftHandHold.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.routinesLeftHandHold.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.routinesLeftHandHold.Width = 200;
+            // 
+            // routinesRightHandHold
+            // 
+            this.routinesRightHandHold.HeaderText = "Right Hand Hold";
+            this.routinesRightHandHold.Name = "routinesRightHandHold";
+            this.routinesRightHandHold.Width = 200;
+            // 
+            // routinesDuration
+            // 
+            this.routinesDuration.HeaderText = "Duration";
+            this.routinesDuration.Name = "routinesDuration";
+            // 
+            // routinesDescription
+            // 
+            this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.routinesDescription.HeaderText = "Description";
+            this.routinesDescription.Name = "routinesDescription";
             // 
             // Form1
             // 
@@ -827,6 +1054,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1444, 834);
+            this.Controls.Add(this.mainTitle);
+            this.Controls.Add(this.showHoldNumbersCheckBox);
             this.Controls.Add(this.hangboardImage14);
             this.Controls.Add(this.hangboardImage8);
             this.Controls.Add(this.hangboardImage26);
@@ -858,11 +1087,15 @@
             this.Controls.Add(this.hangboardImage13);
             this.Controls.Add(this.hangboardImage17);
             this.Controls.Add(this.hangboardImage18);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.hangboardImage);
+            this.Controls.Add(this.routinesGroupBox);
+            this.Controls.Add(this.recordsGroupBox);
             this.Name = "Form1";
-            this.Text = "Hang Board Records";
+            this.Text = "Hangboard Records";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.recordsGroupBox.ResumeLayout(false);
+            this.recordsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).EndInit();
@@ -895,10 +1128,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
+            this.routinesGroupBox.ResumeLayout(false);
+            this.routinesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -941,19 +1177,42 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox searchTerm_Entry;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox recordsGroupBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.DataGridView recordsGrid;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.CheckBox showHoldNumbersCheckBox;
+        private System.Windows.Forms.Button startTrainingBtn;
+        private System.Windows.Forms.Label mainTitle;
+        private System.Windows.Forms.ComboBox trainingCombo;
+        private System.Windows.Forms.Button customRoutineBtn;
+        private System.Windows.Forms.GroupBox routinesGroupBox;
+        private System.Windows.Forms.TextBox intervalTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Button createRoutineButton;
+        private System.Windows.Forms.DataGridView routinesGrid;
+        private System.Windows.Forms.TextBox nameText;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridCategory;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridLeftHandHold;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridRightHandHold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridRecord;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridUnits;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn routinesExercise;
+        private System.Windows.Forms.DataGridViewComboBoxColumn routinesLeftHandHold;
+        private System.Windows.Forms.DataGridViewComboBoxColumn routinesRightHandHold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDuration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDescription;
     }
 }
 

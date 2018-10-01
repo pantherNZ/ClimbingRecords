@@ -100,6 +100,11 @@ namespace ClimbingRecords
             foreach( var hold in Records.rightHoldNames )
                 rightHand_Combo.Items.Add( hold );
 
+            ( recordsGrid.Columns["gridLeftHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.leftHoldNames;
+            ( recordsGrid.Columns["gridRightHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.rightHoldNames;
+            ( routinesGrid.Columns["routinesRightHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.leftHoldNames;
+            ( routinesGrid.Columns["routinesLeftHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.rightHoldNames;
+
             recordsData = Records.LoadRecords();
             filteredData = recordsData;
             RefreshRecordsTable();
@@ -404,24 +409,48 @@ namespace ClimbingRecords
 
         private void recordsGrid_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
         {
-            e.Control.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+            TextBox tb = e.Control as TextBox;
+
+            if( tb == null )
+                return;
 
             if( recordsGrid.CurrentCell.ColumnIndex == 4 )
             {
-                TextBox tb = e.Control as TextBox;
-                if( tb != null )
-                {
-                    tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
-                }
+                e.Control.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+                tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
+            }
+        }
+
+        private void routinesGrid_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
+        {   
+            TextBox tb = e.Control as TextBox;
+
+            if( tb == null )
+                return;
+
+            if( routinesGrid.CurrentCell.ColumnIndex == 0 )
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler( RecordKeyPressDigits );
+                tb.KeyPress += new KeyPressEventHandler( RecordKeyPressDigits );
+            }
+
+            if( routinesGrid.CurrentCell.ColumnIndex == 3 )
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+                tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
             }
         }
 
         private void RecordKeyPress( object sender, KeyPressEventArgs e )
         {
             if( !char.IsControl( e.KeyChar ) && !char.IsDigit( e.KeyChar ) && e.KeyChar != '.' && e.KeyChar != ':' )
-            {
                 e.Handled = true;
-            }
+        }
+
+        private void RecordKeyPressDigits( object sender, KeyPressEventArgs e )
+        {
+            if( !char.IsControl( e.KeyChar ) && !char.IsDigit( e.KeyChar ) )
+                e.Handled = true;
         }
 
         private void searchTerm_Entry_TextChanged( object sender, EventArgs e )
@@ -496,6 +525,41 @@ namespace ClimbingRecords
             rect = new Rectangle( rightHand_Combo.Location.X, rightHand_Combo.Location.Y, rightHand_Combo.ClientSize.Width, rightHand_Combo.ClientSize.Height );
             rect.Inflate( size, size );
             System.Windows.Forms.ControlPaint.DrawBorder( e.Graphics, rect, Color.LimeGreen, ButtonBorderStyle.Solid );
+        }
+
+        private void showHoldNumbersCheckBox_CheckedChanged( object sender, EventArgs e )
+        {
+            hangboardImage.Image = ( sender as CheckBox ).Checked ? ClimbingRecords.Properties.Resources.BoardWithNumbers : ClimbingRecords.Properties.Resources.Board;
+        }
+
+        private void startTrainingBtn_Click( object sender, EventArgs e )
+        {
+            mainTitle.Text = trainingCombo.Text + " Training";
+            ToggleGroups();
+        }
+
+        private void trackBar1_ValueChanged( object sender, EventArgs e )
+        {
+            var trackbar = sender as TrackBar;
+            intervalTextBox.Text = ( trackbar.Value * 5 ).ToString() + " seconds";
+        }
+
+        private void customRoutineBtn_Click( object sender, EventArgs e )
+        {
+            mainTitle.Text = "Custom Routine";
+            ToggleGroups();
+        }
+
+        private void backButton_Click( object sender, EventArgs e )
+        {
+            mainTitle.Text = "Hangboard Records";
+            ToggleGroups();
+        }
+
+        private void ToggleGroups()
+        {
+            recordsGroupBox.Visible = !recordsGroupBox.Visible;
+            routinesGroupBox.Visible = !routinesGroupBox.Visible;
         }
 
         private Size GetHangboardTrueSize()
