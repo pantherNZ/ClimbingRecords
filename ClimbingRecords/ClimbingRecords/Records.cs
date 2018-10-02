@@ -25,7 +25,7 @@ namespace ClimbingRecords
             public string description;
 
             // Used for searching
-            public override string ToString()// => $"{category} {leftHandHold} {rightHandHold} {name} {record} {units} {description}";
+            public override string ToString()
             {
                 return string.Join( " ", this.GetType().GetFields().Select( ( x ) => { return x.GetValue( this ); } ) );
             }

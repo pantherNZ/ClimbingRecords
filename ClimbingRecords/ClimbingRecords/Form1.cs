@@ -66,6 +66,10 @@ namespace ClimbingRecords
                 ratio.sizeY = highlight.Height / Convert.ToDouble( hangboardTrueSize.Height );
                 highlightRatios.Add( highlight, ratio );
             }
+
+            nameText.TextChanged += this.ValidateCreateButton;
+            routinesGrid.RowsRemoved += this.ValidateCreateButton;
+            routinesGrid.RowsAdded += this.ValidateCreateButton;
         }
 
 
@@ -77,7 +81,9 @@ namespace ClimbingRecords
             SetComboSelectedIndex( rightHand_Combo, 18 );
 
             recordsGrid.ClearSelection();
-            recordsGrid.CurrentRow.Selected = false;
+
+            if( recordsGrid.CurrentRow != null )
+                recordsGrid.CurrentRow.Selected = false;
 
             editBtn.Enabled = false;
         }
@@ -102,8 +108,8 @@ namespace ClimbingRecords
 
             ( recordsGrid.Columns["gridLeftHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.leftHoldNames;
             ( recordsGrid.Columns["gridRightHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.rightHoldNames;
-            ( routinesGrid.Columns["routinesRightHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.leftHoldNames;
-            ( routinesGrid.Columns["routinesLeftHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.rightHoldNames;
+            ( routinesGrid.Columns["routinesLeftHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.leftHoldNames;
+            ( routinesGrid.Columns["routinesRightHandHold"] as DataGridViewComboBoxColumn ).DataSource = Records.rightHoldNames;
 
             recordsData = Records.LoadRecords();
             filteredData = recordsData;
@@ -372,6 +378,7 @@ namespace ClimbingRecords
         private void cancelBtn_Click( object sender, EventArgs e )
         {
             cancelBtn.Enabled = false;
+            saveBtn.Enabled = false;
             editBtn.Enabled = false;
             addingRow = false;
             RefreshRecordsTable();
@@ -538,7 +545,7 @@ namespace ClimbingRecords
             ToggleGroups();
         }
 
-        private void trackBar1_ValueChanged( object sender, EventArgs e )
+        private void trackBar1_ValueChanged_1( object sender, EventArgs e )
         {
             var trackbar = sender as TrackBar;
             intervalTextBox.Text = ( trackbar.Value * 5 ).ToString() + " seconds";
@@ -560,6 +567,24 @@ namespace ClimbingRecords
         {
             recordsGroupBox.Visible = !recordsGroupBox.Visible;
             routinesGroupBox.Visible = !routinesGroupBox.Visible;
+        }
+
+        private void ValidateCreateButton( object sender, EventArgs e )
+        {
+            createRoutineButton.Enabled = routinesGrid.RowCount > 0 && nameText.Text.Length > 0;
+        }
+
+        private void routinesGrid_DefaultValuesNeeded( object sender, DataGridViewRowEventArgs e )
+        {
+            e.Row.Cells["routinesLeftHandHold"].Value = "None";
+            e.Row.Cells["routinesRightHandHold"].Value = "None";
+            e.Row.Cells["routinesDuration"].Value = "0";
+            e.Row.Cells["Rest"].Value = "60";
+        }
+
+        private void createRoutineButton_Click( object sender, EventArgs e )
+        {
+
         }
 
         private Size GetHangboardTrueSize()

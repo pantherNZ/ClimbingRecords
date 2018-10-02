@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Records>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>2: Outside Sloper (Square)</LeftHandHold>
     <RightHandHold>2: Outside Sloper (Square)</RightHandHold>
     <Person>Becky</Person>
@@ -10,7 +10,7 @@
     <Description>(female)</Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>3: Inside Sloper (Round)</LeftHandHold>
     <RightHandHold>3: Inside Sloper (Round)</RightHandHold>
     <Person>Alex</Person>
@@ -37,7 +37,7 @@
     <Description>Plank (female)</Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
     <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
     <Person>Olly</Person>
@@ -46,7 +46,7 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>1: Top Left Jug</LeftHandHold>
     <RightHandHold>1: Top Right Jug</RightHandHold>
     <Person>Alex</Person>
@@ -55,7 +55,7 @@
     <Description>(male)</Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>7: Deep Flat Edge (4 Finger)</LeftHandHold>
     <RightHandHold>7: Deep Flat Edge (4 Finger)</RightHandHold>
     <Person>Alex</Person>
@@ -64,16 +64,16 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>1: Top Left Jug</LeftHandHold>
     <RightHandHold>1: Top Right Jug</RightHandHold>
     <Person>Olly</Person>
     <Record>22</Record>
     <Units>reps</Units>
-    <Description>Chinups</Description>
+    <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>4: Top Deep Pocket (3 Finger)</LeftHandHold>
     <RightHandHold>4: Top Deep Pocket (3 Finger)</RightHandHold>
     <Person>Alex</Person>
@@ -82,7 +82,7 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
     <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
     <Person>Scott</Person>
@@ -91,7 +91,7 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>12: Deep Flat Pocket (2 Finger)</LeftHandHold>
     <RightHandHold>12: Deep Flat Pocket (2 Finger)</RightHandHold>
     <Person>Scott</Person>
@@ -100,7 +100,7 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>14: Top Centre Jug</LeftHandHold>
     <RightHandHold>None</RightHandHold>
     <Person>Olly</Person>
@@ -109,12 +109,12 @@
     <Description>1 arm (either one)</Description>
   </Record>
   <Record>
-    <Category>Hangboard</Category>
+    <Category>Hang</Category>
     <LeftHandHold>12: Deep Flat Pocket (2 Finger)</LeftHandHold>
     <RightHandHold>12: Deep Flat Pocket (2 Finger)</RightHandHold>
     <Person>Alex</Person>
     <Record>6</Record>
     <Units>reps</Units>
-    <Description>chinups</Description>
+    <Description></Description>
   </Record>
 </Records>

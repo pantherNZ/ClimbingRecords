@@ -35,11 +35,20 @@
             this.searchTerm_Entry = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.recordsGroupBox = new System.Windows.Forms.GroupBox();
-            this.startTrainingBtn = new System.Windows.Forms.Button();
+            this.customRoutineBtn = new System.Windows.Forms.Button();
+            this.trainingCombo = new System.Windows.Forms.ComboBox();
             this.editBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.recordsGrid = new System.Windows.Forms.DataGridView();
+            this.gridCategory = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridUnits = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new System.Windows.Forms.Button();
+            this.startTrainingBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.showHoldNumbersCheckBox = new System.Windows.Forms.CheckBox();
             this.hangboardImage14 = new System.Windows.Forms.PictureBox();
@@ -75,33 +84,26 @@
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
             this.mainTitle = new System.Windows.Forms.Label();
-            this.trainingCombo = new System.Windows.Forms.ComboBox();
-            this.customRoutineBtn = new System.Windows.Forms.Button();
             this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.backButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nameText = new System.Windows.Forms.TextBox();
+            this.createRoutineButton = new System.Windows.Forms.Button();
+            this.routinesGrid = new System.Windows.Forms.DataGridView();
             this.intervalTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.createRoutineButton = new System.Windows.Forms.Button();
-            this.routinesGrid = new System.Windows.Forms.DataGridView();
-            this.nameText = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.backButton = new System.Windows.Forms.Button();
-            this.gridCategory = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gridLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gridRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridUnits = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gridDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.routinesExercise = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.routinesLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.routinesRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.routinesDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
@@ -137,9 +139,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // leftHand_Combo
@@ -227,15 +229,25 @@
             this.recordsGroupBox.TabStop = false;
             this.recordsGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
-            // startTrainingBtn
+            // customRoutineBtn
             // 
-            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 45);
-            this.startTrainingBtn.Name = "startTrainingBtn";
-            this.startTrainingBtn.Size = new System.Drawing.Size(90, 23);
-            this.startTrainingBtn.TabIndex = 14;
-            this.startTrainingBtn.Text = "Start Training";
-            this.startTrainingBtn.UseVisualStyleBackColor = true;
-            this.startTrainingBtn.Click += new System.EventHandler(this.startTrainingBtn_Click);
+            this.customRoutineBtn.Location = new System.Drawing.Point(1218, 45);
+            this.customRoutineBtn.Name = "customRoutineBtn";
+            this.customRoutineBtn.Size = new System.Drawing.Size(90, 23);
+            this.customRoutineBtn.TabIndex = 25;
+            this.customRoutineBtn.Text = "Custom Routine";
+            this.customRoutineBtn.UseVisualStyleBackColor = true;
+            this.customRoutineBtn.Click += new System.EventHandler(this.customRoutineBtn_Click);
+            // 
+            // trainingCombo
+            // 
+            this.trainingCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.trainingCombo.FormattingEnabled = true;
+            this.trainingCombo.ItemHeight = 13;
+            this.trainingCombo.Location = new System.Drawing.Point(1218, 19);
+            this.trainingCombo.Name = "trainingCombo";
+            this.trainingCombo.Size = new System.Drawing.Size(186, 21);
+            this.trainingCombo.TabIndex = 24;
             // 
             // editBtn
             // 
@@ -290,6 +302,63 @@
             this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
             this.recordsGrid.SelectionChanged += new System.EventHandler(this.recordsGrid_SelectionChanged);
             // 
+            // gridCategory
+            // 
+            this.gridCategory.HeaderText = "Category";
+            this.gridCategory.Items.AddRange(new object[] {
+            "Hang",
+            "Chinups",
+            "Misc"});
+            this.gridCategory.Name = "gridCategory";
+            this.gridCategory.ReadOnly = true;
+            this.gridCategory.Width = 150;
+            // 
+            // gridLeftHandHold
+            // 
+            this.gridLeftHandHold.HeaderText = "Left Hand Hold";
+            this.gridLeftHandHold.Name = "gridLeftHandHold";
+            this.gridLeftHandHold.ReadOnly = true;
+            this.gridLeftHandHold.Width = 200;
+            // 
+            // gridRightHandHold
+            // 
+            this.gridRightHandHold.HeaderText = "Right Hand Hold";
+            this.gridRightHandHold.Name = "gridRightHandHold";
+            this.gridRightHandHold.ReadOnly = true;
+            this.gridRightHandHold.Width = 200;
+            // 
+            // gridName
+            // 
+            this.gridName.HeaderText = "Name";
+            this.gridName.Name = "gridName";
+            this.gridName.ReadOnly = true;
+            this.gridName.Width = 150;
+            // 
+            // gridRecord
+            // 
+            this.gridRecord.HeaderText = "Record";
+            this.gridRecord.Name = "gridRecord";
+            this.gridRecord.ReadOnly = true;
+            this.gridRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gridUnits
+            // 
+            this.gridUnits.HeaderText = "Units";
+            this.gridUnits.Items.AddRange(new object[] {
+            "seconds",
+            "minutes",
+            "reps"});
+            this.gridUnits.Name = "gridUnits";
+            this.gridUnits.ReadOnly = true;
+            // 
+            // gridDescription
+            // 
+            this.gridDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gridDescription.HeaderText = "Description";
+            this.gridDescription.Name = "gridDescription";
+            this.gridDescription.ReadOnly = true;
+            // 
             // addBtn
             // 
             this.addBtn.Location = new System.Drawing.Point(515, 46);
@@ -300,6 +369,16 @@
             this.addBtn.Text = "Add Record";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // startTrainingBtn
+            // 
+            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 45);
+            this.startTrainingBtn.Name = "startTrainingBtn";
+            this.startTrainingBtn.Size = new System.Drawing.Size(90, 23);
+            this.startTrainingBtn.TabIndex = 14;
+            this.startTrainingBtn.Text = "Start Training";
+            this.startTrainingBtn.UseVisualStyleBackColor = true;
+            this.startTrainingBtn.Click += new System.EventHandler(this.startTrainingBtn_Click);
             // 
             // saveBtn
             // 
@@ -792,30 +871,12 @@
             this.mainTitle.Text = "Hangboard Records";
             this.mainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // trainingCombo
-            // 
-            this.trainingCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trainingCombo.FormattingEnabled = true;
-            this.trainingCombo.ItemHeight = 13;
-            this.trainingCombo.Location = new System.Drawing.Point(1218, 19);
-            this.trainingCombo.Name = "trainingCombo";
-            this.trainingCombo.Size = new System.Drawing.Size(186, 21);
-            this.trainingCombo.TabIndex = 24;
-            // 
-            // customRoutineBtn
-            // 
-            this.customRoutineBtn.Location = new System.Drawing.Point(1218, 45);
-            this.customRoutineBtn.Name = "customRoutineBtn";
-            this.customRoutineBtn.Size = new System.Drawing.Size(90, 23);
-            this.customRoutineBtn.TabIndex = 25;
-            this.customRoutineBtn.Text = "Custom Routine";
-            this.customRoutineBtn.UseVisualStyleBackColor = true;
-            this.customRoutineBtn.Click += new System.EventHandler(this.customRoutineBtn_Click);
-            // 
             // routinesGroupBox
             // 
             this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.routinesGroupBox.Controls.Add(this.label9);
+            this.routinesGroupBox.Controls.Add(this.textBox1);
             this.routinesGroupBox.Controls.Add(this.backButton);
             this.routinesGroupBox.Controls.Add(this.label8);
             this.routinesGroupBox.Controls.Add(this.label7);
@@ -824,9 +885,6 @@
             this.routinesGroupBox.Controls.Add(this.label5);
             this.routinesGroupBox.Controls.Add(this.nameText);
             this.routinesGroupBox.Controls.Add(this.createRoutineButton);
-            this.routinesGroupBox.Controls.Add(this.intervalTextBox);
-            this.routinesGroupBox.Controls.Add(this.label4);
-            this.routinesGroupBox.Controls.Add(this.trackBar1);
             this.routinesGroupBox.Controls.Add(this.routinesGrid);
             this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
             this.routinesGroupBox.Name = "routinesGroupBox";
@@ -835,46 +893,82 @@
             this.routinesGroupBox.TabStop = false;
             this.routinesGroupBox.Visible = false;
             // 
-            // intervalTextBox
+            // backButton
             // 
-            this.intervalTextBox.Location = new System.Drawing.Point(142, 50);
-            this.intervalTextBox.Name = "intervalTextBox";
-            this.intervalTextBox.ReadOnly = true;
-            this.intervalTextBox.Size = new System.Drawing.Size(70, 20);
-            this.intervalTextBox.TabIndex = 26;
-            this.intervalTextBox.Text = "60 seconds";
+            this.backButton.Location = new System.Drawing.Point(1314, 47);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(90, 23);
+            this.backButton.TabIndex = 35;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // label4
+            // label8
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(26, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Exercise Rest Interval";
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(190, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "10";
             // 
-            // trackBar1
+            // label7
             // 
-            this.trackBar1.Location = new System.Drawing.Point(19, 23);
-            this.trackBar1.Maximum = 24;
-            this.trackBar1.Minimum = 2;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(201, 45);
-            this.trackBar1.SmallChange = 5;
-            this.trackBar1.TabIndex = 24;
-            this.trackBar1.TickFrequency = 5;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 12;
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(20, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(13, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(93, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Difficulty";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.LargeChange = 1;
+            this.trackBar2.Location = new System.Drawing.Point(13, 18);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(201, 45);
+            this.trackBar2.TabIndex = 31;
+            this.trackBar2.Value = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(231, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Name";
+            // 
+            // nameText
+            // 
+            this.nameText.Location = new System.Drawing.Point(268, 21);
+            this.nameText.Name = "nameText";
+            this.nameText.Size = new System.Drawing.Size(300, 20);
+            this.nameText.TabIndex = 29;
             // 
             // createRoutineButton
             // 
-            this.createRoutineButton.Location = new System.Drawing.Point(652, 50);
+            this.createRoutineButton.Enabled = false;
+            this.createRoutineButton.Location = new System.Drawing.Point(581, 19);
             this.createRoutineButton.Name = "createRoutineButton";
             this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
             this.createRoutineButton.TabIndex = 27;
             this.createRoutineButton.Text = "Create";
             this.createRoutineButton.UseVisualStyleBackColor = true;
+            this.createRoutineButton.Click += new System.EventHandler(this.createRoutineButton_Click);
             // 
             // routinesGrid
             // 
@@ -885,143 +979,50 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.routinesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.routinesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.routinesExercise,
             this.routinesLeftHandHold,
             this.routinesRightHandHold,
             this.routinesDuration,
+            this.Rest,
             this.routinesDescription});
             this.routinesGrid.Location = new System.Drawing.Point(12, 81);
             this.routinesGrid.Name = "routinesGrid";
             this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
             this.routinesGrid.TabIndex = 28;
+            this.routinesGrid.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.routinesGrid_DefaultValuesNeeded);
             this.routinesGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.routinesGrid_EditingControlShowing);
             // 
-            // nameText
+            // intervalTextBox
             // 
-            this.nameText.Location = new System.Drawing.Point(531, 23);
-            this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(211, 20);
-            this.nameText.TabIndex = 29;
+            this.intervalTextBox.Location = new System.Drawing.Point(1353, 40);
+            this.intervalTextBox.Name = "intervalTextBox";
+            this.intervalTextBox.ReadOnly = true;
+            this.intervalTextBox.Size = new System.Drawing.Size(70, 20);
+            this.intervalTextBox.TabIndex = 26;
+            this.intervalTextBox.Text = "60 seconds";
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(494, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Name";
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1237, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Exercise Rest Interval";
             // 
-            // trackBar2
+            // trackBar1
             // 
-            this.trackBar2.Location = new System.Drawing.Point(259, 23);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(201, 45);
-            this.trackBar2.SmallChange = 5;
-            this.trackBar2.TabIndex = 31;
-            this.trackBar2.Value = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(339, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Difficulty";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(266, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(436, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 13);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "10";
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(1315, 48);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(90, 23);
-            this.backButton.TabIndex = 35;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // gridCategory
-            // 
-            this.gridCategory.HeaderText = "Category";
-            this.gridCategory.Items.AddRange(new object[] {
-            "Hangboard",
-            "Misc"});
-            this.gridCategory.Name = "gridCategory";
-            this.gridCategory.ReadOnly = true;
-            this.gridCategory.Width = 150;
-            // 
-            // gridLeftHandHold
-            // 
-            this.gridLeftHandHold.HeaderText = "Left Hand Hold";
-            this.gridLeftHandHold.Name = "gridLeftHandHold";
-            this.gridLeftHandHold.ReadOnly = true;
-            this.gridLeftHandHold.Width = 200;
-            // 
-            // gridRightHandHold
-            // 
-            this.gridRightHandHold.HeaderText = "Right Hand Hold";
-            this.gridRightHandHold.Name = "gridRightHandHold";
-            this.gridRightHandHold.ReadOnly = true;
-            this.gridRightHandHold.Width = 200;
-            // 
-            // gridName
-            // 
-            this.gridName.HeaderText = "Name";
-            this.gridName.Name = "gridName";
-            this.gridName.ReadOnly = true;
-            this.gridName.Width = 150;
-            // 
-            // gridRecord
-            // 
-            this.gridRecord.HeaderText = "Record";
-            this.gridRecord.Name = "gridRecord";
-            this.gridRecord.ReadOnly = true;
-            this.gridRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gridUnits
-            // 
-            this.gridUnits.HeaderText = "Units";
-            this.gridUnits.Items.AddRange(new object[] {
-            "seconds",
-            "minutes",
-            "reps"});
-            this.gridUnits.Name = "gridUnits";
-            this.gridUnits.ReadOnly = true;
-            // 
-            // gridDescription
-            // 
-            this.gridDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gridDescription.HeaderText = "Description";
-            this.gridDescription.Name = "gridDescription";
-            this.gridDescription.ReadOnly = true;
-            // 
-            // routinesExercise
-            // 
-            this.routinesExercise.HeaderText = "Exercise";
-            this.routinesExercise.Name = "routinesExercise";
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(1230, 13);
+            this.trackBar1.Maximum = 24;
+            this.trackBar1.Minimum = 2;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(201, 45);
+            this.trackBar1.TabIndex = 24;
+            this.trackBar1.TickFrequency = 5;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 12;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged_1);
             // 
             // routinesLeftHandHold
             // 
@@ -1042,11 +1043,34 @@
             this.routinesDuration.HeaderText = "Duration";
             this.routinesDuration.Name = "routinesDuration";
             // 
+            // Rest
+            // 
+            this.Rest.HeaderText = "Rest (seconds)";
+            this.Rest.Name = "Rest";
+            this.Rest.Width = 120;
+            // 
             // routinesDescription
             // 
             this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.routinesDescription.HeaderText = "Description";
             this.routinesDescription.Name = "routinesDescription";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(268, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(403, 20);
+            this.textBox1.TabIndex = 36;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(237, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Info";
             // 
             // Form1
             // 
@@ -1062,8 +1086,11 @@
             this.Controls.Add(this.hangboardImage9);
             this.Controls.Add(this.hangboardImage27);
             this.Controls.Add(this.hangboardImage28);
+            this.Controls.Add(this.intervalTextBox);
             this.Controls.Add(this.hangboardImage10);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.hangboardImage5);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.hangboardImage23);
             this.Controls.Add(this.hangboardImage24);
             this.Controls.Add(this.hangboardImage25);
@@ -1130,9 +1157,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
             this.routinesGroupBox.ResumeLayout(false);
             this.routinesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1208,11 +1235,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridRecord;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridUnits;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn routinesExercise;
         private System.Windows.Forms.DataGridViewComboBoxColumn routinesLeftHandHold;
         private System.Windows.Forms.DataGridViewComboBoxColumn routinesRightHandHold;
         private System.Windows.Forms.DataGridViewTextBoxColumn routinesDuration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rest;
         private System.Windows.Forms.DataGridViewTextBoxColumn routinesDescription;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
