@@ -85,25 +85,28 @@
             this.hangboardImage = new System.Windows.Forms.PictureBox();
             this.mainTitle = new System.Windows.Forms.Label();
             this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.addExerciseButton = new System.Windows.Forms.Button();
+            this.deleteExerciseButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.routineDescriptionText = new System.Windows.Forms.TextBox();
             this.backButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.routineDifficultyTrackbar = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
-            this.nameText = new System.Windows.Forms.TextBox();
+            this.routineNameText = new System.Windows.Forms.TextBox();
             this.createRoutineButton = new System.Windows.Forms.Button();
             this.routinesGrid = new System.Windows.Forms.DataGridView();
-            this.intervalTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.routinesLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.routinesRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.routinesDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.intervalTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.editRoutineButton = new System.Windows.Forms.Button();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
@@ -139,7 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -208,6 +211,7 @@
             // 
             this.recordsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordsGroupBox.Controls.Add(this.editRoutineButton);
             this.recordsGroupBox.Controls.Add(this.customRoutineBtn);
             this.recordsGroupBox.Controls.Add(this.trainingCombo);
             this.recordsGroupBox.Controls.Add(this.editBtn);
@@ -231,7 +235,7 @@
             // 
             // customRoutineBtn
             // 
-            this.customRoutineBtn.Location = new System.Drawing.Point(1218, 45);
+            this.customRoutineBtn.Location = new System.Drawing.Point(1121, 46);
             this.customRoutineBtn.Name = "customRoutineBtn";
             this.customRoutineBtn.Size = new System.Drawing.Size(90, 23);
             this.customRoutineBtn.TabIndex = 25;
@@ -244,10 +248,11 @@
             this.trainingCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.trainingCombo.FormattingEnabled = true;
             this.trainingCombo.ItemHeight = 13;
-            this.trainingCombo.Location = new System.Drawing.Point(1218, 19);
+            this.trainingCombo.Location = new System.Drawing.Point(1121, 20);
             this.trainingCombo.Name = "trainingCombo";
-            this.trainingCombo.Size = new System.Drawing.Size(186, 21);
+            this.trainingCombo.Size = new System.Drawing.Size(285, 21);
             this.trainingCombo.TabIndex = 24;
+            this.trainingCombo.SelectedValueChanged += new System.EventHandler(this.trainingCombo_SelectedValueChanged);
             // 
             // editBtn
             // 
@@ -372,7 +377,7 @@
             // 
             // startTrainingBtn
             // 
-            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 45);
+            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 46);
             this.startTrainingBtn.Name = "startTrainingBtn";
             this.startTrainingBtn.Size = new System.Drawing.Size(90, 23);
             this.startTrainingBtn.TabIndex = 14;
@@ -875,15 +880,17 @@
             // 
             this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.routinesGroupBox.Controls.Add(this.addExerciseButton);
+            this.routinesGroupBox.Controls.Add(this.deleteExerciseButton);
             this.routinesGroupBox.Controls.Add(this.label9);
-            this.routinesGroupBox.Controls.Add(this.textBox1);
+            this.routinesGroupBox.Controls.Add(this.routineDescriptionText);
             this.routinesGroupBox.Controls.Add(this.backButton);
             this.routinesGroupBox.Controls.Add(this.label8);
             this.routinesGroupBox.Controls.Add(this.label7);
             this.routinesGroupBox.Controls.Add(this.label6);
-            this.routinesGroupBox.Controls.Add(this.trackBar2);
+            this.routinesGroupBox.Controls.Add(this.routineDifficultyTrackbar);
             this.routinesGroupBox.Controls.Add(this.label5);
-            this.routinesGroupBox.Controls.Add(this.nameText);
+            this.routinesGroupBox.Controls.Add(this.routineNameText);
             this.routinesGroupBox.Controls.Add(this.createRoutineButton);
             this.routinesGroupBox.Controls.Add(this.routinesGrid);
             this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
@@ -892,6 +899,44 @@
             this.routinesGroupBox.TabIndex = 26;
             this.routinesGroupBox.TabStop = false;
             this.routinesGroupBox.Visible = false;
+            // 
+            // addExerciseButton
+            // 
+            this.addExerciseButton.Location = new System.Drawing.Point(752, 47);
+            this.addExerciseButton.Name = "addExerciseButton";
+            this.addExerciseButton.Size = new System.Drawing.Size(90, 23);
+            this.addExerciseButton.TabIndex = 39;
+            this.addExerciseButton.Text = "Add Row";
+            this.addExerciseButton.UseVisualStyleBackColor = true;
+            this.addExerciseButton.Click += new System.EventHandler(this.addExerciseButton_Click);
+            // 
+            // deleteExerciseButton
+            // 
+            this.deleteExerciseButton.Enabled = false;
+            this.deleteExerciseButton.Location = new System.Drawing.Point(848, 47);
+            this.deleteExerciseButton.Name = "deleteExerciseButton";
+            this.deleteExerciseButton.Size = new System.Drawing.Size(90, 23);
+            this.deleteExerciseButton.TabIndex = 38;
+            this.deleteExerciseButton.Text = "Delete Row";
+            this.deleteExerciseButton.UseVisualStyleBackColor = true;
+            this.deleteExerciseButton.Click += new System.EventHandler(this.deleteExerciseButton_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(237, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Info";
+            // 
+            // routineDescriptionText
+            // 
+            this.routineDescriptionText.Location = new System.Drawing.Point(268, 47);
+            this.routineDescriptionText.Name = "routineDescriptionText";
+            this.routineDescriptionText.Size = new System.Drawing.Size(403, 20);
+            this.routineDescriptionText.TabIndex = 36;
             // 
             // backButton
             // 
@@ -933,14 +978,14 @@
             this.label6.TabIndex = 32;
             this.label6.Text = "Difficulty";
             // 
-            // trackBar2
+            // routineDifficultyTrackbar
             // 
-            this.trackBar2.LargeChange = 1;
-            this.trackBar2.Location = new System.Drawing.Point(13, 18);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(201, 45);
-            this.trackBar2.TabIndex = 31;
-            this.trackBar2.Value = 5;
+            this.routineDifficultyTrackbar.LargeChange = 1;
+            this.routineDifficultyTrackbar.Location = new System.Drawing.Point(13, 18);
+            this.routineDifficultyTrackbar.Name = "routineDifficultyTrackbar";
+            this.routineDifficultyTrackbar.Size = new System.Drawing.Size(201, 45);
+            this.routineDifficultyTrackbar.TabIndex = 31;
+            this.routineDifficultyTrackbar.Value = 5;
             // 
             // label5
             // 
@@ -952,17 +997,17 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Name";
             // 
-            // nameText
+            // routineNameText
             // 
-            this.nameText.Location = new System.Drawing.Point(268, 21);
-            this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(300, 20);
-            this.nameText.TabIndex = 29;
+            this.routineNameText.Location = new System.Drawing.Point(268, 21);
+            this.routineNameText.Name = "routineNameText";
+            this.routineNameText.Size = new System.Drawing.Size(300, 20);
+            this.routineNameText.TabIndex = 29;
             // 
             // createRoutineButton
             // 
             this.createRoutineButton.Enabled = false;
-            this.createRoutineButton.Location = new System.Drawing.Point(581, 19);
+            this.createRoutineButton.Location = new System.Drawing.Point(1218, 47);
             this.createRoutineButton.Name = "createRoutineButton";
             this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
             this.createRoutineButton.TabIndex = 27;
@@ -972,7 +1017,8 @@
             // 
             // routinesGrid
             // 
-            this.routinesGrid.AllowUserToOrderColumns = true;
+            this.routinesGrid.AllowUserToAddRows = false;
+            this.routinesGrid.AllowUserToDeleteRows = false;
             this.routinesGrid.AllowUserToResizeRows = false;
             this.routinesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -988,8 +1034,39 @@
             this.routinesGrid.Name = "routinesGrid";
             this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
             this.routinesGrid.TabIndex = 28;
-            this.routinesGrid.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.routinesGrid_DefaultValuesNeeded);
+            this.routinesGrid.CurrentCellChanged += new System.EventHandler(this.routinesGrid_CurrentCellChanged);
             this.routinesGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.routinesGrid_EditingControlShowing);
+            // 
+            // routinesLeftHandHold
+            // 
+            this.routinesLeftHandHold.HeaderText = "Left Hand Hold";
+            this.routinesLeftHandHold.Name = "routinesLeftHandHold";
+            this.routinesLeftHandHold.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.routinesLeftHandHold.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.routinesLeftHandHold.Width = 200;
+            // 
+            // routinesRightHandHold
+            // 
+            this.routinesRightHandHold.HeaderText = "Right Hand Hold";
+            this.routinesRightHandHold.Name = "routinesRightHandHold";
+            this.routinesRightHandHold.Width = 200;
+            // 
+            // routinesDuration
+            // 
+            this.routinesDuration.HeaderText = "Duration";
+            this.routinesDuration.Name = "routinesDuration";
+            // 
+            // Rest
+            // 
+            this.Rest.HeaderText = "Rest (seconds)";
+            this.Rest.Name = "Rest";
+            this.Rest.Width = 120;
+            // 
+            // routinesDescription
+            // 
+            this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.routinesDescription.HeaderText = "Description";
+            this.routinesDescription.Name = "routinesDescription";
             // 
             // intervalTextBox
             // 
@@ -1024,53 +1101,15 @@
             this.trackBar1.Value = 12;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged_1);
             // 
-            // routinesLeftHandHold
+            // editRoutineButton
             // 
-            this.routinesLeftHandHold.HeaderText = "Left Hand Hold";
-            this.routinesLeftHandHold.Name = "routinesLeftHandHold";
-            this.routinesLeftHandHold.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.routinesLeftHandHold.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.routinesLeftHandHold.Width = 200;
-            // 
-            // routinesRightHandHold
-            // 
-            this.routinesRightHandHold.HeaderText = "Right Hand Hold";
-            this.routinesRightHandHold.Name = "routinesRightHandHold";
-            this.routinesRightHandHold.Width = 200;
-            // 
-            // routinesDuration
-            // 
-            this.routinesDuration.HeaderText = "Duration";
-            this.routinesDuration.Name = "routinesDuration";
-            // 
-            // Rest
-            // 
-            this.Rest.HeaderText = "Rest (seconds)";
-            this.Rest.Name = "Rest";
-            this.Rest.Width = 120;
-            // 
-            // routinesDescription
-            // 
-            this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.routinesDescription.HeaderText = "Description";
-            this.routinesDescription.Name = "routinesDescription";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(268, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(403, 20);
-            this.textBox1.TabIndex = 36;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(237, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 13);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Info";
+            this.editRoutineButton.Location = new System.Drawing.Point(1218, 46);
+            this.editRoutineButton.Name = "editRoutineButton";
+            this.editRoutineButton.Size = new System.Drawing.Size(90, 23);
+            this.editRoutineButton.TabIndex = 26;
+            this.editRoutineButton.Text = "Edit Routine";
+            this.editRoutineButton.UseVisualStyleBackColor = true;
+            this.editRoutineButton.Click += new System.EventHandler(this.editRoutineButton_Click);
             // 
             // Form1
             // 
@@ -1157,7 +1196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
             this.routinesGroupBox.ResumeLayout(false);
             this.routinesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
@@ -1221,12 +1260,12 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button createRoutineButton;
         private System.Windows.Forms.DataGridView routinesGrid;
-        private System.Windows.Forms.TextBox nameText;
+        private System.Windows.Forms.TextBox routineNameText;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar routineDifficultyTrackbar;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridCategory;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridLeftHandHold;
@@ -1241,7 +1280,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Rest;
         private System.Windows.Forms.DataGridViewTextBoxColumn routinesDescription;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox routineDescriptionText;
+        private System.Windows.Forms.Button addExerciseButton;
+        private System.Windows.Forms.Button deleteExerciseButton;
+        private System.Windows.Forms.Button editRoutineButton;
     }
 }
 

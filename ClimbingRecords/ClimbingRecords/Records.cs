@@ -124,7 +124,7 @@ namespace ClimbingRecords
                 record.Add( new XElement( "LeftHandHold", x.leftHandHold ) );
                 record.Add( new XElement( "RightHandHold", x.rightHandHold ) );
                 record.Add( new XElement( "Person", x.name ) );
-                record.Add( new XElement( "Record", x.record.ToString() ) );
+                record.Add( new XElement( "Record", x.record ) );
                 record.Add( new XElement( "Units", x.units ) );
                 record.Add( new XElement( "Description", x.description ) );
                 root.Add( record );

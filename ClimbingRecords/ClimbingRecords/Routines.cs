@@ -13,16 +13,16 @@ namespace ClimbingRecords
         {
             public string leftHandHold = "None";
             public string rightHandHold = "None";
-            public string duration;
-            public string rest;
-            public string description;
+            public string duration = "0";
+            public string rest = "60";
+            public string description = "";
         }
 
         public class GridRoutine
         {
             public List<GridExercise> exercises;
             public string name;
-            public int difficulty;
+            public int difficulty = 5;
             public string description;
         }
 
@@ -43,20 +43,40 @@ namespace ClimbingRecords
             foreach( var routine in file.Elements() )
             {
                 var newRoutine = new GridRoutine();
+                newRoutine.exercises = new List<GridExercise>();
 
-               // foreach( var y in routine.Elements() )
-               // {
-               //     switch( y.Name.ToString() )
-               //     {
-               //         case "Category": newRecord.category = y.Value; break;
-               //         case "LeftHandHold": newRecord.leftHandHold = y.Value; break;
-               //         case "RightHandHold": newRecord.rightHandHold = y.Value; break;
-               //         case "Person": newRecord.name = y.Value; break;
-               //         case "Record": newRecord.record = y.Value; break;
-               //         case "Units": newRecord.units = y.Value; break;
-               //         case "Description": newRecord.description = y.Value; break;
-               //     }
-               // }
+                foreach( var x in routine.Elements() )
+                {
+                    switch( x.Name.ToString() )
+                    {
+                        case "Name": newRoutine.name = x.Value; break;
+                        case "Difficulty": newRoutine.difficulty = Convert.ToInt32( x.Value ); break;
+                        case "Description": newRoutine.description = x.Value; break;
+                        case "Exercises":
+                            {
+                                foreach( var y in x.Elements() )
+                                {
+                                    var newExercise = new GridExercise();
+
+                                    foreach( var z in y.Elements() )
+                                    {
+                                        switch( z.Name.ToString() )
+                                        {
+                                            case "LeftHandHold": newExercise.leftHandHold = z.Value; break;
+                                            case "RightHandHold": newExercise.rightHandHold = z.Value; break;
+                                            case "Duration": newExercise.duration = z.Value; break;
+                                            case "Rest": newExercise.rest = z.Value; break;
+                                            case "Description": newExercise.description = z.Value; break;
+                                        }
+                                    }
+
+                                    newRoutine.exercises.Add( newExercise );
+                                }
+
+                                break;
+                            }
+                    }
+                }
 
                 routines.Add( newRoutine );
             }
@@ -64,21 +84,31 @@ namespace ClimbingRecords
             return routines;
         }
 
-        public static void SaveRoutines( List<GridRoutine> records )
+        public static void SaveRoutines( List<GridRoutine> routines )
         {
-            var root = new XElement( "Records" );
+            var root = new XElement( "Routines" );
 
-            foreach( var x in records )
+            foreach( var x in routines )
             {
-                var record = new XElement( "Record" );
-                record.Add( new XElement( "Category", x.category ) );
-                record.Add( new XElement( "LeftHandHold", x.leftHandHold ) );
-                record.Add( new XElement( "RightHandHold", x.rightHandHold ) );
-                record.Add( new XElement( "Person", x.name ) );
-                record.Add( new XElement( "Record", x.record.ToString() ) );
-                record.Add( new XElement( "Units", x.units ) );
-                record.Add( new XElement( "Description", x.description ) );
-                root.Add( record );
+                var routine = new XElement( "Routine" );
+                routine.Add( new XElement( "Name", x.name ) );
+                routine.Add( new XElement( "Difficulty", x.difficulty.ToString() ) );
+                routine.Add( new XElement( "Description", x.description ) );
+                var exercises = new XElement( "Exercises" );
+
+                foreach( var y in x.exercises )
+                {
+                    var exercise = new XElement( "Exercise" );
+                    exercise.Add( new XElement( "LeftHandHold", y.leftHandHold ) );
+                    exercise.Add( new XElement( "RightHandHold", y.rightHandHold ) );
+                    exercise.Add( new XElement( "Duration", y.duration ) );
+                    exercise.Add( new XElement( "Rest", y.rest ) );
+                    exercise.Add( new XElement( "Description", y.description ) );
+                    exercises.Add( exercise );
+                }
+
+                routine.Add( exercises );
+                root.Add( routine );
             }
 
             XDocument doc = new XDocument( root );

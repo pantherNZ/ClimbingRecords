@@ -31,6 +31,7 @@ namespace ClimbingRecords
         int editRowIndex = -1;
         List<Records.GridRecord> recordsData;
         List<Records.GridRecord> filteredData;
+        List<Routines.GridRoutine> routinesData;
         string searchTerm;
 
         public Form1()
@@ -67,7 +68,7 @@ namespace ClimbingRecords
                 highlightRatios.Add( highlight, ratio );
             }
 
-            nameText.TextChanged += this.ValidateCreateButton;
+            routineNameText.TextChanged += this.ValidateCreateButton;
             routinesGrid.RowsRemoved += this.ValidateCreateButton;
             routinesGrid.RowsAdded += this.ValidateCreateButton;
         }
@@ -114,6 +115,15 @@ namespace ClimbingRecords
             recordsData = Records.LoadRecords();
             filteredData = recordsData;
             RefreshRecordsTable();
+
+            routinesData = Routines.LoadRoutines();
+
+            var routines = new List<String>();
+
+            foreach( var routine in routinesData )
+                routines.Add( routine.name );
+
+            trainingCombo.DataSource = routines;
         }
 
         private void AddToRecordsTable( Records.GridRecord record )
@@ -131,6 +141,19 @@ namespace ClimbingRecords
             recordsGrid.ClearSelection();
         }
 
+        private void AddToExercisesTable( Routines.GridExercise exercise )
+        {
+            routinesGrid.Rows.Add();
+            var cells = routinesGrid.Rows[routinesGrid.Rows.Count - 1].Cells;
+            cells[0].Value = exercise.leftHandHold;
+            cells[1].Value = exercise.rightHandHold;
+            cells[2].Value = exercise.duration;
+            cells[3].Value = exercise.rest;
+            cells[4].Value = exercise.description;
+            routinesGrid.ClearSelection();
+            createRoutineButton.Enabled = routinesGrid.RowCount > 0 && routineNameText.Text.Length > 0;
+        }
+
         private void RefreshRecordsTable()
         {
             ClearRecordsTable();
@@ -145,6 +168,12 @@ namespace ClimbingRecords
 
             while( recordsGrid.Rows.Count > 0 )
                 recordsGrid.Rows.RemoveAt( 0 );
+        }
+
+        private void ClearExercisesTable()
+        {
+            while( routinesGrid.Rows.Count > 0 )
+                routinesGrid.Rows.RemoveAt( 0 );
         }
 
         private Bitmap RotateImage( Bitmap image, float angle )
@@ -328,14 +357,8 @@ namespace ClimbingRecords
 
             Records.SaveRecords( recordsData );
 
-            addingRow = false;
-            saveBtn.Enabled = false;
-            cancelBtn.Enabled = false;
-            editBtn.Enabled = false;
-
-            SetGridEditMode( false );
             filteredData = new List<Records.GridRecord>( recordsData );
-            RefreshRecordsTable();
+            CancelEditingMode();
         }
 
         private Records.GridRecord GetRecordFromGrid( DataGridViewCellCollection cells )
@@ -377,10 +400,16 @@ namespace ClimbingRecords
 
         private void cancelBtn_Click( object sender, EventArgs e )
         {
+            CancelEditingMode();
+        }
+
+        private void CancelEditingMode()
+        {
             cancelBtn.Enabled = false;
             saveBtn.Enabled = false;
             editBtn.Enabled = false;
             addingRow = false;
+            editRowIndex = -1;
             RefreshRecordsTable();
             SetGridEditMode( false );
         }
@@ -543,6 +572,7 @@ namespace ClimbingRecords
         {
             mainTitle.Text = trainingCombo.Text + " Training";
             ToggleGroups();
+            CancelEditingMode();
         }
 
         private void trackBar1_ValueChanged_1( object sender, EventArgs e )
@@ -555,12 +585,19 @@ namespace ClimbingRecords
         {
             mainTitle.Text = "Custom Routine";
             ToggleGroups();
+            CancelEditingMode();
+
+            var emptyRoutine = new Routines.GridRoutine();
+            emptyRoutine.exercises = new List<Routines.GridExercise>();
+            emptyRoutine.exercises.Add( new Routines.GridExercise() );
+            LoadRoutine( emptyRoutine );
         }
 
         private void backButton_Click( object sender, EventArgs e )
         {
             mainTitle.Text = "Hangboard Records";
             ToggleGroups();
+            editRowIndex = -1;
         }
 
         private void ToggleGroups()
@@ -571,20 +608,82 @@ namespace ClimbingRecords
 
         private void ValidateCreateButton( object sender, EventArgs e )
         {
-            createRoutineButton.Enabled = routinesGrid.RowCount > 0 && nameText.Text.Length > 0;
-        }
-
-        private void routinesGrid_DefaultValuesNeeded( object sender, DataGridViewRowEventArgs e )
-        {
-            e.Row.Cells["routinesLeftHandHold"].Value = "None";
-            e.Row.Cells["routinesRightHandHold"].Value = "None";
-            e.Row.Cells["routinesDuration"].Value = "0";
-            e.Row.Cells["Rest"].Value = "60";
+            createRoutineButton.Enabled = routinesGrid.RowCount > 0 && routineNameText.Text.Length > 0;
         }
 
         private void createRoutineButton_Click( object sender, EventArgs e )
         {
+            var routines = Routines.LoadRoutines();
 
+            // Read from grid
+            var newRoutine = new Routines.GridRoutine();
+            newRoutine.description = routineDescriptionText.Text;
+            newRoutine.name = routineNameText.Text;
+            newRoutine.difficulty = routineDifficultyTrackbar.Value;
+            newRoutine.exercises = new List<Routines.GridExercise>();
+
+            foreach( var row in routinesGrid.Rows )
+            {
+                var cells = ( row as DataGridViewRow ).Cells;
+
+                if( cells[0].Value == null )
+                    continue;
+
+                var newExercise = new Routines.GridExercise();
+                newExercise.leftHandHold = cells[0].Value.ToString();
+                newExercise.rightHandHold = cells[1].Value.ToString();
+                newExercise.duration = cells[2].Value.ToString();
+                newExercise.rest = cells[3].Value.ToString();
+                newExercise.description = cells[4].Value == null ? "" : cells[4].Value.ToString();
+                newRoutine.exercises.Add( newExercise );
+            }
+
+            routines.Add( newRoutine );
+
+            Routines.SaveRoutines( routines );
+        }
+
+        private void addExerciseButton_Click( object sender, EventArgs e )
+        {
+            AddToExercisesTable( new Routines.GridExercise() );
+        }
+
+        private void routinesGrid_CurrentCellChanged( object sender, EventArgs e )
+        {
+            deleteExerciseButton.Enabled = routinesGrid.CurrentRow != null && routinesGrid.Rows.Count > 1;
+        }
+
+        private void deleteExerciseButton_Click( object sender, EventArgs e )
+        {
+            routinesGrid.Rows.Remove( routinesGrid.CurrentRow );
+        }
+
+        private void editRoutineButton_Click( object sender, EventArgs e )
+        {
+            mainTitle.Text = "Edit Routine";
+            ToggleGroups();
+            CancelEditingMode();
+            editRowIndex = trainingCombo.SelectedIndex;
+
+            // Load routine into table
+            var routine = routinesData[editRowIndex];
+            LoadRoutine( routine );
+        }
+
+        private void LoadRoutine( Routines.GridRoutine routine )
+        {
+            routineDescriptionText.Text = routine.description;
+            routineNameText.Text = routine.name;
+            routineDifficultyTrackbar.Value = routine.difficulty;
+            ClearExercisesTable();
+
+            foreach( var exercise in routine.exercises )
+                AddToExercisesTable( exercise );
+        }
+
+        private void trainingCombo_SelectedValueChanged( object sender, EventArgs e )
+        {
+            editRoutineButton.Enabled = trainingCombo.SelectedValue != null;
         }
 
         private Size GetHangboardTrueSize()
