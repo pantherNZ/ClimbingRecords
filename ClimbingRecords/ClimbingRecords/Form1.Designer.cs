@@ -35,6 +35,7 @@
             this.searchTerm_Entry = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.recordsGroupBox = new System.Windows.Forms.GroupBox();
+            this.editRoutineButton = new System.Windows.Forms.Button();
             this.customRoutineBtn = new System.Windows.Forms.Button();
             this.trainingCombo = new System.Windows.Forms.ComboBox();
             this.editBtn = new System.Windows.Forms.Button();
@@ -51,6 +52,28 @@
             this.startTrainingBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.showHoldNumbersCheckBox = new System.Windows.Forms.CheckBox();
+            this.mainTitle = new System.Windows.Forms.Label();
+            this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.routineNameErrorLabel = new System.Windows.Forms.Label();
+            this.saveRoutineButton = new System.Windows.Forms.Button();
+            this.addExerciseButton = new System.Windows.Forms.Button();
+            this.deleteExerciseButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.routineDescriptionText = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.routineDifficultyTrackbar = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.routineNameText = new System.Windows.Forms.TextBox();
+            this.createRoutineButton = new System.Windows.Forms.Button();
+            this.routinesGrid = new System.Windows.Forms.DataGridView();
+            this.routinesLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.routinesRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.routinesDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hangboardImage14 = new System.Windows.Forms.PictureBox();
             this.hangboardImage8 = new System.Windows.Forms.PictureBox();
             this.hangboardImage26 = new System.Windows.Forms.PictureBox();
@@ -83,32 +106,11 @@
             this.hangboardImage17 = new System.Windows.Forms.PictureBox();
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
-            this.mainTitle = new System.Windows.Forms.Label();
-            this.routinesGroupBox = new System.Windows.Forms.GroupBox();
-            this.addExerciseButton = new System.Windows.Forms.Button();
-            this.deleteExerciseButton = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.routineDescriptionText = new System.Windows.Forms.TextBox();
-            this.backButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.routineDifficultyTrackbar = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.routineNameText = new System.Windows.Forms.TextBox();
-            this.createRoutineButton = new System.Windows.Forms.Button();
-            this.routinesGrid = new System.Windows.Forms.DataGridView();
-            this.routinesLeftHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.routinesRightHandHold = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.routinesDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rest = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intervalTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.editRoutineButton = new System.Windows.Forms.Button();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
+            this.routinesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).BeginInit();
@@ -141,10 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
-            this.routinesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // leftHand_Combo
@@ -233,6 +231,17 @@
             this.recordsGroupBox.TabStop = false;
             this.recordsGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
+            // editRoutineButton
+            // 
+            this.editRoutineButton.Enabled = false;
+            this.editRoutineButton.Location = new System.Drawing.Point(1218, 46);
+            this.editRoutineButton.Name = "editRoutineButton";
+            this.editRoutineButton.Size = new System.Drawing.Size(90, 23);
+            this.editRoutineButton.TabIndex = 26;
+            this.editRoutineButton.Text = "Edit Routine";
+            this.editRoutineButton.UseVisualStyleBackColor = true;
+            this.editRoutineButton.Click += new System.EventHandler(this.editRoutineButton_Click);
+            // 
             // customRoutineBtn
             // 
             this.customRoutineBtn.Location = new System.Drawing.Point(1121, 46);
@@ -283,9 +292,6 @@
             this.recordsGrid.AllowUserToAddRows = false;
             this.recordsGrid.AllowUserToDeleteRows = false;
             this.recordsGrid.AllowUserToResizeRows = false;
-            this.recordsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -409,6 +415,238 @@
             this.showHoldNumbersCheckBox.UseVisualStyleBackColor = true;
             this.showHoldNumbersCheckBox.CheckedChanged += new System.EventHandler(this.showHoldNumbersCheckBox_CheckedChanged);
             // 
+            // mainTitle
+            // 
+            this.mainTitle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.mainTitle.AutoSize = true;
+            this.mainTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainTitle.ForeColor = System.Drawing.Color.White;
+            this.mainTitle.Location = new System.Drawing.Point(535, 391);
+            this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
+            this.mainTitle.Name = "mainTitle";
+            this.mainTitle.Size = new System.Drawing.Size(400, 39);
+            this.mainTitle.TabIndex = 39;
+            this.mainTitle.Text = "Hangboard Records";
+            this.mainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // routinesGroupBox
+            // 
+            this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.routinesGroupBox.Controls.Add(this.routineNameErrorLabel);
+            this.routinesGroupBox.Controls.Add(this.saveRoutineButton);
+            this.routinesGroupBox.Controls.Add(this.addExerciseButton);
+            this.routinesGroupBox.Controls.Add(this.deleteExerciseButton);
+            this.routinesGroupBox.Controls.Add(this.label9);
+            this.routinesGroupBox.Controls.Add(this.routineDescriptionText);
+            this.routinesGroupBox.Controls.Add(this.backButton);
+            this.routinesGroupBox.Controls.Add(this.label8);
+            this.routinesGroupBox.Controls.Add(this.label7);
+            this.routinesGroupBox.Controls.Add(this.label6);
+            this.routinesGroupBox.Controls.Add(this.routineDifficultyTrackbar);
+            this.routinesGroupBox.Controls.Add(this.label5);
+            this.routinesGroupBox.Controls.Add(this.routineNameText);
+            this.routinesGroupBox.Controls.Add(this.createRoutineButton);
+            this.routinesGroupBox.Controls.Add(this.routinesGrid);
+            this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
+            this.routinesGroupBox.Name = "routinesGroupBox";
+            this.routinesGroupBox.Size = new System.Drawing.Size(1420, 381);
+            this.routinesGroupBox.TabIndex = 26;
+            this.routinesGroupBox.TabStop = false;
+            this.routinesGroupBox.Visible = false;
+            // 
+            // routineNameErrorLabel
+            // 
+            this.routineNameErrorLabel.AutoSize = true;
+            this.routineNameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.routineNameErrorLabel.Location = new System.Drawing.Point(575, 24);
+            this.routineNameErrorLabel.Name = "routineNameErrorLabel";
+            this.routineNameErrorLabel.Size = new System.Drawing.Size(110, 13);
+            this.routineNameErrorLabel.TabIndex = 41;
+            this.routineNameErrorLabel.Text = "Name must be unique";
+            this.routineNameErrorLabel.Visible = false;
+            // 
+            // saveRoutineButton
+            // 
+            this.saveRoutineButton.Enabled = false;
+            this.saveRoutineButton.Location = new System.Drawing.Point(1121, 47);
+            this.saveRoutineButton.Name = "saveRoutineButton";
+            this.saveRoutineButton.Size = new System.Drawing.Size(90, 23);
+            this.saveRoutineButton.TabIndex = 40;
+            this.saveRoutineButton.Text = "Save";
+            this.saveRoutineButton.UseVisualStyleBackColor = true;
+            this.saveRoutineButton.Click += new System.EventHandler(this.saveRoutineButton_Click);
+            // 
+            // addExerciseButton
+            // 
+            this.addExerciseButton.Location = new System.Drawing.Point(752, 47);
+            this.addExerciseButton.Name = "addExerciseButton";
+            this.addExerciseButton.Size = new System.Drawing.Size(90, 23);
+            this.addExerciseButton.TabIndex = 39;
+            this.addExerciseButton.Text = "Add Row";
+            this.addExerciseButton.UseVisualStyleBackColor = true;
+            this.addExerciseButton.Click += new System.EventHandler(this.addExerciseButton_Click);
+            // 
+            // deleteExerciseButton
+            // 
+            this.deleteExerciseButton.Enabled = false;
+            this.deleteExerciseButton.Location = new System.Drawing.Point(848, 47);
+            this.deleteExerciseButton.Name = "deleteExerciseButton";
+            this.deleteExerciseButton.Size = new System.Drawing.Size(90, 23);
+            this.deleteExerciseButton.TabIndex = 38;
+            this.deleteExerciseButton.Text = "Delete Row";
+            this.deleteExerciseButton.UseVisualStyleBackColor = true;
+            this.deleteExerciseButton.Click += new System.EventHandler(this.deleteExerciseButton_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(237, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Info";
+            // 
+            // routineDescriptionText
+            // 
+            this.routineDescriptionText.Location = new System.Drawing.Point(268, 47);
+            this.routineDescriptionText.Name = "routineDescriptionText";
+            this.routineDescriptionText.Size = new System.Drawing.Size(403, 20);
+            this.routineDescriptionText.TabIndex = 36;
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(1314, 47);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(90, 23);
+            this.backButton.TabIndex = 35;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(190, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "10";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(20, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(13, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(93, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Difficulty";
+            // 
+            // routineDifficultyTrackbar
+            // 
+            this.routineDifficultyTrackbar.LargeChange = 1;
+            this.routineDifficultyTrackbar.Location = new System.Drawing.Point(13, 18);
+            this.routineDifficultyTrackbar.Name = "routineDifficultyTrackbar";
+            this.routineDifficultyTrackbar.Size = new System.Drawing.Size(201, 45);
+            this.routineDifficultyTrackbar.TabIndex = 31;
+            this.routineDifficultyTrackbar.Value = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(231, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Name";
+            // 
+            // routineNameText
+            // 
+            this.routineNameText.Location = new System.Drawing.Point(268, 21);
+            this.routineNameText.Name = "routineNameText";
+            this.routineNameText.Size = new System.Drawing.Size(300, 20);
+            this.routineNameText.TabIndex = 29;
+            // 
+            // createRoutineButton
+            // 
+            this.createRoutineButton.Enabled = false;
+            this.createRoutineButton.Location = new System.Drawing.Point(1218, 47);
+            this.createRoutineButton.Name = "createRoutineButton";
+            this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
+            this.createRoutineButton.TabIndex = 27;
+            this.createRoutineButton.Text = "Create";
+            this.createRoutineButton.UseVisualStyleBackColor = true;
+            this.createRoutineButton.Click += new System.EventHandler(this.createRoutineButton_Click);
+            // 
+            // routinesGrid
+            // 
+            this.routinesGrid.AllowUserToAddRows = false;
+            this.routinesGrid.AllowUserToDeleteRows = false;
+            this.routinesGrid.AllowUserToResizeRows = false;
+            this.routinesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.routinesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.routinesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.routinesLeftHandHold,
+            this.routinesRightHandHold,
+            this.routinesDuration,
+            this.Rest,
+            this.routinesDescription});
+            this.routinesGrid.Location = new System.Drawing.Point(10, 69);
+            this.routinesGrid.Name = "routinesGrid";
+            this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
+            this.routinesGrid.TabIndex = 28;
+            this.routinesGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.routinesGrid_CellValueChanged);
+            this.routinesGrid.CurrentCellChanged += new System.EventHandler(this.routinesGrid_CurrentCellChanged);
+            this.routinesGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.routinesGrid_CurrentCellDirtyStateChanged);
+            this.routinesGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.routinesGrid_EditingControlShowing);
+            // 
+            // routinesLeftHandHold
+            // 
+            this.routinesLeftHandHold.HeaderText = "Left Hand Hold";
+            this.routinesLeftHandHold.Name = "routinesLeftHandHold";
+            this.routinesLeftHandHold.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.routinesLeftHandHold.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.routinesLeftHandHold.Width = 200;
+            // 
+            // routinesRightHandHold
+            // 
+            this.routinesRightHandHold.HeaderText = "Right Hand Hold";
+            this.routinesRightHandHold.Name = "routinesRightHandHold";
+            this.routinesRightHandHold.Width = 200;
+            // 
+            // routinesDuration
+            // 
+            this.routinesDuration.HeaderText = "Duration";
+            this.routinesDuration.Name = "routinesDuration";
+            // 
+            // Rest
+            // 
+            this.Rest.HeaderText = "Rest (seconds)";
+            this.Rest.Name = "Rest";
+            this.Rest.Width = 120;
+            // 
+            // routinesDescription
+            // 
+            this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.routinesDescription.HeaderText = "Description";
+            this.routinesDescription.Name = "routinesDescription";
+            // 
             // hangboardImage14
             // 
             this.hangboardImage14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -513,10 +751,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage5.BackColor = System.Drawing.Color.White;
-            this.hangboardImage5.Location = new System.Drawing.Point(233, 227);
+            this.hangboardImage5.Location = new System.Drawing.Point(231, 226);
             this.hangboardImage5.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage5.Name = "hangboardImage5";
-            this.hangboardImage5.Size = new System.Drawing.Size(135, 59);
+            this.hangboardImage5.Size = new System.Drawing.Size(140, 59);
             this.hangboardImage5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage5.TabIndex = 30;
             this.hangboardImage5.TabStop = false;
@@ -724,7 +962,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage11.BackColor = System.Drawing.Color.White;
-            this.hangboardImage11.Location = new System.Drawing.Point(358, 335);
+            this.hangboardImage11.Location = new System.Drawing.Point(354, 335);
             this.hangboardImage11.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage11.Name = "hangboardImage11";
             this.hangboardImage11.Size = new System.Drawing.Size(146, 51);
@@ -846,13 +1084,12 @@
             // 
             // hangboardImage
             // 
-            this.hangboardImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage.BackColor = System.Drawing.Color.Black;
             this.hangboardImage.Image = global::ClimbingRecords.Properties.Resources.Board;
             this.hangboardImage.Location = new System.Drawing.Point(0, 0);
             this.hangboardImage.Margin = new System.Windows.Forms.Padding(0);
+            this.hangboardImage.MaximumSize = new System.Drawing.Size(2190, 645);
+            this.hangboardImage.MinimumSize = new System.Drawing.Size(730, 215);
             this.hangboardImage.Name = "hangboardImage";
             this.hangboardImage.Size = new System.Drawing.Size(1460, 430);
             this.hangboardImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -860,256 +1097,6 @@
             this.hangboardImage.TabStop = false;
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
             this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
-            // 
-            // mainTitle
-            // 
-            this.mainTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainTitle.AutoSize = true;
-            this.mainTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainTitle.ForeColor = System.Drawing.Color.White;
-            this.mainTitle.Location = new System.Drawing.Point(530, 391);
-            this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
-            this.mainTitle.Name = "mainTitle";
-            this.mainTitle.Size = new System.Drawing.Size(400, 39);
-            this.mainTitle.TabIndex = 39;
-            this.mainTitle.Text = "Hangboard Records";
-            this.mainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // routinesGroupBox
-            // 
-            this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.routinesGroupBox.Controls.Add(this.addExerciseButton);
-            this.routinesGroupBox.Controls.Add(this.deleteExerciseButton);
-            this.routinesGroupBox.Controls.Add(this.label9);
-            this.routinesGroupBox.Controls.Add(this.routineDescriptionText);
-            this.routinesGroupBox.Controls.Add(this.backButton);
-            this.routinesGroupBox.Controls.Add(this.label8);
-            this.routinesGroupBox.Controls.Add(this.label7);
-            this.routinesGroupBox.Controls.Add(this.label6);
-            this.routinesGroupBox.Controls.Add(this.routineDifficultyTrackbar);
-            this.routinesGroupBox.Controls.Add(this.label5);
-            this.routinesGroupBox.Controls.Add(this.routineNameText);
-            this.routinesGroupBox.Controls.Add(this.createRoutineButton);
-            this.routinesGroupBox.Controls.Add(this.routinesGrid);
-            this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
-            this.routinesGroupBox.Name = "routinesGroupBox";
-            this.routinesGroupBox.Size = new System.Drawing.Size(1420, 381);
-            this.routinesGroupBox.TabIndex = 26;
-            this.routinesGroupBox.TabStop = false;
-            this.routinesGroupBox.Visible = false;
-            // 
-            // addExerciseButton
-            // 
-            this.addExerciseButton.Location = new System.Drawing.Point(752, 47);
-            this.addExerciseButton.Name = "addExerciseButton";
-            this.addExerciseButton.Size = new System.Drawing.Size(90, 23);
-            this.addExerciseButton.TabIndex = 39;
-            this.addExerciseButton.Text = "Add Row";
-            this.addExerciseButton.UseVisualStyleBackColor = true;
-            this.addExerciseButton.Click += new System.EventHandler(this.addExerciseButton_Click);
-            // 
-            // deleteExerciseButton
-            // 
-            this.deleteExerciseButton.Enabled = false;
-            this.deleteExerciseButton.Location = new System.Drawing.Point(848, 47);
-            this.deleteExerciseButton.Name = "deleteExerciseButton";
-            this.deleteExerciseButton.Size = new System.Drawing.Size(90, 23);
-            this.deleteExerciseButton.TabIndex = 38;
-            this.deleteExerciseButton.Text = "Delete Row";
-            this.deleteExerciseButton.UseVisualStyleBackColor = true;
-            this.deleteExerciseButton.Click += new System.EventHandler(this.deleteExerciseButton_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(237, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 13);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Info";
-            // 
-            // routineDescriptionText
-            // 
-            this.routineDescriptionText.Location = new System.Drawing.Point(268, 47);
-            this.routineDescriptionText.Name = "routineDescriptionText";
-            this.routineDescriptionText.Size = new System.Drawing.Size(403, 20);
-            this.routineDescriptionText.TabIndex = 36;
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(1314, 47);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(90, 23);
-            this.backButton.TabIndex = 35;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(190, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 13);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "10";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(20, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(93, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Difficulty";
-            // 
-            // routineDifficultyTrackbar
-            // 
-            this.routineDifficultyTrackbar.LargeChange = 1;
-            this.routineDifficultyTrackbar.Location = new System.Drawing.Point(13, 18);
-            this.routineDifficultyTrackbar.Name = "routineDifficultyTrackbar";
-            this.routineDifficultyTrackbar.Size = new System.Drawing.Size(201, 45);
-            this.routineDifficultyTrackbar.TabIndex = 31;
-            this.routineDifficultyTrackbar.Value = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(231, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Name";
-            // 
-            // routineNameText
-            // 
-            this.routineNameText.Location = new System.Drawing.Point(268, 21);
-            this.routineNameText.Name = "routineNameText";
-            this.routineNameText.Size = new System.Drawing.Size(300, 20);
-            this.routineNameText.TabIndex = 29;
-            // 
-            // createRoutineButton
-            // 
-            this.createRoutineButton.Enabled = false;
-            this.createRoutineButton.Location = new System.Drawing.Point(1218, 47);
-            this.createRoutineButton.Name = "createRoutineButton";
-            this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
-            this.createRoutineButton.TabIndex = 27;
-            this.createRoutineButton.Text = "Create";
-            this.createRoutineButton.UseVisualStyleBackColor = true;
-            this.createRoutineButton.Click += new System.EventHandler(this.createRoutineButton_Click);
-            // 
-            // routinesGrid
-            // 
-            this.routinesGrid.AllowUserToAddRows = false;
-            this.routinesGrid.AllowUserToDeleteRows = false;
-            this.routinesGrid.AllowUserToResizeRows = false;
-            this.routinesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.routinesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.routinesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.routinesLeftHandHold,
-            this.routinesRightHandHold,
-            this.routinesDuration,
-            this.Rest,
-            this.routinesDescription});
-            this.routinesGrid.Location = new System.Drawing.Point(12, 81);
-            this.routinesGrid.Name = "routinesGrid";
-            this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
-            this.routinesGrid.TabIndex = 28;
-            this.routinesGrid.CurrentCellChanged += new System.EventHandler(this.routinesGrid_CurrentCellChanged);
-            this.routinesGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.routinesGrid_EditingControlShowing);
-            // 
-            // routinesLeftHandHold
-            // 
-            this.routinesLeftHandHold.HeaderText = "Left Hand Hold";
-            this.routinesLeftHandHold.Name = "routinesLeftHandHold";
-            this.routinesLeftHandHold.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.routinesLeftHandHold.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.routinesLeftHandHold.Width = 200;
-            // 
-            // routinesRightHandHold
-            // 
-            this.routinesRightHandHold.HeaderText = "Right Hand Hold";
-            this.routinesRightHandHold.Name = "routinesRightHandHold";
-            this.routinesRightHandHold.Width = 200;
-            // 
-            // routinesDuration
-            // 
-            this.routinesDuration.HeaderText = "Duration";
-            this.routinesDuration.Name = "routinesDuration";
-            // 
-            // Rest
-            // 
-            this.Rest.HeaderText = "Rest (seconds)";
-            this.Rest.Name = "Rest";
-            this.Rest.Width = 120;
-            // 
-            // routinesDescription
-            // 
-            this.routinesDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.routinesDescription.HeaderText = "Description";
-            this.routinesDescription.Name = "routinesDescription";
-            // 
-            // intervalTextBox
-            // 
-            this.intervalTextBox.Location = new System.Drawing.Point(1353, 40);
-            this.intervalTextBox.Name = "intervalTextBox";
-            this.intervalTextBox.ReadOnly = true;
-            this.intervalTextBox.Size = new System.Drawing.Size(70, 20);
-            this.intervalTextBox.TabIndex = 26;
-            this.intervalTextBox.Text = "60 seconds";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(1237, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Exercise Rest Interval";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(1230, 13);
-            this.trackBar1.Maximum = 24;
-            this.trackBar1.Minimum = 2;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(201, 45);
-            this.trackBar1.TabIndex = 24;
-            this.trackBar1.TickFrequency = 5;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 12;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged_1);
-            // 
-            // editRoutineButton
-            // 
-            this.editRoutineButton.Location = new System.Drawing.Point(1218, 46);
-            this.editRoutineButton.Name = "editRoutineButton";
-            this.editRoutineButton.Size = new System.Drawing.Size(90, 23);
-            this.editRoutineButton.TabIndex = 26;
-            this.editRoutineButton.Text = "Edit Routine";
-            this.editRoutineButton.UseVisualStyleBackColor = true;
-            this.editRoutineButton.Click += new System.EventHandler(this.editRoutineButton_Click);
             // 
             // Form1
             // 
@@ -1125,11 +1112,8 @@
             this.Controls.Add(this.hangboardImage9);
             this.Controls.Add(this.hangboardImage27);
             this.Controls.Add(this.hangboardImage28);
-            this.Controls.Add(this.intervalTextBox);
             this.Controls.Add(this.hangboardImage10);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.hangboardImage5);
-            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.hangboardImage23);
             this.Controls.Add(this.hangboardImage24);
             this.Controls.Add(this.hangboardImage25);
@@ -1154,14 +1138,18 @@
             this.Controls.Add(this.hangboardImage17);
             this.Controls.Add(this.hangboardImage18);
             this.Controls.Add(this.hangboardImage);
-            this.Controls.Add(this.routinesGroupBox);
             this.Controls.Add(this.recordsGroupBox);
+            this.Controls.Add(this.routinesGroupBox);
             this.Name = "Form1";
             this.Text = "Hangboard Records";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.recordsGroupBox.ResumeLayout(false);
             this.recordsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
+            this.routinesGroupBox.ResumeLayout(false);
+            this.routinesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage26)).EndInit();
@@ -1194,11 +1182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
-            this.routinesGroupBox.ResumeLayout(false);
-            this.routinesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routinesGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1255,9 +1238,6 @@
         private System.Windows.Forms.ComboBox trainingCombo;
         private System.Windows.Forms.Button customRoutineBtn;
         private System.Windows.Forms.GroupBox routinesGroupBox;
-        private System.Windows.Forms.TextBox intervalTextBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button createRoutineButton;
         private System.Windows.Forms.DataGridView routinesGrid;
         private System.Windows.Forms.TextBox routineNameText;
@@ -1284,6 +1264,8 @@
         private System.Windows.Forms.Button addExerciseButton;
         private System.Windows.Forms.Button deleteExerciseButton;
         private System.Windows.Forms.Button editRoutineButton;
+        private System.Windows.Forms.Button saveRoutineButton;
+        private System.Windows.Forms.Label routineNameErrorLabel;
     }
 }
 
