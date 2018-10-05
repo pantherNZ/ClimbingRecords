@@ -1084,6 +1084,9 @@
             // 
             // hangboardImage
             // 
+            this.hangboardImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage.BackColor = System.Drawing.Color.Black;
             this.hangboardImage.Image = global::ClimbingRecords.Properties.Resources.Board;
             this.hangboardImage.Location = new System.Drawing.Point(0, 0);
