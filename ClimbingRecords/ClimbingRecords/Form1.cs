@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ClimbingRecords
 {
-    public partial class Form1 : Form
+    public partial class Hangboard : Form
     {
         // Ratios
         struct Ratio
@@ -33,8 +33,9 @@ namespace ClimbingRecords
         List<Records.GridRecord> filteredData;
         List<Routines.GridRoutine> routinesData;
         string searchTerm;
+        bool trainingMode = false;
 
-        public Form1()
+        public Hangboard()
         {
             InitializeComponent();
 
@@ -203,6 +204,9 @@ namespace ClimbingRecords
 
         private void HighlightMouseEnter( object sender, EventArgs e )
         {
+            if( trainingMode )
+                return;
+
             PictureBox highlight = sender as PictureBox;
 
             if( ( placingRightHand && highlight != rightHand ) || ( !placingRightHand && highlight != leftHand ) )
@@ -211,6 +215,9 @@ namespace ClimbingRecords
 
         private void HighlightMouseLeave( object sender, EventArgs e )
         {
+            if( trainingMode )
+                return;
+
             PictureBox highlight = sender as PictureBox;
 
             if( highlight != leftHand && highlight != rightHand )
@@ -227,6 +234,9 @@ namespace ClimbingRecords
 
         private void hangboardImage_MouseClick( object sender, MouseEventArgs e )
         {
+            if( trainingMode )
+                return;
+
             if( rightHand != null )
             {
                 rightHand.Image = null;
@@ -261,6 +271,9 @@ namespace ClimbingRecords
 
         private void HighlightMouseDown( object sender, MouseEventArgs e )
         {
+            if( trainingMode )
+                return;
+
             PictureBox highlight = sender as PictureBox;
             bool modifyRoutinesTable = routinesGroupBox.Visible && routinesGrid.CurrentRow != null;
 
@@ -492,11 +505,10 @@ namespace ClimbingRecords
             if( tb == null )
                 return;
 
+            tb.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+
             if( recordsGrid.CurrentCell.ColumnIndex == 4 )
-            {
-                tb.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
                 tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
-            }
         }
 
         private void routinesGrid_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
@@ -506,17 +518,14 @@ namespace ClimbingRecords
             if( tb == null )
                 return;
 
-            if( routinesGrid.CurrentCell.ColumnIndex == 0 )
-            {
-                tb.KeyPress -= new KeyPressEventHandler( RecordKeyPressDigits );
-                tb.KeyPress += new KeyPressEventHandler( RecordKeyPressDigits );
-            }
+            tb.KeyPress -= new KeyPressEventHandler( RecordKeyPressDigits );
+            tb.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
 
-            if( routinesGrid.CurrentCell.ColumnIndex == 3 )
-            {
-                tb.KeyPress -= new KeyPressEventHandler( RecordKeyPress );
+            if( routinesGrid.CurrentCell.ColumnIndex == 2 )
+                tb.KeyPress += new KeyPressEventHandler( RecordKeyPressDigits );
+
+            else if( routinesGrid.CurrentCell.ColumnIndex == 3 )
                 tb.KeyPress += new KeyPressEventHandler( RecordKeyPress );
-            }
         }
 
         private void RecordKeyPress( object sender, KeyPressEventArgs e )
@@ -613,15 +622,38 @@ namespace ClimbingRecords
         private void startTrainingBtn_Click( object sender, EventArgs e )
         {
             mainTitle.Text = trainingCombo.Text;
-            ToggleGroups();
+            recordsGroupBox.Visible = false;
+            routinesGroupBox.Visible = true;
             CancelEditingMode();
+
+            editRowIndex = trainingCombo.SelectedIndex;
+
+            // Load routine into table
+            var routine = routinesData[editRowIndex];
+            LoadRoutine( routine );
+
+            SetTrainingMode( true );
+        }
+
+        private void SetTrainingMode( bool training )
+        {
+            routineNameText.ReadOnly = training;
+            routineDifficultyTrackbar.Enabled = !training;
+            routineDescriptionText.ReadOnly = training;
+            addExerciseButton.Visible = !training;
+            deleteExerciseButton.Visible = !training;
+            saveRoutineButton.Visible = !training;
+            createRoutineButton.Text = "Begin";
+            routinesGrid.ReadOnly = training;
+            trainingMode = training;
         }
 
         private void customRoutineBtn_Click( object sender, EventArgs e )
         {
             mainTitle.Text = "Custom Routine";
             saveRoutineButton.Enabled = false;
-            ToggleGroups();
+            recordsGroupBox.Visible = false;
+            routinesGroupBox.Visible = true;
             CancelEditingMode();
 
             var emptyRoutine = new Routines.GridRoutine();
@@ -634,14 +666,12 @@ namespace ClimbingRecords
         {
             mainTitle.Text = "Hangboard Records";
             routineNameErrorLabel.Visible = false;
-            ToggleGroups();
+            recordsGroupBox.Visible = true;
+            routinesGroupBox.Visible = false;
             editRowIndex = -1;
-        }
 
-        private void ToggleGroups()
-        {
-            recordsGroupBox.Visible = !recordsGroupBox.Visible;
-            routinesGroupBox.Visible = !routinesGroupBox.Visible;
+            if( trainingMode )
+                SetTrainingMode( false );
         }
 
         private void ValidateCreateButton( object sender, EventArgs e )
@@ -651,16 +681,24 @@ namespace ClimbingRecords
 
         private void createRoutineButton_Click( object sender, EventArgs e )
         {
-            foreach( var routine in routinesData )
+            if( trainingMode )
             {
-                if( routine.name == routineNameText.Text )
-                {
-                    routineNameErrorLabel.Visible = true;
-                    return;
-                }
+                trainingGroupBox.Visible = true;
+                routinesGroupBox.Visible = false;
             }
+            else
+            {
+                foreach( var routine in routinesData )
+                {
+                    if( routine.name == routineNameText.Text )
+                    {
+                        routineNameErrorLabel.Visible = true;
+                        return;
+                    }
+                }
 
-            SaveRoutine();
+                SaveRoutine();
+            }
         }
 
         private void saveRoutineButton_Click( object sender, EventArgs e )
@@ -703,7 +741,8 @@ namespace ClimbingRecords
             Routines.SaveRoutines( routinesData );
 
             mainTitle.Text = "Hangboard Records";
-            ToggleGroups();
+            recordsGroupBox.Visible = true;
+            routinesGroupBox.Visible = false;
             editRowIndex = -1;
 
             var routines = new List<String>();
@@ -728,8 +767,8 @@ namespace ClimbingRecords
 
             if( routinesGrid.CurrentRow != null )
             {
-                RoutinesGridHandComboChanged( routinesGrid.CurrentRow.Index, 0 );
-                RoutinesGridHandComboChanged( routinesGrid.CurrentRow.Index, 1 );
+                RoutinesGridHandComboChanged( routinesGrid.CurrentRow.Index, 0, false );
+                RoutinesGridHandComboChanged( routinesGrid.CurrentRow.Index, 1, true );
             }
         }
 
@@ -742,13 +781,21 @@ namespace ClimbingRecords
         {
             saveRoutineButton.Enabled = true;
             mainTitle.Text = "Edit Routine";
-            ToggleGroups();
+            recordsGroupBox.Visible = false;
+            routinesGroupBox.Visible = true;
             CancelEditingMode();
             editRowIndex = trainingCombo.SelectedIndex;
 
             // Load routine into table
             var routine = routinesData[editRowIndex];
             LoadRoutine( routine );
+
+            // Load highlights from first row
+            if( routinesGrid.RowCount > 0 )
+            {
+                RoutinesGridHandComboChanged( 0, 0, false );
+                RoutinesGridHandComboChanged( 0, 1, true );
+            }
         }
 
         private void LoadRoutine( Routines.GridRoutine routine )
@@ -793,13 +840,25 @@ namespace ClimbingRecords
 
         private void routinesGrid_CellValueChanged( object sender, DataGridViewCellEventArgs e )
         {
-            if( e.RowIndex < 0 || e.ColumnIndex > 1 )
+            if( e.RowIndex < 0 || e.ColumnIndex > 1 || ignoreComboChange )
                 return;
 
-            RoutinesGridHandComboChanged( e.RowIndex, e.ColumnIndex );
+            RoutinesGridHandComboChanged( e.RowIndex, e.ColumnIndex, true );
         }
 
-        private void RoutinesGridHandComboChanged( int rowIndex, int columnIndex )
+        private void routineDifficultyTrackbar_ValueChanged( object sender, EventArgs e )
+        {
+            label6.Text = "Difficulty: " + routineDifficultyTrackbar.Value.ToString();
+        }
+
+        private void trainingCancelButton_Click( object sender, EventArgs e )
+        {
+            recordsGroupBox.Visible = true;
+            trainingGroupBox.Visible = false;
+            mainTitle.Text = "Hangboard Records";
+        }
+
+        private void RoutinesGridHandComboChanged( int rowIndex, int columnIndex, bool canSwap )
         {
             var combo = routinesGrid.Rows[rowIndex].Cells[columnIndex] as DataGridViewComboBoxCell;
 
@@ -814,7 +873,7 @@ namespace ClimbingRecords
             else if( columnIndex == 1 )
                 swap = RightHandComboSelectedchanged( combo.Items.IndexOf( combo.Value ) );
 
-            if( swap )
+            if( swap && canSwap )
                 SetComboSelectedIndex( otherCombo, 18 );
 
             routinesGrid.Invalidate();

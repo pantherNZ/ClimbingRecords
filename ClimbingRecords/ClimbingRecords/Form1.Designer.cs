@@ -1,6 +1,6 @@
 ﻿namespace ClimbingRecords
 {
-    partial class Form1
+    partial class Hangboard
     {
         /// <summary>
         /// Required designer variable.
@@ -106,6 +106,25 @@
             this.hangboardImage17 = new System.Windows.Forms.PictureBox();
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
+            this.trainingGroupBox = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.trainingNextRightHandHold = new System.Windows.Forms.TextBox();
+            this.trainingNextLeftHandHold = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trainingRightHandHold = new System.Windows.Forms.TextBox();
+            this.trainingLeftHandHold = new System.Windows.Forms.TextBox();
+            this.trainingCancelButton = new System.Windows.Forms.Button();
+            this.trainingPauseButton = new System.Windows.Forms.Button();
+            this.trainingSkipButton = new System.Windows.Forms.Button();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
@@ -143,6 +162,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).BeginInit();
+            this.trainingGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftHand_Combo
@@ -150,7 +171,7 @@
             this.leftHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.leftHand_Combo.FormattingEnabled = true;
             this.leftHand_Combo.ItemHeight = 13;
-            this.leftHand_Combo.Location = new System.Drawing.Point(102, 20);
+            this.leftHand_Combo.Location = new System.Drawing.Point(117, 20);
             this.leftHand_Combo.Name = "leftHand_Combo";
             this.leftHand_Combo.Size = new System.Drawing.Size(232, 21);
             this.leftHand_Combo.TabIndex = 2;
@@ -161,7 +182,7 @@
             this.rightHand_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rightHand_Combo.FormattingEnabled = true;
             this.rightHand_Combo.ItemHeight = 13;
-            this.rightHand_Combo.Location = new System.Drawing.Point(102, 47);
+            this.rightHand_Combo.Location = new System.Drawing.Point(117, 46);
             this.rightHand_Combo.Name = "rightHand_Combo";
             this.rightHand_Combo.Size = new System.Drawing.Size(232, 21);
             this.rightHand_Combo.TabIndex = 4;
@@ -170,25 +191,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(17, 23);
+            this.label1.Location = new System.Drawing.Point(21, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(94, 14);
             this.label1.TabIndex = 3;
             this.label1.Text = "Left Hand Hold";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(10, 50);
+            this.label2.Location = new System.Drawing.Point(11, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.Size = new System.Drawing.Size(104, 14);
             this.label2.TabIndex = 5;
             this.label2.Text = "Right Hand Hold";
             // 
             // searchTerm_Entry
             // 
+            this.searchTerm_Entry.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.searchTerm_Entry.Location = new System.Drawing.Point(584, 20);
             this.searchTerm_Entry.Name = "searchTerm_Entry";
             this.searchTerm_Entry.Size = new System.Drawing.Size(310, 20);
@@ -197,18 +221,18 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(512, 23);
+            this.label3.Location = new System.Drawing.Point(501, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(82, 14);
             this.label3.TabIndex = 8;
             this.label3.Text = "Search Term";
             // 
             // recordsGroupBox
             // 
-            this.recordsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.recordsGroupBox.Controls.Add(this.editRoutineButton);
             this.recordsGroupBox.Controls.Add(this.customRoutineBtn);
             this.recordsGroupBox.Controls.Add(this.trainingCombo);
@@ -224,17 +248,20 @@
             this.recordsGroupBox.Controls.Add(this.label1);
             this.recordsGroupBox.Controls.Add(this.rightHand_Combo);
             this.recordsGroupBox.Controls.Add(this.leftHand_Combo);
-            this.recordsGroupBox.Location = new System.Drawing.Point(12, 441);
+            this.recordsGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.recordsGroupBox.Location = new System.Drawing.Point(0, 453);
             this.recordsGroupBox.Name = "recordsGroupBox";
-            this.recordsGroupBox.Size = new System.Drawing.Size(1420, 381);
+            this.recordsGroupBox.Size = new System.Drawing.Size(1444, 381);
             this.recordsGroupBox.TabIndex = 7;
             this.recordsGroupBox.TabStop = false;
             this.recordsGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
             // editRoutineButton
             // 
+            this.editRoutineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editRoutineButton.Enabled = false;
-            this.editRoutineButton.Location = new System.Drawing.Point(1218, 46);
+            this.editRoutineButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editRoutineButton.Location = new System.Drawing.Point(1244, 46);
             this.editRoutineButton.Name = "editRoutineButton";
             this.editRoutineButton.Size = new System.Drawing.Size(90, 23);
             this.editRoutineButton.TabIndex = 26;
@@ -244,7 +271,9 @@
             // 
             // customRoutineBtn
             // 
-            this.customRoutineBtn.Location = new System.Drawing.Point(1121, 46);
+            this.customRoutineBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.customRoutineBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customRoutineBtn.Location = new System.Drawing.Point(1147, 46);
             this.customRoutineBtn.Name = "customRoutineBtn";
             this.customRoutineBtn.Size = new System.Drawing.Size(90, 23);
             this.customRoutineBtn.TabIndex = 25;
@@ -254,18 +283,21 @@
             // 
             // trainingCombo
             // 
+            this.trainingCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trainingCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.trainingCombo.FormattingEnabled = true;
             this.trainingCombo.ItemHeight = 13;
-            this.trainingCombo.Location = new System.Drawing.Point(1121, 20);
+            this.trainingCombo.Location = new System.Drawing.Point(1147, 20);
             this.trainingCombo.Name = "trainingCombo";
-            this.trainingCombo.Size = new System.Drawing.Size(285, 21);
+            this.trainingCombo.Size = new System.Drawing.Size(284, 21);
             this.trainingCombo.TabIndex = 24;
             this.trainingCombo.SelectedValueChanged += new System.EventHandler(this.trainingCombo_SelectedValueChanged);
             // 
             // editBtn
             // 
+            this.editBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.editBtn.Enabled = false;
+            this.editBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editBtn.Location = new System.Drawing.Point(611, 46);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(90, 23);
@@ -277,7 +309,9 @@
             // 
             // cancelBtn
             // 
+            this.cancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cancelBtn.Enabled = false;
+            this.cancelBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.Location = new System.Drawing.Point(707, 46);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(90, 23);
@@ -292,6 +326,9 @@
             this.recordsGrid.AllowUserToAddRows = false;
             this.recordsGrid.AllowUserToDeleteRows = false;
             this.recordsGrid.AllowUserToResizeRows = false;
+            this.recordsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.recordsGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.recordsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.recordsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -306,7 +343,7 @@
             this.recordsGrid.Name = "recordsGrid";
             this.recordsGrid.ReadOnly = true;
             this.recordsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.recordsGrid.Size = new System.Drawing.Size(1394, 286);
+            this.recordsGrid.Size = new System.Drawing.Size(1420, 286);
             this.recordsGrid.TabIndex = 11;
             this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
             this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
@@ -372,6 +409,8 @@
             // 
             // addBtn
             // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(515, 46);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(90, 23);
@@ -383,7 +422,9 @@
             // 
             // startTrainingBtn
             // 
-            this.startTrainingBtn.Location = new System.Drawing.Point(1315, 46);
+            this.startTrainingBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.startTrainingBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startTrainingBtn.Location = new System.Drawing.Point(1341, 46);
             this.startTrainingBtn.Name = "startTrainingBtn";
             this.startTrainingBtn.Size = new System.Drawing.Size(90, 23);
             this.startTrainingBtn.TabIndex = 14;
@@ -393,7 +434,9 @@
             // 
             // saveBtn
             // 
+            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.saveBtn.Enabled = false;
+            this.saveBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.Location = new System.Drawing.Point(804, 46);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(90, 23);
@@ -406,10 +449,11 @@
             // showHoldNumbersCheckBox
             // 
             this.showHoldNumbersCheckBox.AutoSize = true;
+            this.showHoldNumbersCheckBox.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showHoldNumbersCheckBox.ForeColor = System.Drawing.Color.White;
             this.showHoldNumbersCheckBox.Location = new System.Drawing.Point(12, 13);
             this.showHoldNumbersCheckBox.Name = "showHoldNumbersCheckBox";
-            this.showHoldNumbersCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.showHoldNumbersCheckBox.Size = new System.Drawing.Size(143, 18);
             this.showHoldNumbersCheckBox.TabIndex = 38;
             this.showHoldNumbersCheckBox.Text = "Show Hold Numbers";
             this.showHoldNumbersCheckBox.UseVisualStyleBackColor = true;
@@ -419,20 +463,18 @@
             // 
             this.mainTitle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.mainTitle.AutoSize = true;
-            this.mainTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainTitle.Font = new System.Drawing.Font("Georgia", 28F);
             this.mainTitle.ForeColor = System.Drawing.Color.White;
-            this.mainTitle.Location = new System.Drawing.Point(535, 391);
+            this.mainTitle.Location = new System.Drawing.Point(535, 387);
             this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
             this.mainTitle.Name = "mainTitle";
-            this.mainTitle.Size = new System.Drawing.Size(400, 39);
+            this.mainTitle.Size = new System.Drawing.Size(400, 43);
             this.mainTitle.TabIndex = 39;
             this.mainTitle.Text = "Hangboard Records";
             this.mainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // routinesGroupBox
             // 
-            this.routinesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.routinesGroupBox.Controls.Add(this.routineNameErrorLabel);
             this.routinesGroupBox.Controls.Add(this.saveRoutineButton);
             this.routinesGroupBox.Controls.Add(this.addExerciseButton);
@@ -448,9 +490,10 @@
             this.routinesGroupBox.Controls.Add(this.routineNameText);
             this.routinesGroupBox.Controls.Add(this.createRoutineButton);
             this.routinesGroupBox.Controls.Add(this.routinesGrid);
-            this.routinesGroupBox.Location = new System.Drawing.Point(12, 441);
+            this.routinesGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.routinesGroupBox.Location = new System.Drawing.Point(0, 72);
             this.routinesGroupBox.Name = "routinesGroupBox";
-            this.routinesGroupBox.Size = new System.Drawing.Size(1420, 381);
+            this.routinesGroupBox.Size = new System.Drawing.Size(1444, 381);
             this.routinesGroupBox.TabIndex = 26;
             this.routinesGroupBox.TabStop = false;
             this.routinesGroupBox.Visible = false;
@@ -458,10 +501,11 @@
             // routineNameErrorLabel
             // 
             this.routineNameErrorLabel.AutoSize = true;
+            this.routineNameErrorLabel.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.routineNameErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.routineNameErrorLabel.Location = new System.Drawing.Point(575, 24);
             this.routineNameErrorLabel.Name = "routineNameErrorLabel";
-            this.routineNameErrorLabel.Size = new System.Drawing.Size(110, 13);
+            this.routineNameErrorLabel.Size = new System.Drawing.Size(133, 14);
             this.routineNameErrorLabel.TabIndex = 41;
             this.routineNameErrorLabel.Text = "Name must be unique";
             this.routineNameErrorLabel.Visible = false;
@@ -469,7 +513,8 @@
             // saveRoutineButton
             // 
             this.saveRoutineButton.Enabled = false;
-            this.saveRoutineButton.Location = new System.Drawing.Point(1121, 47);
+            this.saveRoutineButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveRoutineButton.Location = new System.Drawing.Point(1147, 46);
             this.saveRoutineButton.Name = "saveRoutineButton";
             this.saveRoutineButton.Size = new System.Drawing.Size(90, 23);
             this.saveRoutineButton.TabIndex = 40;
@@ -479,6 +524,7 @@
             // 
             // addExerciseButton
             // 
+            this.addExerciseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addExerciseButton.Location = new System.Drawing.Point(752, 47);
             this.addExerciseButton.Name = "addExerciseButton";
             this.addExerciseButton.Size = new System.Drawing.Size(90, 23);
@@ -490,6 +536,7 @@
             // deleteExerciseButton
             // 
             this.deleteExerciseButton.Enabled = false;
+            this.deleteExerciseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteExerciseButton.Location = new System.Drawing.Point(848, 47);
             this.deleteExerciseButton.Name = "deleteExerciseButton";
             this.deleteExerciseButton.Size = new System.Drawing.Size(90, 23);
@@ -501,10 +548,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(237, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.Size = new System.Drawing.Size(29, 14);
             this.label9.TabIndex = 37;
             this.label9.Text = "Info";
             // 
@@ -517,7 +565,8 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(1314, 47);
+            this.backButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(1340, 46);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(90, 23);
             this.backButton.TabIndex = 35;
@@ -528,32 +577,35 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(190, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.Size = new System.Drawing.Size(22, 14);
             this.label8.TabIndex = 34;
             this.label8.Text = "10";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(20, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 13);
+            this.label7.Size = new System.Drawing.Size(15, 14);
             this.label7.TabIndex = 33;
             this.label7.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(93, 50);
+            this.label6.Location = new System.Drawing.Point(83, 50);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.Size = new System.Drawing.Size(77, 14);
             this.label6.TabIndex = 32;
-            this.label6.Text = "Difficulty";
+            this.label6.Text = "Difficulty: 3";
             // 
             // routineDifficultyTrackbar
             // 
@@ -567,10 +619,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(231, 24);
+            this.label5.Location = new System.Drawing.Point(226, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(41, 14);
             this.label5.TabIndex = 30;
             this.label5.Text = "Name";
             // 
@@ -584,7 +637,8 @@
             // createRoutineButton
             // 
             this.createRoutineButton.Enabled = false;
-            this.createRoutineButton.Location = new System.Drawing.Point(1218, 47);
+            this.createRoutineButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createRoutineButton.Location = new System.Drawing.Point(1244, 46);
             this.createRoutineButton.Name = "createRoutineButton";
             this.createRoutineButton.Size = new System.Drawing.Size(90, 23);
             this.createRoutineButton.TabIndex = 27;
@@ -607,9 +661,9 @@
             this.routinesDuration,
             this.Rest,
             this.routinesDescription});
-            this.routinesGrid.Location = new System.Drawing.Point(10, 69);
+            this.routinesGrid.Location = new System.Drawing.Point(12, 81);
             this.routinesGrid.Name = "routinesGrid";
-            this.routinesGrid.Size = new System.Drawing.Size(1394, 286);
+            this.routinesGrid.Size = new System.Drawing.Size(1418, 286);
             this.routinesGrid.TabIndex = 28;
             this.routinesGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.routinesGrid_CellValueChanged);
             this.routinesGrid.CurrentCellChanged += new System.EventHandler(this.routinesGrid_CurrentCellChanged);
@@ -667,10 +721,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage8.BackColor = System.Drawing.Color.White;
-            this.hangboardImage8.Location = new System.Drawing.Point(280, 286);
+            this.hangboardImage8.Location = new System.Drawing.Point(268, 281);
             this.hangboardImage8.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage8.Name = "hangboardImage8";
-            this.hangboardImage8.Size = new System.Drawing.Size(120, 49);
+            this.hangboardImage8.Size = new System.Drawing.Size(147, 62);
             this.hangboardImage8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage8.TabIndex = 36;
             this.hangboardImage8.TabStop = false;
@@ -681,10 +735,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage26.BackColor = System.Drawing.Color.White;
-            this.hangboardImage26.Location = new System.Drawing.Point(1061, 269);
+            this.hangboardImage26.Location = new System.Drawing.Point(1041, 262);
             this.hangboardImage26.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage26.Name = "hangboardImage26";
-            this.hangboardImage26.Size = new System.Drawing.Size(113, 50);
+            this.hangboardImage26.Size = new System.Drawing.Size(147, 66);
             this.hangboardImage26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage26.TabIndex = 35;
             this.hangboardImage26.TabStop = false;
@@ -695,10 +749,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage9.BackColor = System.Drawing.Color.White;
-            this.hangboardImage9.Location = new System.Drawing.Point(416, 265);
+            this.hangboardImage9.Location = new System.Drawing.Point(416, 258);
             this.hangboardImage9.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage9.Name = "hangboardImage9";
-            this.hangboardImage9.Size = new System.Drawing.Size(113, 44);
+            this.hangboardImage9.Size = new System.Drawing.Size(116, 60);
             this.hangboardImage9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage9.TabIndex = 34;
             this.hangboardImage9.TabStop = false;
@@ -709,10 +763,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage27.BackColor = System.Drawing.Color.White;
-            this.hangboardImage27.Location = new System.Drawing.Point(934, 253);
+            this.hangboardImage27.Location = new System.Drawing.Point(920, 253);
             this.hangboardImage27.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage27.Name = "hangboardImage27";
-            this.hangboardImage27.Size = new System.Drawing.Size(113, 44);
+            this.hangboardImage27.Size = new System.Drawing.Size(120, 55);
             this.hangboardImage27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage27.TabIndex = 33;
             this.hangboardImage27.TabStop = false;
@@ -723,10 +777,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage28.BackColor = System.Drawing.Color.White;
-            this.hangboardImage28.Location = new System.Drawing.Point(803, 245);
+            this.hangboardImage28.Location = new System.Drawing.Point(800, 244);
             this.hangboardImage28.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage28.Name = "hangboardImage28";
-            this.hangboardImage28.Size = new System.Drawing.Size(113, 44);
+            this.hangboardImage28.Size = new System.Drawing.Size(119, 49);
             this.hangboardImage28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage28.TabIndex = 32;
             this.hangboardImage28.TabStop = false;
@@ -737,10 +791,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage10.BackColor = System.Drawing.Color.White;
-            this.hangboardImage10.Location = new System.Drawing.Point(542, 249);
+            this.hangboardImage10.Location = new System.Drawing.Point(534, 244);
             this.hangboardImage10.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage10.Name = "hangboardImage10";
-            this.hangboardImage10.Size = new System.Drawing.Size(113, 44);
+            this.hangboardImage10.Size = new System.Drawing.Size(126, 52);
             this.hangboardImage10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage10.TabIndex = 31;
             this.hangboardImage10.TabStop = false;
@@ -751,10 +805,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage5.BackColor = System.Drawing.Color.White;
-            this.hangboardImage5.Location = new System.Drawing.Point(231, 226);
+            this.hangboardImage5.Location = new System.Drawing.Point(220, 222);
             this.hangboardImage5.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage5.Name = "hangboardImage5";
-            this.hangboardImage5.Size = new System.Drawing.Size(140, 59);
+            this.hangboardImage5.Size = new System.Drawing.Size(151, 66);
             this.hangboardImage5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage5.TabIndex = 30;
             this.hangboardImage5.TabStop = false;
@@ -794,7 +848,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage25.BackColor = System.Drawing.Color.White;
-            this.hangboardImage25.Location = new System.Drawing.Point(806, 167);
+            this.hangboardImage25.Location = new System.Drawing.Point(806, 168);
             this.hangboardImage25.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage25.Name = "hangboardImage25";
             this.hangboardImage25.Size = new System.Drawing.Size(135, 57);
@@ -808,7 +862,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage6.BackColor = System.Drawing.Color.White;
-            this.hangboardImage6.Location = new System.Drawing.Point(373, 189);
+            this.hangboardImage6.Location = new System.Drawing.Point(373, 191);
             this.hangboardImage6.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage6.Name = "hangboardImage6";
             this.hangboardImage6.Size = new System.Drawing.Size(135, 60);
@@ -822,7 +876,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage7.BackColor = System.Drawing.Color.White;
-            this.hangboardImage7.Location = new System.Drawing.Point(513, 168);
+            this.hangboardImage7.Location = new System.Drawing.Point(513, 174);
             this.hangboardImage7.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage7.Name = "hangboardImage7";
             this.hangboardImage7.Size = new System.Drawing.Size(135, 57);
@@ -836,10 +890,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage22.BackColor = System.Drawing.Color.White;
-            this.hangboardImage22.Location = new System.Drawing.Point(1160, 147);
+            this.hangboardImage22.Location = new System.Drawing.Point(1153, 142);
             this.hangboardImage22.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage22.Name = "hangboardImage22";
-            this.hangboardImage22.Size = new System.Drawing.Size(95, 52);
+            this.hangboardImage22.Size = new System.Drawing.Size(120, 67);
             this.hangboardImage22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage22.TabIndex = 24;
             this.hangboardImage22.TabStop = false;
@@ -892,10 +946,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage4.BackColor = System.Drawing.Color.White;
-            this.hangboardImage4.Location = new System.Drawing.Point(201, 175);
+            this.hangboardImage4.Location = new System.Drawing.Point(182, 167);
             this.hangboardImage4.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage4.Name = "hangboardImage4";
-            this.hangboardImage4.Size = new System.Drawing.Size(95, 52);
+            this.hangboardImage4.Size = new System.Drawing.Size(120, 67);
             this.hangboardImage4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage4.TabIndex = 20;
             this.hangboardImage4.TabStop = false;
@@ -934,7 +988,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage1.BackColor = System.Drawing.Color.White;
-            this.hangboardImage1.Location = new System.Drawing.Point(163, 97);
+            this.hangboardImage1.Location = new System.Drawing.Point(162, 93);
             this.hangboardImage1.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage1.Name = "hangboardImage1";
             this.hangboardImage1.Size = new System.Drawing.Size(133, 75);
@@ -948,10 +1002,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage29.BackColor = System.Drawing.Color.White;
-            this.hangboardImage29.Location = new System.Drawing.Point(973, 322);
+            this.hangboardImage29.Location = new System.Drawing.Point(966, 320);
             this.hangboardImage29.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage29.Name = "hangboardImage29";
-            this.hangboardImage29.Size = new System.Drawing.Size(146, 51);
+            this.hangboardImage29.Size = new System.Drawing.Size(154, 59);
             this.hangboardImage29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage29.TabIndex = 16;
             this.hangboardImage29.TabStop = false;
@@ -962,10 +1016,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage11.BackColor = System.Drawing.Color.White;
-            this.hangboardImage11.Location = new System.Drawing.Point(354, 335);
+            this.hangboardImage11.Location = new System.Drawing.Point(344, 334);
             this.hangboardImage11.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage11.Name = "hangboardImage11";
-            this.hangboardImage11.Size = new System.Drawing.Size(146, 51);
+            this.hangboardImage11.Size = new System.Drawing.Size(154, 59);
             this.hangboardImage11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage11.TabIndex = 15;
             this.hangboardImage11.TabStop = false;
@@ -1101,12 +1155,243 @@
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
             this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
             // 
-            // Form1
+            // trainingGroupBox
+            // 
+            this.trainingGroupBox.Controls.Add(this.trainingSkipButton);
+            this.trainingGroupBox.Controls.Add(this.trainingPauseButton);
+            this.trainingGroupBox.Controls.Add(this.groupBox1);
+            this.trainingGroupBox.Controls.Add(this.label19);
+            this.trainingGroupBox.Controls.Add(this.label16);
+            this.trainingGroupBox.Controls.Add(this.label17);
+            this.trainingGroupBox.Controls.Add(this.trainingNextRightHandHold);
+            this.trainingGroupBox.Controls.Add(this.trainingNextLeftHandHold);
+            this.trainingGroupBox.Controls.Add(this.label15);
+            this.trainingGroupBox.Controls.Add(this.label12);
+            this.trainingGroupBox.Controls.Add(this.label11);
+            this.trainingGroupBox.Controls.Add(this.label10);
+            this.trainingGroupBox.Controls.Add(this.label4);
+            this.trainingGroupBox.Controls.Add(this.trainingRightHandHold);
+            this.trainingGroupBox.Controls.Add(this.trainingLeftHandHold);
+            this.trainingGroupBox.Controls.Add(this.trainingCancelButton);
+            this.trainingGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.trainingGroupBox.Location = new System.Drawing.Point(0, -309);
+            this.trainingGroupBox.Name = "trainingGroupBox";
+            this.trainingGroupBox.Size = new System.Drawing.Size(1444, 381);
+            this.trainingGroupBox.TabIndex = 40;
+            this.trainingGroupBox.TabStop = false;
+            this.trainingGroupBox.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Location = new System.Drawing.Point(525, 114);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(425, 135);
+            this.groupBox1.TabIndex = 51;
+            this.groupBox1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(14, 26);
+            this.label13.MinimumSize = new System.Drawing.Size(400, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(400, 43);
+            this.label13.TabIndex = 42;
+            this.label13.Text = "Hang 45 seconds";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(12, 92);
+            this.label14.MinimumSize = new System.Drawing.Size(400, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(400, 18);
+            this.label14.TabIndex = 43;
+            this.label14.Text = "Rest 45 seconds";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(575, 272);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(310, 18);
+            this.label19.TabIndex = 50;
+            this.label19.Text = "This is information for the current exercise";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(48, 317);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(125, 18);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Right Hand Hold";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(59, 280);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(116, 18);
+            this.label17.TabIndex = 47;
+            this.label17.Text = "Left Hand Hold";
+            // 
+            // trainingNextRightHandHold
+            // 
+            this.trainingNextRightHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trainingNextRightHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.trainingNextRightHandHold.Location = new System.Drawing.Point(179, 276);
+            this.trainingNextRightHandHold.Name = "trainingNextRightHandHold";
+            this.trainingNextRightHandHold.ReadOnly = true;
+            this.trainingNextRightHandHold.Size = new System.Drawing.Size(216, 26);
+            this.trainingNextRightHandHold.TabIndex = 46;
+            // 
+            // trainingNextLeftHandHold
+            // 
+            this.trainingNextLeftHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trainingNextLeftHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.trainingNextLeftHandHold.Location = new System.Drawing.Point(179, 314);
+            this.trainingNextLeftHandHold.Name = "trainingNextLeftHandHold";
+            this.trainingNextLeftHandHold.ReadOnly = true;
+            this.trainingNextLeftHandHold.Size = new System.Drawing.Size(216, 26);
+            this.trainingNextLeftHandHold.TabIndex = 45;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Georgia", 28F);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(168, 223);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 43);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "Next";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(1174, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(220, 43);
+            this.label12.TabIndex = 41;
+            this.label12.Text = "Exercise 1/4";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Georgia", 28F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(140, 33);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(150, 43);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "Current";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(51, 129);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 18);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Right Hand Hold";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(61, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 18);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Left Hand Hold";
+            // 
+            // trainingRightHandHold
+            // 
+            this.trainingRightHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.trainingRightHandHold.Location = new System.Drawing.Point(179, 126);
+            this.trainingRightHandHold.Name = "trainingRightHandHold";
+            this.trainingRightHandHold.ReadOnly = true;
+            this.trainingRightHandHold.Size = new System.Drawing.Size(216, 26);
+            this.trainingRightHandHold.TabIndex = 37;
+            // 
+            // trainingLeftHandHold
+            // 
+            this.trainingLeftHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.trainingLeftHandHold.Location = new System.Drawing.Point(179, 88);
+            this.trainingLeftHandHold.Name = "trainingLeftHandHold";
+            this.trainingLeftHandHold.ReadOnly = true;
+            this.trainingLeftHandHold.Size = new System.Drawing.Size(216, 26);
+            this.trainingLeftHandHold.TabIndex = 36;
+            // 
+            // trainingCancelButton
+            // 
+            this.trainingCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingCancelButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingCancelButton.Location = new System.Drawing.Point(1294, 313);
+            this.trainingCancelButton.Name = "trainingCancelButton";
+            this.trainingCancelButton.Size = new System.Drawing.Size(100, 30);
+            this.trainingCancelButton.TabIndex = 35;
+            this.trainingCancelButton.Text = "Cancel";
+            this.trainingCancelButton.UseVisualStyleBackColor = true;
+            this.trainingCancelButton.Click += new System.EventHandler(this.trainingCancelButton_Click);
+            // 
+            // trainingPauseButton
+            // 
+            this.trainingPauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingPauseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingPauseButton.Location = new System.Drawing.Point(1069, 313);
+            this.trainingPauseButton.Name = "trainingPauseButton";
+            this.trainingPauseButton.Size = new System.Drawing.Size(100, 30);
+            this.trainingPauseButton.TabIndex = 52;
+            this.trainingPauseButton.Text = "Start";
+            this.trainingPauseButton.UseVisualStyleBackColor = true;
+            // 
+            // trainingSkipButton
+            // 
+            this.trainingSkipButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingSkipButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingSkipButton.Location = new System.Drawing.Point(1182, 313);
+            this.trainingSkipButton.Name = "trainingSkipButton";
+            this.trainingSkipButton.Size = new System.Drawing.Size(100, 30);
+            this.trainingSkipButton.TabIndex = 53;
+            this.trainingSkipButton.Text = "Skip";
+            this.trainingSkipButton.UseVisualStyleBackColor = true;
+            // 
+            // Hangboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1444, 834);
+            this.Controls.Add(this.hangboardImage10);
             this.Controls.Add(this.mainTitle);
             this.Controls.Add(this.showHoldNumbersCheckBox);
             this.Controls.Add(this.hangboardImage14);
@@ -1115,7 +1400,6 @@
             this.Controls.Add(this.hangboardImage9);
             this.Controls.Add(this.hangboardImage27);
             this.Controls.Add(this.hangboardImage28);
-            this.Controls.Add(this.hangboardImage10);
             this.Controls.Add(this.hangboardImage5);
             this.Controls.Add(this.hangboardImage23);
             this.Controls.Add(this.hangboardImage24);
@@ -1140,10 +1424,11 @@
             this.Controls.Add(this.hangboardImage13);
             this.Controls.Add(this.hangboardImage17);
             this.Controls.Add(this.hangboardImage18);
+            this.Controls.Add(this.trainingGroupBox);
+            this.Controls.Add(this.routinesGroupBox);
             this.Controls.Add(this.hangboardImage);
             this.Controls.Add(this.recordsGroupBox);
-            this.Controls.Add(this.routinesGroupBox);
-            this.Name = "Form1";
+            this.Name = "Hangboard";
             this.Text = "Hangboard Records";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.recordsGroupBox.ResumeLayout(false);
@@ -1185,6 +1470,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage)).EndInit();
+            this.trainingGroupBox.ResumeLayout(false);
+            this.trainingGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1269,6 +1558,25 @@
         private System.Windows.Forms.Button editRoutineButton;
         private System.Windows.Forms.Button saveRoutineButton;
         private System.Windows.Forms.Label routineNameErrorLabel;
+        private System.Windows.Forms.GroupBox trainingGroupBox;
+        private System.Windows.Forms.Button trainingCancelButton;
+        private System.Windows.Forms.TextBox trainingLeftHandHold;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox trainingRightHandHold;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox trainingNextRightHandHold;
+        private System.Windows.Forms.TextBox trainingNextLeftHandHold;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button trainingSkipButton;
+        private System.Windows.Forms.Button trainingPauseButton;
     }
 }
 
