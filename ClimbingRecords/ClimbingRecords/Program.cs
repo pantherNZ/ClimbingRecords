@@ -16,7 +16,7 @@ namespace ClimbingRecords
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Hangboard());
+            Application.Run(new HangboardForm());
         }
     }
 }

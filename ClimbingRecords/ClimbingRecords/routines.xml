@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Routines>
+  <Routine>
+    <Name>Beginner Training</Name>
+    <Difficulty>3</Difficulty>
+    <Description>10 minute routine</Description>
+    <Exercises>
+      <Exercise>
+        <LeftHandHold>7: Deep Flat Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>7: Deep Flat Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>1: Top Left Jug</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>15</Duration>
+        <Rest>45</Rest>
+        <Description>15 second hang + one pull up</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>14: Top Centre Jug</LeftHandHold>
+        <RightHandHold>4: Top Deep Pocket (3 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>10</Rest>
+        <Description>no hang: 1 pull up</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>4: Top Deep Pocket (3 Finger)</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>30</Rest>
+        <Description>no hang: 1 pull up</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
+        <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
+        <Duration>15</Duration>
+        <Rest>45</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>2: Outside Sloper (Square)</LeftHandHold>
+        <RightHandHold>2: Outside Sloper (Square)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>20</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>1: Top Left Jug</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>20</Duration>
+        <Rest>10</Rest>
+        <Description>5 knee raises</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>15: Top Centre Pocket (4 Finger)</LeftHandHold>
+        <RightHandHold>5: Medium Edge (4 Finger)</RightHandHold>
+        <Duration>8</Duration>
+        <Rest>22</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>5: Medium Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>15: Top Centre Pocket (4 Finger)</RightHandHold>
+        <Duration>8</Duration>
+        <Rest>22</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>1: Top Left Jug</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>20</Duration>
+        <Rest>40</Rest>
+        <Description>3 pull ups</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>3: Inside Sloper (Round)</LeftHandHold>
+        <RightHandHold>3: Inside Sloper (Round)</RightHandHold>
+        <Duration>8</Duration>
+        <Rest>52</Rest>
+        <Description>bent arms (90 degrees)</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
+        <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>0</Rest>
+        <Description>1 one pull up</Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
+        <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>40</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>1: Top Left Jug</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>0</Duration>
+        <Rest>0</Rest>
+        <Description>dead hang until failure</Description>
+      </Exercise>
+    </Exercises>
+  </Routine>
+</Routines>

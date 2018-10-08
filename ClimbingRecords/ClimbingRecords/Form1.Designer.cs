@@ -1,6 +1,6 @@
 ﻿namespace ClimbingRecords
 {
-    partial class Hangboard
+    partial class HangboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -107,24 +107,24 @@
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
             this.trainingGroupBox = new System.Windows.Forms.GroupBox();
+            this.trainingSkipButton = new System.Windows.Forms.Button();
+            this.trainingPauseButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.trainingHangTimerLabel = new System.Windows.Forms.Label();
+            this.trainingRestTimerLabel = new System.Windows.Forms.Label();
+            this.trainingInfoLabel = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.trainingNextRightHandHold = new System.Windows.Forms.TextBox();
             this.trainingNextLeftHandHold = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.trainingExerciseCountLabel = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.trainingRightHandHold = new System.Windows.Forms.TextBox();
             this.trainingLeftHandHold = new System.Windows.Forms.TextBox();
             this.trainingCancelButton = new System.Windows.Forms.Button();
-            this.trainingPauseButton = new System.Windows.Forms.Button();
-            this.trainingSkipButton = new System.Windows.Forms.Button();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
@@ -904,10 +904,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage19.BackColor = System.Drawing.Color.White;
-            this.hangboardImage19.Location = new System.Drawing.Point(1160, 78);
+            this.hangboardImage19.Location = new System.Drawing.Point(1160, 72);
             this.hangboardImage19.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage19.Name = "hangboardImage19";
-            this.hangboardImage19.Size = new System.Drawing.Size(133, 67);
+            this.hangboardImage19.Size = new System.Drawing.Size(133, 73);
             this.hangboardImage19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage19.TabIndex = 23;
             this.hangboardImage19.TabStop = false;
@@ -988,10 +988,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage1.BackColor = System.Drawing.Color.White;
-            this.hangboardImage1.Location = new System.Drawing.Point(162, 93);
+            this.hangboardImage1.Location = new System.Drawing.Point(162, 83);
             this.hangboardImage1.Margin = new System.Windows.Forms.Padding(0);
             this.hangboardImage1.Name = "hangboardImage1";
-            this.hangboardImage1.Size = new System.Drawing.Size(133, 75);
+            this.hangboardImage1.Size = new System.Drawing.Size(133, 85);
             this.hangboardImage1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hangboardImage1.TabIndex = 17;
             this.hangboardImage1.TabStop = false;
@@ -1160,13 +1160,13 @@
             this.trainingGroupBox.Controls.Add(this.trainingSkipButton);
             this.trainingGroupBox.Controls.Add(this.trainingPauseButton);
             this.trainingGroupBox.Controls.Add(this.groupBox1);
-            this.trainingGroupBox.Controls.Add(this.label19);
+            this.trainingGroupBox.Controls.Add(this.trainingInfoLabel);
             this.trainingGroupBox.Controls.Add(this.label16);
             this.trainingGroupBox.Controls.Add(this.label17);
             this.trainingGroupBox.Controls.Add(this.trainingNextRightHandHold);
             this.trainingGroupBox.Controls.Add(this.trainingNextLeftHandHold);
             this.trainingGroupBox.Controls.Add(this.label15);
-            this.trainingGroupBox.Controls.Add(this.label12);
+            this.trainingGroupBox.Controls.Add(this.trainingExerciseCountLabel);
             this.trainingGroupBox.Controls.Add(this.label11);
             this.trainingGroupBox.Controls.Add(this.label10);
             this.trainingGroupBox.Controls.Add(this.label4);
@@ -1181,56 +1181,80 @@
             this.trainingGroupBox.TabStop = false;
             this.trainingGroupBox.Visible = false;
             // 
+            // trainingSkipButton
+            // 
+            this.trainingSkipButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingSkipButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingSkipButton.Location = new System.Drawing.Point(1182, 313);
+            this.trainingSkipButton.Name = "trainingSkipButton";
+            this.trainingSkipButton.Size = new System.Drawing.Size(100, 30);
+            this.trainingSkipButton.TabIndex = 53;
+            this.trainingSkipButton.Text = "Skip";
+            this.trainingSkipButton.UseVisualStyleBackColor = true;
+            this.trainingSkipButton.Click += new System.EventHandler(this.trainingSkipButton_Click);
+            // 
+            // trainingPauseButton
+            // 
+            this.trainingPauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingPauseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingPauseButton.Location = new System.Drawing.Point(1069, 313);
+            this.trainingPauseButton.Name = "trainingPauseButton";
+            this.trainingPauseButton.Size = new System.Drawing.Size(100, 30);
+            this.trainingPauseButton.TabIndex = 52;
+            this.trainingPauseButton.Text = "Start";
+            this.trainingPauseButton.UseVisualStyleBackColor = true;
+            this.trainingPauseButton.Click += new System.EventHandler(this.trainingPauseButton_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.trainingHangTimerLabel);
+            this.groupBox1.Controls.Add(this.trainingRestTimerLabel);
             this.groupBox1.Location = new System.Drawing.Point(525, 114);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(425, 135);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             // 
-            // label13
+            // trainingHangTimerLabel
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(14, 26);
-            this.label13.MinimumSize = new System.Drawing.Size(400, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(400, 43);
-            this.label13.TabIndex = 42;
-            this.label13.Text = "Hang 45 seconds";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.trainingHangTimerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trainingHangTimerLabel.AutoSize = true;
+            this.trainingHangTimerLabel.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingHangTimerLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingHangTimerLabel.Location = new System.Drawing.Point(14, 26);
+            this.trainingHangTimerLabel.MinimumSize = new System.Drawing.Size(400, 0);
+            this.trainingHangTimerLabel.Name = "trainingHangTimerLabel";
+            this.trainingHangTimerLabel.Size = new System.Drawing.Size(400, 43);
+            this.trainingHangTimerLabel.TabIndex = 42;
+            this.trainingHangTimerLabel.Text = "Hang 45 seconds";
+            this.trainingHangTimerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label14
+            // trainingRestTimerLabel
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(12, 92);
-            this.label14.MinimumSize = new System.Drawing.Size(400, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(400, 18);
-            this.label14.TabIndex = 43;
-            this.label14.Text = "Rest 45 seconds";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.trainingRestTimerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trainingRestTimerLabel.AutoSize = true;
+            this.trainingRestTimerLabel.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingRestTimerLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingRestTimerLabel.Location = new System.Drawing.Point(12, 92);
+            this.trainingRestTimerLabel.MinimumSize = new System.Drawing.Size(400, 0);
+            this.trainingRestTimerLabel.Name = "trainingRestTimerLabel";
+            this.trainingRestTimerLabel.Size = new System.Drawing.Size(400, 18);
+            this.trainingRestTimerLabel.TabIndex = 43;
+            this.trainingRestTimerLabel.Text = "Rest 45 seconds";
+            this.trainingRestTimerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label19
+            // trainingInfoLabel
             // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(575, 272);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(310, 18);
-            this.label19.TabIndex = 50;
-            this.label19.Text = "This is information for the current exercise";
+            this.trainingInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.trainingInfoLabel.AutoSize = true;
+            this.trainingInfoLabel.Font = new System.Drawing.Font("Georgia", 14F);
+            this.trainingInfoLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingInfoLabel.Location = new System.Drawing.Point(560, 266);
+            this.trainingInfoLabel.Name = "trainingInfoLabel";
+            this.trainingInfoLabel.Size = new System.Drawing.Size(375, 23);
+            this.trainingInfoLabel.TabIndex = 50;
+            this.trainingInfoLabel.Text = "This is information for the current exercise";
             // 
             // label16
             // 
@@ -1288,17 +1312,17 @@
             this.label15.TabIndex = 44;
             this.label15.Text = "Next";
             // 
-            // label12
+            // trainingExerciseCountLabel
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(1174, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(220, 43);
-            this.label12.TabIndex = 41;
-            this.label12.Text = "Exercise 1/4";
+            this.trainingExerciseCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingExerciseCountLabel.AutoSize = true;
+            this.trainingExerciseCountLabel.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainingExerciseCountLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingExerciseCountLabel.Location = new System.Drawing.Point(1174, 23);
+            this.trainingExerciseCountLabel.Name = "trainingExerciseCountLabel";
+            this.trainingExerciseCountLabel.Size = new System.Drawing.Size(220, 43);
+            this.trainingExerciseCountLabel.TabIndex = 41;
+            this.trainingExerciseCountLabel.Text = "Exercise 1/4";
             // 
             // label11
             // 
@@ -1363,29 +1387,7 @@
             this.trainingCancelButton.UseVisualStyleBackColor = true;
             this.trainingCancelButton.Click += new System.EventHandler(this.trainingCancelButton_Click);
             // 
-            // trainingPauseButton
-            // 
-            this.trainingPauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trainingPauseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainingPauseButton.Location = new System.Drawing.Point(1069, 313);
-            this.trainingPauseButton.Name = "trainingPauseButton";
-            this.trainingPauseButton.Size = new System.Drawing.Size(100, 30);
-            this.trainingPauseButton.TabIndex = 52;
-            this.trainingPauseButton.Text = "Start";
-            this.trainingPauseButton.UseVisualStyleBackColor = true;
-            // 
-            // trainingSkipButton
-            // 
-            this.trainingSkipButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trainingSkipButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainingSkipButton.Location = new System.Drawing.Point(1182, 313);
-            this.trainingSkipButton.Name = "trainingSkipButton";
-            this.trainingSkipButton.Size = new System.Drawing.Size(100, 30);
-            this.trainingSkipButton.TabIndex = 53;
-            this.trainingSkipButton.Text = "Skip";
-            this.trainingSkipButton.UseVisualStyleBackColor = true;
-            // 
-            // Hangboard
+            // HangboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1428,7 +1430,7 @@
             this.Controls.Add(this.routinesGroupBox);
             this.Controls.Add(this.hangboardImage);
             this.Controls.Add(this.recordsGroupBox);
-            this.Name = "Hangboard";
+            this.Name = "HangboardForm";
             this.Text = "Hangboard Records";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.recordsGroupBox.ResumeLayout(false);
@@ -1565,15 +1567,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox trainingRightHandHold;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label trainingExerciseCountLabel;
+        private System.Windows.Forms.Label trainingHangTimerLabel;
+        private System.Windows.Forms.Label trainingRestTimerLabel;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox trainingNextRightHandHold;
         private System.Windows.Forms.TextBox trainingNextLeftHandHold;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label trainingInfoLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button trainingSkipButton;
         private System.Windows.Forms.Button trainingPauseButton;

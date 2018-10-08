@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ClimbingRecords
 {
-    public partial class Hangboard : Form
+    public partial class HangboardForm : Form
     {
         // Ratios
         struct Ratio
@@ -20,7 +20,7 @@ namespace ClimbingRecords
 
         public List<String> leftHandHoldsDataSource = new List<string>();
 
-        Dictionary< Control, Ratio > highlightRatios = new Dictionary< Control, Ratio >();
+        Dictionary<Control, Ratio> highlightRatios = new Dictionary<Control, Ratio>();
         double hangboardOriginalRatio = 0.0;
         List<PictureBox> highlights = new List<PictureBox>();
         Bitmap[] highlightImages = new Bitmap[2] { ClimbingRecords.Properties.Resources.Highlight, ClimbingRecords.Properties.Resources.Highlight2 };
@@ -34,8 +34,9 @@ namespace ClimbingRecords
         List<Routines.GridRoutine> routinesData;
         string searchTerm;
         bool trainingMode = false;
+        TrainingSystem trainingSystem;
 
-        public Hangboard()
+        public HangboardForm()
         {
             InitializeComponent();
 
@@ -75,8 +76,13 @@ namespace ClimbingRecords
             routineNameText.TextChanged += this.ValidateCreateButton;
             routinesGrid.RowsRemoved += this.ValidateCreateButton;
             routinesGrid.RowsAdded += this.ValidateCreateButton;
-        }
 
+            trainingSystem = new TrainingSystem( routinesGrid,
+                trainingHangTimerLabel, trainingRestTimerLabel, 
+                trainingExerciseCountLabel, trainingInfoLabel,
+                trainingLeftHandHold, trainingRightHandHold, 
+                trainingNextLeftHandHold, trainingNextRightHandHold );
+        }
 
         private void Form1_Load( object sender, EventArgs e )
         {
@@ -330,7 +336,7 @@ namespace ClimbingRecords
             {
                 // Calculate the new Location by using the ratios
                 var ratios = highlightRatios[highlight];
-                
+
                 Size newLoc = new Size( Convert.ToInt32( hangboardTrueSize.Width * ratios.locX ), Convert.ToInt32( hangboardTrueSize.Height * ratios.locY ) );
                 highlight.Location = new Point( hangboardCentre.X + newLoc.Width, hangboardCentre.Y + newLoc.Height );
                 highlight.Size = new Size( Convert.ToInt32( hangboardTrueSize.Width * ratios.sizeX ), Convert.ToInt32( hangboardTrueSize.Height * ratios.sizeY ) );
@@ -482,10 +488,10 @@ namespace ClimbingRecords
                 var name = recordsGrid.Rows[0].Cells[3];
                 var record = recordsGrid.Rows[0].Cells[4];
 
-                saveBtn.Enabled = name.Value != null && 
+                saveBtn.Enabled = name.Value != null &&
                     name.Value.ToString().Length > 0 &&
-                    record.Value != null && 
-                    name.Value.ToString().Length > 0 && 
+                    record.Value != null &&
+                    name.Value.ToString().Length > 0 &&
                     name.Value.ToString() != "0";
             }
         }
@@ -512,7 +518,7 @@ namespace ClimbingRecords
         }
 
         private void routinesGrid_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
-        {   
+        {
             TextBox tb = e.Control as TextBox;
 
             if( tb == null )
@@ -582,12 +588,12 @@ namespace ClimbingRecords
                 if( split.Length != 2 )
                     continue;
 
-                var index = Array.IndexOf( columns.Select( ( y ) => {  return y.ToLower(); } ).ToArray(), ClimbingRecords.Records.RemoveWhitespace( split[0] ) );
+                var index = Array.IndexOf( columns.Select( ( y ) => { return y.ToLower(); } ).ToArray(), ClimbingRecords.Records.RemoveWhitespace( split[0] ) );
 
                 if( index != -1 )
                 {
                     valid = record.GetColumnValueByIndex( index ).ToLower().Contains( split[1].Trim() );
-                    
+
                     if( !valid )
                         return false;
                 }
@@ -598,7 +604,7 @@ namespace ClimbingRecords
 
         private void recordsGrid_SelectionChanged( object sender, EventArgs e )
         {
-            if( recordsGrid.SelectedRows.Count > 0 ) 
+            if( recordsGrid.SelectedRows.Count > 0 )
                 editBtn.Enabled = !addingRow;
         }
 
@@ -685,6 +691,7 @@ namespace ClimbingRecords
             {
                 trainingGroupBox.Visible = true;
                 routinesGroupBox.Visible = false;
+                trainingSystem.LoadNextExercise();
             }
             else
             {
@@ -816,7 +823,7 @@ namespace ClimbingRecords
 
         private Size GetHangboardTrueSize()
         {
-            var hangboardTrueSize = hangboardImage.Size; 
+            var hangboardTrueSize = hangboardImage.Size;
             var parentAspectRatio = hangboardTrueSize.Width / Convert.ToDouble( hangboardTrueSize.Height );
 
             // More square (lower aspect ratio than the image) means we are limiting by width
@@ -856,6 +863,24 @@ namespace ClimbingRecords
             recordsGroupBox.Visible = true;
             trainingGroupBox.Visible = false;
             mainTitle.Text = "Hangboard Records";
+        }
+
+        private void trainingPauseButton_Click( object sender, EventArgs e )
+        {
+            if( !trainingSystem.IsActive() )
+            {
+                trainingSystem.Start();
+                trainingPauseButton.Text = "Pause";
+                return;
+            }
+
+            trainingSystem.TogglePause();
+            trainingPauseButton.Text = trainingSystem.IsPaused() ? "Resume" : "Pause";
+        }
+
+        private void trainingSkipButton_Click( object sender, EventArgs e )
+        {
+            trainingSystem.LoadNextExercise();
         }
 
         private void RoutinesGridHandComboChanged( int rowIndex, int columnIndex, bool canSwap )
