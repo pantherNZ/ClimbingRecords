@@ -4,94 +4,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace ClimbingRecords
 {
-    class TrainingSystem
+    public partial class HangboardForm : Form
     {
         private Timer updateTimer;
-        private int index = 0;
+        private int exerciseIndex = 0;
         private int hangCounter = 0;
         private int restCounter = 0;
-        private DataGridView exercisesGrid;
-        private Label[] timerLabels;
-        private Label exerciseNumLabel;
-        private Label trainingInfoLabel;
-        private TextBox[] holdTextBoxes;
-        private bool rest = false;
         private bool active = false;
 
-        public TrainingSystem( DataGridView exercisesGrid, Label hangLabel, Label restLabel, Label exerciseLabel, Label infoLabel, TextBox currentLeftHold, TextBox currentRightHold, TextBox nextLeftHold, TextBox nextRightHold )
+        private bool _rest = false;
+        private bool rest
         {
-            this.exercisesGrid = exercisesGrid;
-            timerLabels = new Label[] { hangLabel, restLabel };
-            exerciseNumLabel = exerciseLabel;
-            trainingInfoLabel = infoLabel;
-            holdTextBoxes = new TextBox[] { currentLeftHold, currentRightHold, nextLeftHold, nextRightHold };
+            get { return _rest; }
+            set
+            {
+                if( value != _rest )
+                {
+                    _rest = value;
+                    trainingGroupBox.Invalidate();
+
+                    var font = trainingHangTimerLabel.Font;
+                    trainingHangTimerLabel.Font = trainingRestTimerLabel.Font;
+                    trainingRestTimerLabel.Font = font;
+                }
+            }
         }
 
-        public void Start()
+        private void Start()
         {
             updateTimer = new Timer();
             updateTimer.Interval = 1000;
             updateTimer.Tick += new EventHandler( Tick );
             updateTimer.Start();
-            index = 0;
+            exerciseIndex = 1;
             active = true;
         }
 
-        public void Stop()
+        private void Stop()
         {
             updateTimer.Stop();
+            active = false;
+            trainingPauseButton.Text = "Start";
         }
 
-        public void TogglePause()
+        private void TogglePause()
         {
             updateTimer.Enabled = !updateTimer.Enabled;
         }
 
-        public bool IsPaused()
+        private bool IsPaused()
         {
             return !updateTimer.Enabled;
         }
 
-        public bool IsActive()
+        private void LoadNextExercise()
         {
-            return active;
-        }
+            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
 
-        public void LoadNextExercise()
-        {
-            var cells = exercisesGrid.Rows[index].Cells;
+            rest = false;
 
             // Current holds
-            holdTextBoxes[0].Text = cells[0].Value.ToString();
-            holdTextBoxes[1].Text = cells[1].Value.ToString();
+            trainingLeftHandHold.Text = cells[0].Value.ToString();
+            trainingRightHandHold.Text = cells[1].Value.ToString();
 
             // Next holds
-            if( index + 1 == exercisesGrid.RowCount )
+            if( exerciseIndex + 1 == exercisesGrid.RowCount )
             {
-                holdTextBoxes[0].Text = holdTextBoxes[1].Text = "None";
+                trainingNextLeftHandHold.Text = trainingNextRightHandHold.Text = "None";
             }
             else
             {
-                holdTextBoxes[0].Text = exercisesGrid.Rows[index + 1].Cells[0].Value.ToString();
-                holdTextBoxes[1].Text = exercisesGrid.Rows[index + 1].Cells[1].Value.ToString();
+                trainingNextLeftHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[0].Value.ToString();
+                trainingNextRightHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[1].Value.ToString();
             }
 
             // Durations
             hangCounter = Convert.ToInt32( cells[2].Value );
             restCounter = Convert.ToInt32( cells[3].Value );
-            timerLabels[0].Text = String.Format( "Hang {0} seconds", hangCounter );
-            timerLabels[1].Text = String.Format( "Rest {0} seconds", restCounter );
+            trainingHangTimerLabel.Text = String.Format( "Hang {0} seconds", hangCounter );
+            trainingRestTimerLabel.Text = String.Format( "Rest {0} seconds", restCounter );
 
             // Description
-            trainingInfoLabel.Text = cells[4].Value.ToString();
+            var description = cells[4].Value.ToString();
+            trainingInfoLabel.Text = ( description.Length > 0 ? "Info:  " + description : "" );
 
-            ++index;
+            ++exerciseIndex;
 
             // Exercises num
-            exerciseNumLabel.Text = String.Format( "{0} / {1}", index, exercisesGrid.RowCount );
+            trainingExerciseCountLabel.Text = String.Format( "Exercise {0} / {1}", exerciseIndex, exercisesGrid.RowCount );
         }
 
         private void Tick( object sender, EventArgs e )
@@ -99,28 +103,107 @@ namespace ClimbingRecords
             if( rest )
             {
                 restCounter--;
-                timerLabels[1].Text = String.Format( "Rest {0} seconds", restCounter );
+                trainingRestTimerLabel.Text = String.Format( "Rest {0} seconds", restCounter );
 
                 if( restCounter == 0 )
                 {
-                    var defaultScale = new System.Drawing.SizeF( 1.0f, 1.0f );
-                    //timerLabels[0].Scale( defaultScale );
-                    //timerLabels[1].Scale( defaultScale );
                     LoadNextExercise();
                 }
             }
             else
             {
                 hangCounter--;
-                timerLabels[0].Text = String.Format( "Hang {0} seconds", hangCounter );
+                trainingHangTimerLabel.Text = String.Format( "Hang {0} seconds", hangCounter );
 
                 if( hangCounter == 0 )
                 {
                     rest = true;
-                    //timerLabels[0].Scale( new System.Drawing.SizeF( 0.5f, 0.5f ) );
-                    //timerLabels[1].Scale( new System.Drawing.SizeF( 2.0f, 2.0f ) );
+                    trainingInfoLabel.Text = "";
+
+                    if( exerciseIndex == exercisesGrid.RowCount )
+                    {
+                        LeftHandComboSelectedchanged( 18 );
+                        RightHandComboSelectedchanged( 18 );
+                    }
+                    else
+                    {
+                        ExercisesGridHandComboChanged( exerciseIndex, 0, false );
+                        ExercisesGridHandComboChanged( exerciseIndex, 1, true );
+                    }
                 }
             }
+        }
+
+        private void routinesGrid_CurrentCellDirtyStateChanged( object sender, EventArgs e )
+        {
+            if( exercisesGrid.IsCurrentCellDirty )
+            {
+                // This fires the cell value changed handler below
+                exercisesGrid.CommitEdit( DataGridViewDataErrorContexts.Commit );
+            }
+        }
+
+        private void routinesGrid_CellValueChanged( object sender, DataGridViewCellEventArgs e )
+        {
+            if( e.RowIndex < 0 || e.ColumnIndex > 1 || ignoreComboChange )
+                return;
+
+            ExercisesGridHandComboChanged( e.RowIndex, e.ColumnIndex, true );
+        }
+
+        private void routineDifficultyTrackbar_ValueChanged( object sender, EventArgs e )
+        {
+            label6.Text = "Difficulty: " + routineDifficultyTrackbar.Value.ToString();
+        }
+
+        private void trainingCancelButton_Click( object sender, EventArgs e )
+        {
+            recordsGroupBox.Visible = true;
+            trainingGroupBox.Visible = false;
+            mainTitle.Text = "Hangboard Records";
+        }
+
+        private void trainingPauseButton_Click( object sender, EventArgs e )
+        {
+            if( !active )
+            {
+                Start();
+                trainingPauseButton.Text = "Pause";
+                return;
+            }
+
+            TogglePause();
+            trainingPauseButton.Text = IsPaused() ? "Resume" : "Pause";
+        }
+
+        private void trainingSkipButton_Click( object sender, EventArgs e )
+        {
+            LoadNextExercise();
+        }
+
+        private void trainingCombo_SelectedValueChanged( object sender, EventArgs e )
+        {
+            editRoutineButton.Enabled = trainingCombo.SelectedValue != null;
+        }
+
+        private void deleteExerciseButton_Click( object sender, EventArgs e )
+        {
+            exercisesGrid.Rows.Remove( exercisesGrid.CurrentRow );
+        }
+
+        private void trainingGroupBox_Paint( object sender, PaintEventArgs e )
+        {
+            DrawBorder( e, trainingLeftHandHold, 2, Color.Yellow );
+            DrawBorder( e, trainingRightHandHold, 2, Color.LimeGreen );
+
+            DrawBorder( e, trainingNextLeftHandHold, 2, Color.Yellow );
+            DrawBorder( e, trainingNextRightHandHold, 2, Color.LimeGreen );
+
+            // Draw rectangle around current or next holds base on current stage
+            var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
+            var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, 150 );
+            rect.Inflate( 2, 2 );
+            ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
         }
     }
 }
