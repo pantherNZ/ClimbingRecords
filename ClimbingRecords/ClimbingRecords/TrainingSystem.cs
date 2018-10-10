@@ -40,13 +40,14 @@ namespace ClimbingRecords
             updateTimer.Interval = 1000;
             updateTimer.Tick += new EventHandler( Tick );
             updateTimer.Start();
-            exerciseIndex = 1;
             active = true;
         }
 
         private void Stop()
         {
-            updateTimer.Stop();
+            if( updateTimer != null )
+                updateTimer.Stop();
+
             active = false;
             trainingPauseButton.Text = "Start";
         }
@@ -63,8 +64,15 @@ namespace ClimbingRecords
 
         private void LoadNextExercise()
         {
-            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
+            if( !rest )
+            {
+                SwitchToRest();
 
+                if( CheckFinished() )
+                    return;
+            }
+
+            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
             rest = false;
 
             // Current holds
@@ -96,6 +104,41 @@ namespace ClimbingRecords
 
             // Exercises num
             trainingExerciseCountLabel.Text = String.Format( "Exercise {0} / {1}", exerciseIndex, exercisesGrid.RowCount );
+
+            if( hangCounter == 0 )
+                LoadNextExercise();
+        }
+
+        private void SwitchToRest()
+        {
+            rest = true;
+
+            if( exerciseIndex == exercisesGrid.RowCount )
+            {
+                LeftHandComboSelectedchanged( 18 );
+                RightHandComboSelectedchanged( 18 );
+            }
+            else
+            {
+                ExercisesGridHandComboChanged( exerciseIndex, 0, false );
+                ExercisesGridHandComboChanged( exerciseIndex, 1, true );
+            }
+        }
+
+        private bool CheckFinished()
+        {
+            if( exerciseIndex == exercisesGrid.RowCount )
+            {
+                rest = false;
+                trainingInfoLabel.Text = "";
+                trainingSkipButton.Enabled = false;
+                trainingHangTimerLabel.Text = "Finished";
+                trainingRestTimerLabel.Text = "";
+                Stop();
+                trainingPauseButton.Text = "Finish";
+            }
+
+            return exerciseIndex == exercisesGrid.RowCount;
         }
 
         private void Tick( object sender, EventArgs e )
@@ -106,9 +149,7 @@ namespace ClimbingRecords
                 trainingRestTimerLabel.Text = String.Format( "Rest {0} seconds", restCounter );
 
                 if( restCounter == 0 )
-                {
                     LoadNextExercise();
-                }
             }
             else
             {
@@ -117,19 +158,10 @@ namespace ClimbingRecords
 
                 if( hangCounter == 0 )
                 {
-                    rest = true;
-                    trainingInfoLabel.Text = "";
+                    SwitchToRest();
 
-                    if( exerciseIndex == exercisesGrid.RowCount )
-                    {
-                        LeftHandComboSelectedchanged( 18 );
-                        RightHandComboSelectedchanged( 18 );
-                    }
-                    else
-                    {
-                        ExercisesGridHandComboChanged( exerciseIndex, 0, false );
-                        ExercisesGridHandComboChanged( exerciseIndex, 1, true );
-                    }
+                    if( !CheckFinished() && restCounter == 0 )
+                        LoadNextExercise();
                 }
             }
         }
@@ -158,13 +190,28 @@ namespace ClimbingRecords
 
         private void trainingCancelButton_Click( object sender, EventArgs e )
         {
+            CloseTraining();
+        }
+
+        private void CloseTraining()
+        {
             recordsGroupBox.Visible = true;
             trainingGroupBox.Visible = false;
             mainTitle.Text = "Hangboard Records";
+            exerciseIndex = 0;
+            hangCounter = restCounter = 0;
+            trainingSkipButton.Enabled = true;
+            Stop();
         }
 
         private void trainingPauseButton_Click( object sender, EventArgs e )
         {
+            if( exerciseIndex == exercisesGrid.RowCount )
+            {
+                CloseTraining();
+                return;
+            }
+
             if( !active )
             {
                 Start();
@@ -186,11 +233,6 @@ namespace ClimbingRecords
             editRoutineButton.Enabled = trainingCombo.SelectedValue != null;
         }
 
-        private void deleteExerciseButton_Click( object sender, EventArgs e )
-        {
-            exercisesGrid.Rows.Remove( exercisesGrid.CurrentRow );
-        }
-
         private void trainingGroupBox_Paint( object sender, PaintEventArgs e )
         {
             DrawBorder( e, trainingLeftHandHold, 2, Color.Yellow );
@@ -199,11 +241,14 @@ namespace ClimbingRecords
             DrawBorder( e, trainingNextLeftHandHold, 2, Color.Yellow );
             DrawBorder( e, trainingNextRightHandHold, 2, Color.LimeGreen );
 
-            // Draw rectangle around current or next holds base on current stage
-            var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
-            var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, 150 );
-            rect.Inflate( 2, 2 );
-            ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
+            if( exerciseIndex < exercisesGrid.RowCount )
+            {
+                // Draw rectangle around current or next holds base on current stage
+                var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
+                var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, 150 );
+                rect.Inflate( 2, 2 );
+                ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
+            }
         }
     }
 }

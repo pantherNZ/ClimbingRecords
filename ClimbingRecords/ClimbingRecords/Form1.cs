@@ -603,7 +603,7 @@ namespace ClimbingRecords
 
         private void DrawBorder( PaintEventArgs e, Control control, int borderWidth, Color colour )
         {
-            var rect = new Rectangle( control.Location.X, control.Location.Y, control.ClientSize.Width, control.ClientSize.Height );
+            var rect = new Rectangle( control.Location.X, control.Location.Y, control.Width, control.Height );
             rect.Inflate( borderWidth, borderWidth );
             ControlPaint.DrawBorder( e.Graphics, rect, colour, ButtonBorderStyle.Solid );
         }
@@ -660,18 +660,6 @@ namespace ClimbingRecords
             emptyRoutine.exercises = new List<Routines.GridExercise>();
             emptyRoutine.exercises.Add( new Routines.GridExercise() );
             LoadRoutine( emptyRoutine );
-        }
-
-        private void backButton_Click( object sender, EventArgs e )
-        {
-            mainTitle.Text = "Hangboard Records";
-            routineNameErrorLabel.Visible = false;
-            recordsGroupBox.Visible = true;
-            routinesGroupBox.Visible = false;
-            editRowIndex = -1;
-
-            if( trainingMode )
-                SetTrainingMode( false );
         }
 
         private void ValidateCreateButton( object sender, EventArgs e )
@@ -780,6 +768,11 @@ namespace ClimbingRecords
             AddToExercisesTable( exercise );
         }
 
+        private void deleteExerciseButton_Click( object sender, EventArgs e )
+        {
+            exercisesGrid.Rows.Remove( exercisesGrid.CurrentRow );
+        }
+
         private void editRoutineButton_Click( object sender, EventArgs e )
         {
             saveRoutineButton.Enabled = true;
@@ -840,6 +833,18 @@ namespace ClimbingRecords
                 ExercisesGridHandComboChanged( exercisesGrid.CurrentRow.Index, 0, false );
                 ExercisesGridHandComboChanged( exercisesGrid.CurrentRow.Index, 1, true );
             }
+        }
+
+        private void backButton_Click( object sender, EventArgs e )
+        {
+            mainTitle.Text = "Hangboard Records";
+            routineNameErrorLabel.Visible = false;
+            recordsGroupBox.Visible = true;
+            routinesGroupBox.Visible = false;
+            editRowIndex = -1;
+
+            if( trainingMode )
+                SetTrainingMode( false );
         }
     }
 }
