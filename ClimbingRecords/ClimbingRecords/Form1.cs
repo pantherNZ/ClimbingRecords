@@ -653,6 +653,7 @@ namespace ClimbingRecords
             createRoutineButton.Text = "Begin";
             exercisesGrid.ReadOnly = training;
             enableSoundsCheckbox.Visible = training;
+            enableAbuseCheckbox.Visible = training;
             trainingMode = training;
         }
 
@@ -681,7 +682,7 @@ namespace ClimbingRecords
             {
                 trainingGroupBox.Visible = true;
                 routinesGroupBox.Visible = false;
-                LoadNextExercise();
+                LoadNextExercise( true );
             }
             else
             {
@@ -847,6 +848,11 @@ namespace ClimbingRecords
         {
            // hangboardImage.Location = new Point( Convert.ToInt32( ( this.Width - hangboardImage.Width ) / 2.0f ), hangboardImage.Location.Y );
           // UpdateHighlightPositions();
+        }
+
+        private void HangboardForm_FormClosing( object sender, FormClosingEventArgs e )
+        {
+            synthesizer.SpeakAsyncCancelAll();
         }
 
         private void backButton_Click( object sender, EventArgs e )

@@ -126,6 +126,7 @@
             this.trainingRightHandHold = new System.Windows.Forms.TextBox();
             this.trainingLeftHandHold = new System.Windows.Forms.TextBox();
             this.trainingCancelButton = new System.Windows.Forms.Button();
+            this.enableAbuseCheckbox = new System.Windows.Forms.CheckBox();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
@@ -476,6 +477,7 @@
             // 
             // routinesGroupBox
             // 
+            this.routinesGroupBox.Controls.Add(this.enableAbuseCheckbox);
             this.routinesGroupBox.Controls.Add(this.enableSoundsCheckbox);
             this.routinesGroupBox.Controls.Add(this.routineNameErrorLabel);
             this.routinesGroupBox.Controls.Add(this.saveRoutineButton);
@@ -1401,6 +1403,20 @@
             this.trainingCancelButton.UseVisualStyleBackColor = true;
             this.trainingCancelButton.Click += new System.EventHandler(this.trainingCancelButton_Click);
             // 
+            // enableAbuseCheckbox
+            // 
+            this.enableAbuseCheckbox.AutoSize = true;
+            this.enableAbuseCheckbox.Checked = true;
+            this.enableAbuseCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.enableAbuseCheckbox.ForeColor = System.Drawing.Color.White;
+            this.enableAbuseCheckbox.Location = new System.Drawing.Point(840, 52);
+            this.enableAbuseCheckbox.Name = "enableAbuseCheckbox";
+            this.enableAbuseCheckbox.Size = new System.Drawing.Size(92, 17);
+            this.enableAbuseCheckbox.TabIndex = 43;
+            this.enableAbuseCheckbox.Text = "Enable Abuse";
+            this.enableAbuseCheckbox.UseVisualStyleBackColor = true;
+            this.enableAbuseCheckbox.Visible = false;
+            // 
             // HangboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1447,6 +1463,7 @@
             this.MinimumSize = new System.Drawing.Size(1070, 873);
             this.Name = "HangboardForm";
             this.Text = "Hangboard Records";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HangboardForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.HangboardForm_Resize);
             this.recordsGroupBox.ResumeLayout(false);
@@ -1595,6 +1612,7 @@
         private System.Windows.Forms.Button trainingSkipButton;
         private System.Windows.Forms.Button trainingPauseButton;
         private System.Windows.Forms.CheckBox enableSoundsCheckbox;
+        private System.Windows.Forms.CheckBox enableAbuseCheckbox;
     }
 }
 

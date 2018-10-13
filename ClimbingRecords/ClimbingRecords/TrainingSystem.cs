@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Speech.Synthesis;
 
 namespace ClimbingRecords
 {
@@ -35,6 +36,26 @@ namespace ClimbingRecords
         }
 
         private System.Media.SoundPlayer beepPlayer = new System.Media.SoundPlayer( "beep.wav" );
+        private SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        private Random rng = new Random();
+        private bool abusePlayed = false;
+
+        private String[] abuses = new String[]
+        {
+            "Keep going you bitch",
+            "Try harder dickhead",
+            "Put some effort in useless prick",
+            "Fight the burn you wimp",
+            "Stop being a bitch",
+            "You suck",
+            "Garbage effort so far",
+            "If you don't finish this, I will murder you",
+            "One more you pussy",
+            "Failing is for shit heads",
+            "Lose some weight you fat fuck",
+            "Stop complaining idiot",
+            "Quit wringing you little bitch",
+        };
 
         private void Start()
         {
@@ -64,9 +85,9 @@ namespace ClimbingRecords
             return !updateTimer.Enabled;
         }
 
-        private void LoadNextExercise()
+        private void LoadNextExercise( bool ignoreSwitch )
         {
-            if( !rest )
+            if( !rest && !ignoreSwitch )
             {
                 SwitchToRest();
 
@@ -74,8 +95,10 @@ namespace ClimbingRecords
                     return;
             }
 
+            synthesizer.SpeakAsyncCancelAll();
             var cells = exercisesGrid.Rows[exerciseIndex].Cells;
             rest = false;
+            abusePlayed = false;
 
             // Current holds
             trainingLeftHandHold.Text = cells[0].Value.ToString();
@@ -108,7 +131,7 @@ namespace ClimbingRecords
             trainingExerciseCountLabel.Text = String.Format( "Exercise {0} / {1}", exerciseIndex, exercisesGrid.RowCount );
 
             if( hangCounter == 0 )
-                LoadNextExercise();
+                LoadNextExercise( false );
         }
 
         private void SwitchToRest()
@@ -125,6 +148,15 @@ namespace ClimbingRecords
             {
                 ExercisesGridHandComboChanged( exerciseIndex, 0, false );
                 ExercisesGridHandComboChanged( exerciseIndex, 1, true );
+
+                if( restCounter > 0 )
+                {
+                    synthesizer.Volume = 100;  // 0...100
+                    synthesizer.Rate = -2;     // -10...10
+                    var outputText = String.Format( "Left hand hold on number {0}. Right hand hold on number {1}.",
+                        exercisesGrid.Rows[exerciseIndex].Cells[0].Value.ToString(), exercisesGrid.Rows[exerciseIndex].Cells[1].Value.ToString() );
+                    synthesizer.SpeakAsync( outputText );
+                }
             }
         }
 
@@ -153,7 +185,7 @@ namespace ClimbingRecords
 
                 if( restCounter <= 0 )
                 {
-                    LoadNextExercise();
+                    LoadNextExercise( false );
                 }
                 else if( restCounter <= 3 && enableSoundsCheckbox.Checked )
                     beepPlayer.Play();
@@ -168,10 +200,19 @@ namespace ClimbingRecords
                     SwitchToRest();
 
                     if( !CheckFinished() && restCounter <= 0 )
-                        LoadNextExercise();
+                        LoadNextExercise( false );
                 }
-                else if( hangCounter <= 3 && enableSoundsCheckbox.Checked )
-                    beepPlayer.Play();
+                else 
+                {
+                    if( enableSoundsCheckbox.Checked && hangCounter <= 3 )
+                        beepPlayer.Play();
+
+                    if( enableAbuseCheckbox.Checked && !abusePlayed && rng.Next( 1, 30 ) == 1 && hangCounter >= 6 )
+                    {
+                        abusePlayed = true;
+                        synthesizer.SpeakAsync( abuses[rng.Next( 0, abuses.Length - 1 )].ToUpper() );
+                    }
+                }
             }
         }
 
@@ -211,6 +252,7 @@ namespace ClimbingRecords
             hangCounter = restCounter = 0;
             trainingSkipButton.Enabled = true;
             Stop();
+            synthesizer.SpeakAsyncCancelAll();
         }
 
         private void trainingPauseButton_Click( object sender, EventArgs e )
@@ -234,7 +276,7 @@ namespace ClimbingRecords
 
         private void trainingSkipButton_Click( object sender, EventArgs e )
         {
-            LoadNextExercise();
+            LoadNextExercise( false );
         }
 
         private void trainingCombo_SelectedValueChanged( object sender, EventArgs e )
