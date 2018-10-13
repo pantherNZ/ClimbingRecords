@@ -54,6 +54,7 @@
             this.showHoldNumbersCheckBox = new System.Windows.Forms.CheckBox();
             this.mainTitle = new System.Windows.Forms.Label();
             this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.enableSoundsCheckbox = new System.Windows.Forms.CheckBox();
             this.routineNameErrorLabel = new System.Windows.Forms.Label();
             this.saveRoutineButton = new System.Windows.Forms.Button();
             this.addExerciseButton = new System.Windows.Forms.Button();
@@ -475,6 +476,7 @@
             // 
             // routinesGroupBox
             // 
+            this.routinesGroupBox.Controls.Add(this.enableSoundsCheckbox);
             this.routinesGroupBox.Controls.Add(this.routineNameErrorLabel);
             this.routinesGroupBox.Controls.Add(this.saveRoutineButton);
             this.routinesGroupBox.Controls.Add(this.addExerciseButton);
@@ -497,6 +499,20 @@
             this.routinesGroupBox.TabIndex = 26;
             this.routinesGroupBox.TabStop = false;
             this.routinesGroupBox.Visible = false;
+            // 
+            // enableSoundsCheckbox
+            // 
+            this.enableSoundsCheckbox.AutoSize = true;
+            this.enableSoundsCheckbox.Checked = true;
+            this.enableSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.enableSoundsCheckbox.ForeColor = System.Drawing.Color.White;
+            this.enableSoundsCheckbox.Location = new System.Drawing.Point(728, 51);
+            this.enableSoundsCheckbox.Name = "enableSoundsCheckbox";
+            this.enableSoundsCheckbox.Size = new System.Drawing.Size(98, 17);
+            this.enableSoundsCheckbox.TabIndex = 42;
+            this.enableSoundsCheckbox.Text = "Enable Sounds";
+            this.enableSoundsCheckbox.UseVisualStyleBackColor = true;
+            this.enableSoundsCheckbox.Visible = false;
             // 
             // routineNameErrorLabel
             // 
@@ -1578,6 +1594,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button trainingSkipButton;
         private System.Windows.Forms.Button trainingPauseButton;
+        private System.Windows.Forms.CheckBox enableSoundsCheckbox;
     }
 }
 

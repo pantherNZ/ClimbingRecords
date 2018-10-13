@@ -34,6 +34,8 @@ namespace ClimbingRecords
             }
         }
 
+        private System.Media.SoundPlayer beepPlayer = new System.Media.SoundPlayer( "beep.wav" );
+
         private void Start()
         {
             updateTimer = new Timer();
@@ -111,6 +113,7 @@ namespace ClimbingRecords
 
         private void SwitchToRest()
         {
+            trainingHangTimerLabel.Text = "Hang";
             rest = true;
 
             if( exerciseIndex == exercisesGrid.RowCount )
@@ -148,21 +151,27 @@ namespace ClimbingRecords
                 restCounter--;
                 trainingRestTimerLabel.Text = String.Format( "Rest {0} seconds", restCounter );
 
-                if( restCounter == 0 )
+                if( restCounter <= 0 )
+                {
                     LoadNextExercise();
+                }
+                else if( restCounter <= 3 && enableSoundsCheckbox.Checked )
+                    beepPlayer.Play();
             }
             else
             {
                 hangCounter--;
                 trainingHangTimerLabel.Text = String.Format( "Hang {0} seconds", hangCounter );
 
-                if( hangCounter == 0 )
+                if( hangCounter <= 0 )
                 {
                     SwitchToRest();
 
-                    if( !CheckFinished() && restCounter == 0 )
+                    if( !CheckFinished() && restCounter <= 0 )
                         LoadNextExercise();
                 }
+                else if( hangCounter <= 3 && enableSoundsCheckbox.Checked )
+                    beepPlayer.Play();
             }
         }
 

@@ -652,6 +652,7 @@ namespace ClimbingRecords
             saveRoutineButton.Visible = !training;
             createRoutineButton.Text = "Begin";
             exercisesGrid.ReadOnly = training;
+            enableSoundsCheckbox.Visible = training;
             trainingMode = training;
         }
 
