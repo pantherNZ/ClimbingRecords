@@ -90,6 +90,12 @@ namespace ClimbingRecords
                 recordsGrid.CurrentRow.Selected = false;
 
             editBtn.Enabled = false;
+
+            //foreach( var v in synthesizer.GetInstalledVoices().Select( v => v.VoiceInfo ) )
+            //{
+            //    Console.WriteLine( "Name:{0}, Gender:{1}, Age:{2}",
+            //      v.Description, v.Gender, v.Age );
+            //}
         }
 
         private void InitialiseHighlightsArray()
@@ -127,6 +133,9 @@ namespace ClimbingRecords
                 routines.Add( routine.name );
 
             trainingCombo.DataSource = routines;
+
+            if( routines.Count == 0 )
+                startTrainingBtn.Enabled = false;
         }
 
         private void AddToRecordsTable( Records.GridRecord record )
@@ -140,7 +149,6 @@ namespace ClimbingRecords
             cells[4].Value = record.record;
             cells[5].Value = record.units;
             cells[6].Value = record.description;
-
             recordsGrid.ClearSelection();
         }
 
@@ -702,6 +710,7 @@ namespace ClimbingRecords
         private void saveRoutineButton_Click( object sender, EventArgs e )
         {
             SaveRoutine();
+            startTrainingBtn.Enabled = true;
         }
 
         private void SaveRoutine()

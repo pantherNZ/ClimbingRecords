@@ -103,5 +103,8 @@
   <ItemGroup>
     <None Include="BoardWithNumbers.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="beep.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

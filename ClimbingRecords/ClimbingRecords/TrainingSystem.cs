@@ -35,7 +35,7 @@ namespace ClimbingRecords
             }
         }
 
-        private System.Media.SoundPlayer beepPlayer = new System.Media.SoundPlayer( "beep.wav" );
+        private System.Media.SoundPlayer beepPlayer = new System.Media.SoundPlayer( ClimbingRecords.Properties.Resources.beep );
         private SpeechSynthesizer synthesizer = new SpeechSynthesizer();
         private Random rng = new Random();
         private bool abusePlayed = false;
@@ -108,11 +108,13 @@ namespace ClimbingRecords
             if( exerciseIndex + 1 == exercisesGrid.RowCount )
             {
                 trainingNextLeftHandHold.Text = trainingNextRightHandHold.Text = "None";
+                trainingNextInfoLabel.Text = "";
             }
             else
             {
                 trainingNextLeftHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[0].Value.ToString();
                 trainingNextRightHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[1].Value.ToString();
+                trainingNextInfoLabel.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[4].Value.ToString();
             }
 
             // Durations
@@ -123,7 +125,7 @@ namespace ClimbingRecords
 
             // Description
             var description = cells[4].Value.ToString();
-            trainingInfoLabel.Text = ( description.Length > 0 ? "Info:  " + description : "" );
+            trainingInfoLabel.Text = ( description.Length > 0 ? description : "" );
 
             ++exerciseIndex;
 
@@ -296,7 +298,8 @@ namespace ClimbingRecords
             {
                 // Draw rectangle around current or next holds base on current stage
                 var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
-                var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, 150 );
+                var height = rest && trainingNextInfoLabel.Text != "" ? 155 + trainingNextInfoLabel.Height : 150;
+                var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, height );
                 rect.Inflate( 2, 2 );
                 ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
             }
