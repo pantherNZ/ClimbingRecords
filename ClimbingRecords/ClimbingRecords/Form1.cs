@@ -322,6 +322,13 @@ namespace ClimbingRecords
 
         private void hangboardImage_SizeChanged( object sender, EventArgs e )
         {
+            UpdateHighlightPositions();
+        }
+
+        private void UpdateHighlightPositions()
+        {
+            //hangboardImage.Location = new Point( Convert.ToInt32( ( this.Width - hangboardImage.Width ) / 2.0f ), hangboardImage.Location.Y );
+
             var hangboardTrueSize = GetHangboardTrueSize();
             var hangboardCentre = new Point( hangboardImage.Left + hangboardImage.Width / 2, hangboardImage.Top + hangboardImage.Height / 2 );
 
@@ -794,10 +801,10 @@ namespace ClimbingRecords
 
             // More square (lower aspect ratio than the image) means we are limiting by width
             if( parentAspectRatio < hangboardOriginalRatio )
-                hangboardTrueSize.Height = Convert.ToInt32( hangboardTrueSize.Width / hangboardOriginalRatio );
+                hangboardTrueSize.Height = Math.Min( Convert.ToInt32( hangboardTrueSize.Width / hangboardOriginalRatio ), hangboardImage.MaximumSize.Height );
             // Else we are limiting by height (higher aspect ratio than the image)
             else
-                hangboardTrueSize.Width = Convert.ToInt32( hangboardTrueSize.Height * hangboardOriginalRatio );
+                hangboardTrueSize.Width = Math.Min( Convert.ToInt32( hangboardTrueSize.Height * hangboardOriginalRatio ), hangboardImage.MaximumSize.Width );
 
             return hangboardTrueSize;
         }
@@ -833,6 +840,12 @@ namespace ClimbingRecords
                 ExercisesGridHandComboChanged( exercisesGrid.CurrentRow.Index, 0, false );
                 ExercisesGridHandComboChanged( exercisesGrid.CurrentRow.Index, 1, true );
             }
+        }
+
+        private void HangboardForm_Resize( object sender, EventArgs e )
+        {
+           // hangboardImage.Location = new Point( Convert.ToInt32( ( this.Width - hangboardImage.Width ) / 2.0f ), hangboardImage.Location.Y );
+          // UpdateHighlightPositions();
         }
 
         private void backButton_Click( object sender, EventArgs e )

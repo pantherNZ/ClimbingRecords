@@ -213,7 +213,7 @@
             // searchTerm_Entry
             // 
             this.searchTerm_Entry.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.searchTerm_Entry.Location = new System.Drawing.Point(584, 20);
+            this.searchTerm_Entry.Location = new System.Drawing.Point(632, 20);
             this.searchTerm_Entry.Name = "searchTerm_Entry";
             this.searchTerm_Entry.Size = new System.Drawing.Size(310, 20);
             this.searchTerm_Entry.TabIndex = 7;
@@ -225,7 +225,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(501, 23);
+            this.label3.Location = new System.Drawing.Point(549, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 14);
             this.label3.TabIndex = 8;
@@ -298,7 +298,7 @@
             this.editBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.editBtn.Enabled = false;
             this.editBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editBtn.Location = new System.Drawing.Point(611, 46);
+            this.editBtn.Location = new System.Drawing.Point(659, 46);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(90, 23);
             this.editBtn.TabIndex = 13;
@@ -312,7 +312,7 @@
             this.cancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cancelBtn.Enabled = false;
             this.cancelBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Location = new System.Drawing.Point(707, 46);
+            this.cancelBtn.Location = new System.Drawing.Point(755, 46);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(90, 23);
             this.cancelBtn.TabIndex = 12;
@@ -411,7 +411,7 @@
             // 
             this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(515, 46);
+            this.addBtn.Location = new System.Drawing.Point(563, 46);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(90, 23);
             this.addBtn.TabIndex = 10;
@@ -437,7 +437,7 @@
             this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.saveBtn.Enabled = false;
             this.saveBtn.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(804, 46);
+            this.saveBtn.Location = new System.Drawing.Point(852, 46);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(90, 23);
             this.saveBtn.TabIndex = 9;
@@ -1196,7 +1196,7 @@
             // 
             // trainingPauseButton
             // 
-            this.trainingPauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingPauseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.trainingPauseButton.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trainingPauseButton.Location = new System.Drawing.Point(577, 295);
             this.trainingPauseButton.Name = "trainingPauseButton";
@@ -1256,7 +1256,7 @@
             // 
             // label16
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
@@ -1268,7 +1268,7 @@
             // 
             // label17
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
@@ -1280,7 +1280,7 @@
             // 
             // trainingNextLeftHandHold
             // 
-            this.trainingNextLeftHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trainingNextLeftHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trainingNextLeftHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.trainingNextLeftHandHold.Location = new System.Drawing.Point(1164, 112);
             this.trainingNextLeftHandHold.Name = "trainingNextLeftHandHold";
@@ -1290,7 +1290,7 @@
             // 
             // trainingNextRightHandHold
             // 
-            this.trainingNextRightHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trainingNextRightHandHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trainingNextRightHandHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.trainingNextRightHandHold.Location = new System.Drawing.Point(1164, 149);
             this.trainingNextRightHandHold.Name = "trainingNextRightHandHold";
@@ -1300,7 +1300,7 @@
             // 
             // trainingNextLabel
             // 
-            this.trainingNextLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trainingNextLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trainingNextLabel.AutoSize = true;
             this.trainingNextLabel.Font = new System.Drawing.Font("Georgia", 28F);
             this.trainingNextLabel.ForeColor = System.Drawing.Color.White;
@@ -1312,7 +1312,7 @@
             // 
             // trainingExerciseCountLabel
             // 
-            this.trainingExerciseCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainingExerciseCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trainingExerciseCountLabel.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trainingExerciseCountLabel.ForeColor = System.Drawing.Color.White;
             this.trainingExerciseCountLabel.Location = new System.Drawing.Point(56, 288);
@@ -1428,9 +1428,11 @@
             this.Controls.Add(this.routinesGroupBox);
             this.Controls.Add(this.hangboardImage);
             this.Controls.Add(this.recordsGroupBox);
+            this.MinimumSize = new System.Drawing.Size(1070, 873);
             this.Name = "HangboardForm";
             this.Text = "Hangboard Records";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.HangboardForm_Resize);
             this.recordsGroupBox.ResumeLayout(false);
             this.recordsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).EndInit();
