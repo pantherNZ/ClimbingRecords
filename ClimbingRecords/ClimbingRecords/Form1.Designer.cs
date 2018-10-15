@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftHand_Combo = new System.Windows.Forms.ComboBox();
             this.rightHand_Combo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             this.Rest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.routinesDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainingGroupBox = new System.Windows.Forms.GroupBox();
+            this.trainingNextInfoLabel = new System.Windows.Forms.Label();
             this.trainingSkipButton = new System.Windows.Forms.Button();
             this.trainingPauseButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -129,7 +130,6 @@
             this.hangboardImage17 = new System.Windows.Forms.PictureBox();
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
-            this.trainingNextInfoLabel = new System.Windows.Forms.Label();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
@@ -344,14 +344,14 @@
             this.gridRecord,
             this.gridUnits,
             this.gridDescription});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.recordsGrid.Location = new System.Drawing.Point(12, 81);
             this.recordsGrid.Name = "recordsGrid";
             this.recordsGrid.ReadOnly = true;
@@ -706,14 +706,14 @@
             this.routinesDuration,
             this.Rest,
             this.routinesDescription});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.exercisesGrid.Location = new System.Drawing.Point(12, 81);
             this.exercisesGrid.Name = "exercisesGrid";
             this.exercisesGrid.RowHeadersVisible = false;
@@ -774,13 +774,29 @@
             this.trainingGroupBox.Controls.Add(this.trainingRightHandHold);
             this.trainingGroupBox.Controls.Add(this.trainingLeftHandHold);
             this.trainingGroupBox.Controls.Add(this.trainingCancelButton);
-            this.trainingGroupBox.Location = new System.Drawing.Point(0, 309);
+            this.trainingGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.trainingGroupBox.Location = new System.Drawing.Point(0, -309);
             this.trainingGroupBox.Name = "trainingGroupBox";
             this.trainingGroupBox.Size = new System.Drawing.Size(1444, 381);
             this.trainingGroupBox.TabIndex = 40;
             this.trainingGroupBox.TabStop = false;
             this.trainingGroupBox.Visible = false;
             this.trainingGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.trainingGroupBox_Paint);
+            // 
+            // trainingNextInfoLabel
+            // 
+            this.trainingNextInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.trainingNextInfoLabel.AutoSize = true;
+            this.trainingNextInfoLabel.Font = new System.Drawing.Font("Georgia", 14F);
+            this.trainingNextInfoLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingNextInfoLabel.Location = new System.Drawing.Point(1036, 185);
+            this.trainingNextInfoLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.trainingNextInfoLabel.MaximumSize = new System.Drawing.Size(360, 0);
+            this.trainingNextInfoLabel.MinimumSize = new System.Drawing.Size(360, 0);
+            this.trainingNextInfoLabel.Name = "trainingNextInfoLabel";
+            this.trainingNextInfoLabel.Size = new System.Drawing.Size(360, 46);
+            this.trainingNextInfoLabel.TabIndex = 54;
+            this.trainingNextInfoLabel.Text = "Info:  This is information for the next exercise";
             // 
             // trainingSkipButton
             // 
@@ -1442,21 +1458,6 @@
             this.hangboardImage.TabStop = false;
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
             this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
-            // 
-            // trainingNextInfoLabel
-            // 
-            this.trainingNextInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.trainingNextInfoLabel.AutoSize = true;
-            this.trainingNextInfoLabel.Font = new System.Drawing.Font("Georgia", 14F);
-            this.trainingNextInfoLabel.ForeColor = System.Drawing.Color.White;
-            this.trainingNextInfoLabel.Location = new System.Drawing.Point(1036, 185);
-            this.trainingNextInfoLabel.Margin = new System.Windows.Forms.Padding(3);
-            this.trainingNextInfoLabel.MaximumSize = new System.Drawing.Size(360, 0);
-            this.trainingNextInfoLabel.MinimumSize = new System.Drawing.Size(360, 0);
-            this.trainingNextInfoLabel.Name = "trainingNextInfoLabel";
-            this.trainingNextInfoLabel.Size = new System.Drawing.Size(360, 46);
-            this.trainingNextInfoLabel.TabIndex = 54;
-            this.trainingNextInfoLabel.Text = "Info:  This is information for the next exercise";
             // 
             // HangboardForm
             // 
