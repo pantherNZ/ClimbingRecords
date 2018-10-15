@@ -2,7 +2,7 @@
 <Routines>
   <Routine>
     <Name>Beginner Training</Name>
-    <Difficulty>3</Difficulty>
+    <Difficulty>4</Difficulty>
     <Description>10 minute routine</Description>
     <Exercises>
       <Exercise>
@@ -86,15 +86,8 @@
         <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
         <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
         <Duration>10</Duration>
-        <Rest>0</Rest>
-        <Description>1 one pull up</Description>
-      </Exercise>
-      <Exercise>
-        <LeftHandHold>9: Deep Flat Pocket (3 Finger)</LeftHandHold>
-        <RightHandHold>9: Deep Flat Pocket (3 Finger)</RightHandHold>
-        <Duration>10</Duration>
         <Rest>40</Rest>
-        <Description></Description>
+        <Description>10 second hang + 1 one pull up</Description>
       </Exercise>
       <Exercise>
         <LeftHandHold>1: Top Left Jug</LeftHandHold>

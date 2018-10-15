@@ -64,7 +64,7 @@
     <Description></Description>
   </Record>
   <Record>
-    <Category>Hang</Category>
+    <Category>Pull-ups</Category>
     <LeftHandHold>1: Top Left Jug</LeftHandHold>
     <RightHandHold>1: Top Right Jug</RightHandHold>
     <Person>Olly</Person>
@@ -110,6 +110,15 @@
   </Record>
   <Record>
     <Category>Hang</Category>
+    <LeftHandHold>2: Outside Sloper (Square)</LeftHandHold>
+    <RightHandHold>2: Outside Sloper (Square)</RightHandHold>
+    <Person>Becky</Person>
+    <Record>2:01</Record>
+    <Units>minutes</Units>
+    <Description>(female)</Description>
+  </Record>
+  <Record>
+    <Category>Pull-ups</Category>
     <LeftHandHold>12: Deep Flat Pocket (2 Finger)</LeftHandHold>
     <RightHandHold>12: Deep Flat Pocket (2 Finger)</RightHandHold>
     <Person>Alex</Person>
