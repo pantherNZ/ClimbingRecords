@@ -15,6 +15,7 @@ namespace ClimbingRecords
         private int exerciseIndex = 0;
         private int hangCounter = 0;
         private int restCounter = 0;
+        private int startCounter = 0;
         private bool active = false;
 
         private bool _rest = false;
@@ -138,7 +139,7 @@ namespace ClimbingRecords
 
         private void SwitchToRest()
         {
-            trainingHangTimerLabel.Text = "Hang";
+            trainingHangTimerLabel.Text = "Hang Complete";
             rest = true;
 
             if( exerciseIndex == exercisesGrid.RowCount )
@@ -154,10 +155,11 @@ namespace ClimbingRecords
                 if( restCounter > 0 )
                 {
                     synthesizer.Volume = 100;  // 0...100
-                    synthesizer.Rate = -2;     // -10...10
-                    var outputText = String.Format( "Left hand hold on number {0}. Right hand hold on number {1}.",
-                        exercisesGrid.Rows[exerciseIndex].Cells[0].Value.ToString(), exercisesGrid.Rows[exerciseIndex].Cells[1].Value.ToString() );
-                    synthesizer.SpeakAsync( outputText );
+                    synthesizer.Rate = -1;     // -10...10
+                    var leftHand = exercisesGrid.Rows[exerciseIndex].Cells[0].Value.ToString();
+                    var rightHand = exercisesGrid.Rows[exerciseIndex].Cells[1].Value.ToString();
+                    var formatText = ( leftHand == rightHand ? "One hand on each number {0}" : "Left hand hold on number {0}. Right hand hold on number {1}." );
+                    synthesizer.SpeakAsync( String.Format( formatText, leftHand , rightHand ) );
                 }
             }
         }
@@ -180,6 +182,19 @@ namespace ClimbingRecords
 
         private void Tick( object sender, EventArgs e )
         {
+            if( startCounter != 0 )
+            {
+                startCounter--;
+                startingLabel.Text = String.Format( "Starting in {0}..", startCounter );
+
+                if( startCounter == 0 )
+                    startingLabel.Visible = false;
+                else if( enableSoundsCheckbox.Checked && startCounter <= 3 )
+                    beepPlayer.Play();
+
+                return;
+            }
+
             if( rest )
             {
                 restCounter--;
@@ -255,6 +270,11 @@ namespace ClimbingRecords
             trainingSkipButton.Enabled = true;
             Stop();
             synthesizer.SpeakAsyncCancelAll();
+            SetTrainingMode( false );
+            startingLabel.Visible = false;
+
+            LeftHandComboSelectedchanged( 18 );
+            RightHandComboSelectedchanged( 18 );
         }
 
         private void trainingPauseButton_Click( object sender, EventArgs e )
@@ -268,6 +288,9 @@ namespace ClimbingRecords
             if( !active )
             {
                 Start();
+                startCounter = 5;
+                startingLabel.Visible = true;
+                startingLabel.Text = "Starting in 5..";
                 trainingPauseButton.Text = "Pause";
                 return;
             }
@@ -296,6 +319,8 @@ namespace ClimbingRecords
 
             if( exerciseIndex < exercisesGrid.RowCount )
             {
+                trainingNextInfoLabel.Visible = trainingNextInfoLabel.Text != "";
+
                 // Draw rectangle around current or next holds base on current stage
                 var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
                 var height = rest && trainingNextInfoLabel.Text != "" ? 155 + trainingNextInfoLabel.Height : 150;

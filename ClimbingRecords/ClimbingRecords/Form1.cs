@@ -425,8 +425,6 @@ namespace ClimbingRecords
                 recordsData[editRowIndex] = newRecord;
 
             Records.SaveRecords( recordsData );
-
-            filteredData = new List<Records.GridRecord>( recordsData );
             CancelEditingMode();
         }
 
