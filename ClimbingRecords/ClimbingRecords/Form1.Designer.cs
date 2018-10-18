@@ -480,7 +480,7 @@
             this.mainTitle.AutoSize = true;
             this.mainTitle.Font = new System.Drawing.Font("Georgia", 28F);
             this.mainTitle.ForeColor = System.Drawing.Color.White;
-            this.mainTitle.Location = new System.Drawing.Point(13, 35);
+            this.mainTitle.Location = new System.Drawing.Point( 535, 387 );
             this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
             this.mainTitle.Name = "mainTitle";
             this.mainTitle.Size = new System.Drawing.Size(400, 43);
