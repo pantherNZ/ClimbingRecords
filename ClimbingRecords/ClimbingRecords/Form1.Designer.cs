@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftHand_Combo = new System.Windows.Forms.ComboBox();
             this.rightHand_Combo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -345,14 +345,14 @@
             this.gridRecord,
             this.gridUnits,
             this.gridDescription});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.recordsGrid.Location = new System.Drawing.Point(12, 81);
             this.recordsGrid.Name = "recordsGrid";
             this.recordsGrid.ReadOnly = true;
@@ -361,6 +361,7 @@
             this.recordsGrid.Size = new System.Drawing.Size(1420, 286);
             this.recordsGrid.TabIndex = 11;
             this.recordsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordsGrid_CellValueChanged);
+            this.recordsGrid.CurrentCellChanged += new System.EventHandler(this.recordsGrid_CurrentCellChanged);
             this.recordsGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.recordsGrid_CurrentCellDirtyStateChanged);
             this.recordsGrid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.recordsGrid_EditingControlShowing);
             this.recordsGrid.SelectionChanged += new System.EventHandler(this.recordsGrid_SelectionChanged);
@@ -480,7 +481,7 @@
             this.mainTitle.AutoSize = true;
             this.mainTitle.Font = new System.Drawing.Font("Georgia", 28F);
             this.mainTitle.ForeColor = System.Drawing.Color.White;
-            this.mainTitle.Location = new System.Drawing.Point( 535, 387 );
+            this.mainTitle.Location = new System.Drawing.Point(535, 387);
             this.mainTitle.MinimumSize = new System.Drawing.Size(400, 0);
             this.mainTitle.Name = "mainTitle";
             this.mainTitle.Size = new System.Drawing.Size(400, 43);
@@ -707,14 +708,14 @@
             this.routinesDuration,
             this.Rest,
             this.routinesDescription});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.exercisesGrid.Location = new System.Drawing.Point(12, 81);
             this.exercisesGrid.Name = "exercisesGrid";
             this.exercisesGrid.RowHeadersVisible = false;

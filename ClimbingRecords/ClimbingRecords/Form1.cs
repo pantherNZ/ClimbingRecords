@@ -355,6 +355,9 @@ namespace ClimbingRecords
         {
             if( LeftHandComboSelectedchanged( leftHand_Combo.SelectedIndex ) )
                 SetComboSelectedIndex( rightHand_Combo, 18 );
+
+            if( editRowIndex != -1 )
+                recordsGrid.Rows[0].Cells[1].Value = leftHand_Combo.SelectedItem;
         }
 
         private bool LeftHandComboSelectedchanged( int selectedIndex )
@@ -387,6 +390,9 @@ namespace ClimbingRecords
         {
             if( RightHandComboSelectedchanged( rightHand_Combo.SelectedIndex ) )
                 SetComboSelectedIndex( leftHand_Combo, 18 );
+
+            if( editRowIndex != -1 )
+                recordsGrid.Rows[0].Cells[2].Value = rightHand_Combo.SelectedItem;
         }
 
         private bool RightHandComboSelectedchanged( int selectedIndex )
@@ -463,6 +469,11 @@ namespace ClimbingRecords
             SetGridEditMode( true );
             ClearRecordsTable();
             AddToRecordsTable( record );
+
+            SetComboSelectedIndex( leftHand_Combo, leftHand_Combo.Items.IndexOf( record.leftHandHold ) );
+            SetComboSelectedIndex( rightHand_Combo, rightHand_Combo.Items.IndexOf( record.rightHandHold ) );
+            LeftHandComboSelectedchanged( leftHand_Combo.SelectedIndex );
+            RightHandComboSelectedchanged( rightHand_Combo.SelectedIndex );
         }
 
         private void cancelBtn_Click( object sender, EventArgs e )
@@ -500,6 +511,11 @@ namespace ClimbingRecords
                     name.Value.ToString().Length > 0 &&
                     name.Value.ToString() != "0";
             }
+
+            if( e.RowIndex < 0 || e.ColumnIndex == 0 || e.ColumnIndex > 2 || ignoreComboChange )
+                return;
+
+            RecordsGridHandComboChanged( e.RowIndex, e.ColumnIndex, true );
         }
 
         private void recordsGrid_CurrentCellDirtyStateChanged( object sender, EventArgs e )
@@ -818,7 +834,6 @@ namespace ClimbingRecords
             return hangboardTrueSize;
         }
 
-
         private void ExercisesGridHandComboChanged( int rowIndex, int columnIndex, bool canSwap )
         {
             var combo = exercisesGrid.Rows[rowIndex].Cells[columnIndex] as DataGridViewComboBoxCell;
@@ -838,6 +853,25 @@ namespace ClimbingRecords
                 SetComboSelectedIndex( otherCombo, 18 );
 
             exercisesGrid.Invalidate();
+        }
+
+        private void RecordsGridHandComboChanged(  int rowIndex, int columnIndex, bool canSwap )
+        {
+            var combo = recordsGrid.Rows[rowIndex].Cells[columnIndex] as DataGridViewComboBoxCell;
+
+            if( combo.Value == null )
+                return;
+
+            var otherCombo = recordsGrid.Rows[rowIndex].Cells[2 - ( columnIndex - 1 )] as DataGridViewComboBoxCell;
+            bool swap = false;
+
+            if( columnIndex == 1 )
+                swap = LeftHandComboSelectedchanged( combo.Items.IndexOf( combo.Value ) );
+            else if( columnIndex == 2 )
+                swap = RightHandComboSelectedchanged( combo.Items.IndexOf( combo.Value ) );
+
+            if( swap && canSwap )
+                SetComboSelectedIndex( otherCombo, 18 );
         }
 
         private void routinesGrid_CurrentCellChanged( object sender, EventArgs e )
@@ -860,6 +894,15 @@ namespace ClimbingRecords
         private void HangboardForm_FormClosing( object sender, FormClosingEventArgs e )
         {
             synthesizer.SpeakAsyncCancelAll();
+        }
+
+        private void recordsGrid_CurrentCellChanged( object sender, EventArgs e )
+        {
+            if( recordsGrid.CurrentRow != null )
+            {
+                RecordsGridHandComboChanged( recordsGrid.CurrentRow.Index, 1, false );
+                RecordsGridHandComboChanged( recordsGrid.CurrentRow.Index, 2, true );
+            }
         }
 
         private void backButton_Click( object sender, EventArgs e )

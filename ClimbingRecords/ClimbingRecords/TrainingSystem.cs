@@ -48,14 +48,14 @@ namespace ClimbingRecords
             "Put some effort in useless prick",
             "Fight the burn you wimp",
             "Stop being a bitch",
-            "You suck",
+            "You suck, try harder!",
             "Garbage effort so far",
             "If you don't finish this, I will murder you",
             "One more you pussy",
             "Failing is for shit heads",
             "Lose some weight you fat fuck",
             "Stop complaining idiot",
-            "Quit wringing you little bitch",
+            "Quit whinging you little bitch",
         };
 
         private void Start()
