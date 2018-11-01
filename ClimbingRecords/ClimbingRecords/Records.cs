@@ -16,7 +16,7 @@ namespace ClimbingRecords
 
         public class GridRecord
         {
-            public string category = "Hangboard";
+            public string category = "Hang";
             public string leftHandHold = "None";
             public string rightHandHold = "None";
             public string name;
