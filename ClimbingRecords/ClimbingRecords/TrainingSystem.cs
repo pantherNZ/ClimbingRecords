@@ -224,7 +224,7 @@ namespace ClimbingRecords
                     if( enableSoundsCheckbox.Checked && hangCounter <= 3 )
                         beepPlayer.Play();
 
-                    if( enableAbuseCheckbox.Checked && !abusePlayed && rng.Next( 1, 30 ) == 1 && hangCounter >= 6 )
+                    if( enableSoundsCheckbox.Checked && enableAbuseCheckbox.Checked && !abusePlayed && rng.Next( 1, 30 ) == 1 && hangCounter >= 6 )
                     {
                         abusePlayed = true;
                         synthesizer.SpeakAsync( abuses[rng.Next( 0, abuses.Length - 1 )].ToUpper() );

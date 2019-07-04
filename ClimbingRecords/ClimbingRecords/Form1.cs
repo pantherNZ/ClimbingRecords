@@ -356,7 +356,7 @@ namespace ClimbingRecords
             if( LeftHandComboSelectedchanged( leftHand_Combo.SelectedIndex ) )
                 SetComboSelectedIndex( rightHand_Combo, 18 );
 
-            if( editRowIndex != -1 )
+            if( editRowIndex != -1 || addingRow )
                 recordsGrid.Rows[0].Cells[1].Value = leftHand_Combo.SelectedItem;
         }
 
@@ -391,7 +391,7 @@ namespace ClimbingRecords
             if( RightHandComboSelectedchanged( rightHand_Combo.SelectedIndex ) )
                 SetComboSelectedIndex( leftHand_Combo, 18 );
 
-            if( editRowIndex != -1 )
+            if( editRowIndex != -1 || addingRow )
                 recordsGrid.Rows[0].Cells[2].Value = rightHand_Combo.SelectedItem;
         }
 
