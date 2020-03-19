@@ -29,6 +29,7 @@ namespace ClimbingRecords
         bool ignoreComboChange = false;
         bool addingRow = false;
         int editRowIndex = -1;
+        int trainingRowIndex = -1;
         List<Records.GridRecord> recordsData;
         List<Records.GridRecord> filteredData;
         List<Routines.GridRoutine> routinesData;
@@ -325,6 +326,8 @@ namespace ClimbingRecords
                     SetComboSelectedIndex( exercisesGrid.CurrentRow.Cells[0], index );
             }
 
+            
+
             placingRightHand = !placingRightHand;
         }
 
@@ -356,6 +359,7 @@ namespace ClimbingRecords
             if( LeftHandComboSelectedchanged( leftHand_Combo.SelectedIndex ) )
                 SetComboSelectedIndex( rightHand_Combo, 18 );
 
+            // This means its doiung somretfgdsfg
             if( editRowIndex != -1 || addingRow )
                 recordsGrid.Rows[0].Cells[1].Value = leftHand_Combo.SelectedItem;
         }
@@ -655,10 +659,10 @@ namespace ClimbingRecords
             routinesGroupBox.Visible = true;
             CancelEditingMode();
 
-            editRowIndex = trainingCombo.SelectedIndex;
+            var index = trainingCombo.SelectedIndex;
 
             // Load routine into table
-            var routine = routinesData[editRowIndex];
+            var routine = routinesData[index];
             LoadRoutine( routine );
 
             SetTrainingMode( true );
@@ -754,8 +758,8 @@ namespace ClimbingRecords
                 newRoutine.exercises.Add( newExercise );
             }
 
-            if( editRowIndex != -1 )
-                routinesData[editRowIndex] = newRoutine;
+            if( trainingRowIndex != -1 )
+                routinesData[trainingRowIndex] = newRoutine;
             else
                 routinesData.Add( newRoutine );
 
@@ -764,7 +768,7 @@ namespace ClimbingRecords
             mainTitle.Text = "Hangboard Records";
             recordsGroupBox.Visible = true;
             routinesGroupBox.Visible = false;
-            editRowIndex = -1;
+            trainingRowIndex = -1;
 
             var routines = new List<String>();
 
@@ -812,10 +816,10 @@ namespace ClimbingRecords
             recordsGroupBox.Visible = false;
             routinesGroupBox.Visible = true;
             CancelEditingMode();
-            editRowIndex = trainingCombo.SelectedIndex;
+            trainingRowIndex = trainingCombo.SelectedIndex;
 
             // Load routine into table
-            var routine = routinesData[editRowIndex];
+            var routine = routinesData[trainingRowIndex];
             LoadRoutine( routine );
         }
 
@@ -905,12 +909,19 @@ namespace ClimbingRecords
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine( "HELLOO" );
+
+        }
+
         private void backButton_Click( object sender, EventArgs e )
         {
             mainTitle.Text = "Hangboard Records";
             routineNameErrorLabel.Visible = false;
             recordsGroupBox.Visible = true;
             routinesGroupBox.Visible = false;
+            trainingRowIndex = -1;
             editRowIndex = -1;
 
             if( trainingMode )

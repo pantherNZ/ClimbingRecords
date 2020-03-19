@@ -2,8 +2,8 @@
 <Records>
   <Record>
     <Category>Hang</Category>
-    <LeftHandHold>2: Outside Sloper (Square)</LeftHandHold>
-    <RightHandHold>2: Outside Sloper (Square)</RightHandHold>
+    <LeftHandHold>1: Top Left Jug</LeftHandHold>
+    <RightHandHold>1: Top Right Jug</RightHandHold>
     <Person>Becky</Person>
     <Record>2:01</Record>
     <Units>minutes</Units>
@@ -14,7 +14,7 @@
     <LeftHandHold>3: Inside Sloper (Round)</LeftHandHold>
     <RightHandHold>3: Inside Sloper (Round)</RightHandHold>
     <Person>Alex</Person>
-    <Record>38</Record>
+    <Record>50</Record>
     <Units>seconds</Units>
     <Description></Description>
   </Record>
