@@ -189,7 +189,7 @@ namespace ClimbingRecords
 
                 if( startCounter == 0 )
                     startingLabel.Visible = false;
-                else if( enableSoundsCheckbox.Checked && startCounter <= 3 )
+                else if( enableVoiceCheckbox.Checked && startCounter <= 3 )
                     beepPlayer.Play();
 
                 return;
@@ -204,7 +204,7 @@ namespace ClimbingRecords
                 {
                     LoadNextExercise( false );
                 }
-                else if( restCounter <= 3 && enableSoundsCheckbox.Checked )
+                else if( restCounter <= 3 && enableBeepCheckbox.Checked )
                     beepPlayer.Play();
             }
             else
@@ -221,10 +221,10 @@ namespace ClimbingRecords
                 }
                 else 
                 {
-                    if( enableSoundsCheckbox.Checked && hangCounter <= 3 )
+                    if( enableBeepCheckbox.Checked && hangCounter <= 3 )
                         beepPlayer.Play();
 
-                    if( enableSoundsCheckbox.Checked && enableAbuseCheckbox.Checked && !abusePlayed && rng.Next( 1, 30 ) == 1 && hangCounter >= 6 )
+                    if( enableVoiceCheckbox.Checked && enableAbuseCheckbox.Checked && !abusePlayed && rng.Next( 1, 30 ) == 1 && hangCounter >= 6 )
                     {
                         abusePlayed = true;
                         synthesizer.SpeakAsync( abuses[rng.Next( 0, abuses.Length - 1 )].ToUpper() );

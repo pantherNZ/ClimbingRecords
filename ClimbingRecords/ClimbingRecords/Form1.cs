@@ -678,8 +678,9 @@ namespace ClimbingRecords
             saveRoutineButton.Visible = !training;
             createRoutineButton.Text = "Begin";
             exercisesGrid.ReadOnly = training;
-            enableSoundsCheckbox.Visible = training;
+            enableVoiceCheckbox.Visible = training;
             enableAbuseCheckbox.Visible = training;
+            enableBeepCheckbox.Visible = training;
             trainingMode = training;
         }
 
