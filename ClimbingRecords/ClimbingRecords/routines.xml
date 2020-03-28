@@ -105,4 +105,200 @@
       </Exercise>
     </Exercises>
   </Routine>
+  <Routine>
+    <Name>lock down week 1</Name>
+    <Difficulty>8</Difficulty>
+    <Description>10 minute small edge block</Description>
+    <Exercises>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>10: Medium Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>10: Medium Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>10: Medium Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>10: Medium Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+    </Exercises>
+  </Routine>
+  <Routine>
+    <Name>lock down week 1 part 2</Name>
+    <Difficulty>10</Difficulty>
+    <Description></Description>
+    <Exercises>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>13: Extra Shallow Pocket (2 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>12: Deep Flat Pocket (2 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>10: Medium Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>10: Medium Edge (4 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>1: Top Left Jug</LeftHandHold>
+        <RightHandHold>13: Extra Shallow Pocket (2 Finger)</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>13: Extra Shallow Pocket (2 Finger)</LeftHandHold>
+        <RightHandHold>1: Top Right Jug</RightHandHold>
+        <Duration>10</Duration>
+        <Rest>50</Rest>
+        <Description></Description>
+      </Exercise>
+    </Exercises>
+  </Routine>
+  <Routine>
+    <Name>fast repeaters small 4 finger edge 7 x10</Name>
+    <Difficulty>5</Difficulty>
+    <Description></Description>
+    <Exercises>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+      <Exercise>
+        <LeftHandHold>11: Extra Shallow Edge (4 Finger)</LeftHandHold>
+        <RightHandHold>11: Extra Shallow Edge (4 Finger)</RightHandHold>
+        <Duration>7</Duration>
+        <Rest>10</Rest>
+        <Description></Description>
+      </Exercise>
+    </Exercises>
+  </Routine>
 </Routines>
