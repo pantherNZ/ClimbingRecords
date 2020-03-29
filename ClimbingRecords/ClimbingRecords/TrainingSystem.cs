@@ -152,7 +152,7 @@ namespace ClimbingRecords
                 ExercisesGridHandComboChanged( exerciseIndex, 0, false );
                 ExercisesGridHandComboChanged( exerciseIndex, 1, true );
 
-                if( restCounter > 0 )
+                if( restCounter > 0 && enableVoiceCheckbox.Checked )
                 {
                     synthesizer.Volume = 100;  // 0...100
                     synthesizer.Rate = -1;     // -10...10
