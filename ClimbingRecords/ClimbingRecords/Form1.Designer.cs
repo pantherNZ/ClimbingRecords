@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftHand_Combo = new System.Windows.Forms.ComboBox();
             this.rightHand_Combo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
             this.showHoldNumbersCheckBox = new System.Windows.Forms.CheckBox();
             this.mainTitle = new System.Windows.Forms.Label();
             this.routinesGroupBox = new System.Windows.Forms.GroupBox();
+            this.enableBeepCheckbox = new System.Windows.Forms.CheckBox();
             this.enableAbuseCheckbox = new System.Windows.Forms.CheckBox();
             this.enableVoiceCheckbox = new System.Windows.Forms.CheckBox();
             this.routineNameErrorLabel = new System.Windows.Forms.Label();
@@ -67,7 +68,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.difficultyLabel = new System.Windows.Forms.Label();
             this.routineDifficultyTrackbar = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.routineNameText = new System.Windows.Forms.TextBox();
@@ -83,7 +84,7 @@
             this.trainingNextInfoLabel = new System.Windows.Forms.Label();
             this.trainingSkipButton = new System.Windows.Forms.Button();
             this.trainingPauseButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.trainingExerciseRect = new System.Windows.Forms.Panel();
             this.trainingHangTimerLabel = new System.Windows.Forms.Label();
             this.trainingRestTimerLabel = new System.Windows.Forms.Label();
             this.trainingInfoLabel = new System.Windows.Forms.Label();
@@ -131,14 +132,13 @@
             this.hangboardImage17 = new System.Windows.Forms.PictureBox();
             this.hangboardImage18 = new System.Windows.Forms.PictureBox();
             this.hangboardImage = new System.Windows.Forms.PictureBox();
-            this.enableBeepCheckbox = new System.Windows.Forms.CheckBox();
             this.recordsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGrid)).BeginInit();
             this.routinesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.routineDifficultyTrackbar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exercisesGrid)).BeginInit();
             this.trainingGroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.trainingExerciseRect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).BeginInit();
@@ -346,14 +346,14 @@
             this.gridRecord,
             this.gridUnits,
             this.gridDescription});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recordsGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.recordsGrid.Location = new System.Drawing.Point(12, 81);
             this.recordsGrid.Name = "recordsGrid";
             this.recordsGrid.ReadOnly = true;
@@ -504,7 +504,7 @@
             this.routinesGroupBox.Controls.Add(this.backButton);
             this.routinesGroupBox.Controls.Add(this.label8);
             this.routinesGroupBox.Controls.Add(this.label7);
-            this.routinesGroupBox.Controls.Add(this.label6);
+            this.routinesGroupBox.Controls.Add(this.difficultyLabel);
             this.routinesGroupBox.Controls.Add(this.routineDifficultyTrackbar);
             this.routinesGroupBox.Controls.Add(this.label5);
             this.routinesGroupBox.Controls.Add(this.routineNameText);
@@ -518,11 +518,23 @@
             this.routinesGroupBox.TabStop = false;
             this.routinesGroupBox.Visible = false;
             // 
+            // enableBeepCheckbox
+            // 
+            this.enableBeepCheckbox.AutoSize = true;
+            this.enableBeepCheckbox.Checked = true;
+            this.enableBeepCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.enableBeepCheckbox.ForeColor = System.Drawing.Color.White;
+            this.enableBeepCheckbox.Location = new System.Drawing.Point(950, 52);
+            this.enableBeepCheckbox.Name = "enableBeepCheckbox";
+            this.enableBeepCheckbox.Size = new System.Drawing.Size(92, 17);
+            this.enableBeepCheckbox.TabIndex = 44;
+            this.enableBeepCheckbox.Text = "Enable Beeps";
+            this.enableBeepCheckbox.UseVisualStyleBackColor = true;
+            this.enableBeepCheckbox.Visible = false;
+            // 
             // enableAbuseCheckbox
             // 
             this.enableAbuseCheckbox.AutoSize = true;
-            this.enableAbuseCheckbox.Checked = true;
-            this.enableAbuseCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.enableAbuseCheckbox.ForeColor = System.Drawing.Color.White;
             this.enableAbuseCheckbox.Location = new System.Drawing.Point(840, 52);
             this.enableAbuseCheckbox.Name = "enableAbuseCheckbox";
@@ -535,8 +547,6 @@
             // enableVoiceCheckbox
             // 
             this.enableVoiceCheckbox.AutoSize = true;
-            this.enableVoiceCheckbox.Checked = true;
-            this.enableVoiceCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.enableVoiceCheckbox.ForeColor = System.Drawing.Color.White;
             this.enableVoiceCheckbox.Location = new System.Drawing.Point(728, 51);
             this.enableVoiceCheckbox.Name = "enableVoiceCheckbox";
@@ -644,16 +654,16 @@
             this.label7.TabIndex = 33;
             this.label7.Text = "0";
             // 
-            // label6
+            // difficultyLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(83, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 14);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Difficulty: 3";
+            this.difficultyLabel.AutoSize = true;
+            this.difficultyLabel.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.difficultyLabel.ForeColor = System.Drawing.Color.White;
+            this.difficultyLabel.Location = new System.Drawing.Point(83, 50);
+            this.difficultyLabel.Name = "difficultyLabel";
+            this.difficultyLabel.Size = new System.Drawing.Size(77, 14);
+            this.difficultyLabel.TabIndex = 32;
+            this.difficultyLabel.Text = "Difficulty: 3";
             // 
             // routineDifficultyTrackbar
             // 
@@ -663,6 +673,7 @@
             this.routineDifficultyTrackbar.Size = new System.Drawing.Size(201, 45);
             this.routineDifficultyTrackbar.TabIndex = 31;
             this.routineDifficultyTrackbar.Value = 5;
+            this.routineDifficultyTrackbar.ValueChanged += new System.EventHandler(this.RoutineDifficultyTrackbar_ValueChanged);
             // 
             // label5
             // 
@@ -710,14 +721,14 @@
             this.routinesDuration,
             this.Rest,
             this.routinesDescription});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.exercisesGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.exercisesGrid.Location = new System.Drawing.Point(12, 81);
             this.exercisesGrid.Name = "exercisesGrid";
             this.exercisesGrid.RowHeadersVisible = false;
@@ -765,7 +776,7 @@
             this.trainingGroupBox.Controls.Add(this.trainingNextInfoLabel);
             this.trainingGroupBox.Controls.Add(this.trainingSkipButton);
             this.trainingGroupBox.Controls.Add(this.trainingPauseButton);
-            this.trainingGroupBox.Controls.Add(this.groupBox1);
+            this.trainingGroupBox.Controls.Add(this.trainingExerciseRect);
             this.trainingGroupBox.Controls.Add(this.trainingInfoLabel);
             this.trainingGroupBox.Controls.Add(this.label16);
             this.trainingGroupBox.Controls.Add(this.label17);
@@ -795,7 +806,7 @@
             this.startingLabel.Font = new System.Drawing.Font("Georgia", 30F);
             this.startingLabel.ForeColor = System.Drawing.Color.White;
             this.startingLabel.Location = new System.Drawing.Point(507, 245);
-            this.startingLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.startingLabel.Margin = new System.Windows.Forms.Padding(3);
             this.startingLabel.MaximumSize = new System.Drawing.Size(425, 0);
             this.startingLabel.MinimumSize = new System.Drawing.Size(425, 0);
             this.startingLabel.Name = "startingLabel";
@@ -812,7 +823,7 @@
             this.trainingNextInfoLabel.Font = new System.Drawing.Font("Georgia", 14F);
             this.trainingNextInfoLabel.ForeColor = System.Drawing.Color.White;
             this.trainingNextInfoLabel.Location = new System.Drawing.Point(1036, 185);
-            this.trainingNextInfoLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.trainingNextInfoLabel.Margin = new System.Windows.Forms.Padding(3);
             this.trainingNextInfoLabel.MaximumSize = new System.Drawing.Size(360, 0);
             this.trainingNextInfoLabel.MinimumSize = new System.Drawing.Size(360, 0);
             this.trainingNextInfoLabel.Name = "trainingNextInfoLabel";
@@ -844,23 +855,23 @@
             this.trainingPauseButton.UseVisualStyleBackColor = true;
             this.trainingPauseButton.Click += new System.EventHandler(this.trainingPauseButton_Click);
             // 
-            // groupBox1
+            // trainingExerciseRect
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.trainingHangTimerLabel);
-            this.groupBox1.Controls.Add(this.mainTitle);
-            this.groupBox1.Controls.Add(this.trainingRestTimerLabel);
-            this.groupBox1.Location = new System.Drawing.Point(513, 43);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(425, 135);
-            this.groupBox1.TabIndex = 51;
-            this.groupBox1.TabStop = false;
+            this.trainingExerciseRect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trainingExerciseRect.Controls.Add(this.trainingHangTimerLabel);
+            this.trainingExerciseRect.Controls.Add(this.mainTitle);
+            this.trainingExerciseRect.Controls.Add(this.trainingRestTimerLabel);
+            this.trainingExerciseRect.ForeColor = System.Drawing.Color.Transparent;
+            this.trainingExerciseRect.Location = new System.Drawing.Point(513, 43);
+            this.trainingExerciseRect.Name = "trainingExerciseRect";
+            this.trainingExerciseRect.Size = new System.Drawing.Size(425, 135);
+            this.trainingExerciseRect.TabIndex = 51;
             // 
             // trainingHangTimerLabel
             // 
             this.trainingHangTimerLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.trainingHangTimerLabel.Font = new System.Drawing.Font("Georgia", 28F);
-            this.trainingHangTimerLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingHangTimerLabel.ForeColor = System.Drawing.Color.Lime;
             this.trainingHangTimerLabel.Location = new System.Drawing.Point(13, 13);
             this.trainingHangTimerLabel.MinimumSize = new System.Drawing.Size(400, 0);
             this.trainingHangTimerLabel.Name = "trainingHangTimerLabel";
@@ -873,7 +884,7 @@
             // 
             this.trainingRestTimerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.trainingRestTimerLabel.Font = new System.Drawing.Font("Georgia", 12F);
-            this.trainingRestTimerLabel.ForeColor = System.Drawing.Color.White;
+            this.trainingRestTimerLabel.ForeColor = System.Drawing.Color.Red;
             this.trainingRestTimerLabel.Location = new System.Drawing.Point(13, 63);
             this.trainingRestTimerLabel.MinimumSize = new System.Drawing.Size(400, 0);
             this.trainingRestTimerLabel.Name = "trainingRestTimerLabel";
@@ -889,7 +900,7 @@
             this.trainingInfoLabel.Font = new System.Drawing.Font("Georgia", 14F);
             this.trainingInfoLabel.ForeColor = System.Drawing.Color.White;
             this.trainingInfoLabel.Location = new System.Drawing.Point(513, 186);
-            this.trainingInfoLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.trainingInfoLabel.Margin = new System.Windows.Forms.Padding(3);
             this.trainingInfoLabel.MaximumSize = new System.Drawing.Size(425, 0);
             this.trainingInfoLabel.MinimumSize = new System.Drawing.Size(425, 0);
             this.trainingInfoLabel.Name = "trainingInfoLabel";
@@ -1465,9 +1476,6 @@
             // 
             // hangboardImage
             // 
-            this.hangboardImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.hangboardImage.BackColor = System.Drawing.Color.Black;
             this.hangboardImage.Image = global::ClimbingRecords.Properties.Resources.Board;
             this.hangboardImage.Location = new System.Drawing.Point(0, 0);
@@ -1481,20 +1489,6 @@
             this.hangboardImage.TabStop = false;
             this.hangboardImage.SizeChanged += new System.EventHandler(this.hangboardImage_SizeChanged);
             this.hangboardImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.hangboardImage_MouseClick);
-            // 
-            // enableBeepCheckbox
-            // 
-            this.enableBeepCheckbox.AutoSize = true;
-            this.enableBeepCheckbox.Checked = true;
-            this.enableBeepCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enableBeepCheckbox.ForeColor = System.Drawing.Color.White;
-            this.enableBeepCheckbox.Location = new System.Drawing.Point(950, 52);
-            this.enableBeepCheckbox.Name = "enableBeepCheckbox";
-            this.enableBeepCheckbox.Size = new System.Drawing.Size(92, 17);
-            this.enableBeepCheckbox.TabIndex = 44;
-            this.enableBeepCheckbox.Text = "Enable Beeps";
-            this.enableBeepCheckbox.UseVisualStyleBackColor = true;
-            this.enableBeepCheckbox.Visible = false;
             // 
             // HangboardForm
             // 
@@ -1553,8 +1547,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.exercisesGrid)).EndInit();
             this.trainingGroupBox.ResumeLayout(false);
             this.trainingGroupBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.trainingExerciseRect.ResumeLayout(false);
+            this.trainingExerciseRect.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangboardImage8)).EndInit();
@@ -1634,7 +1628,6 @@
         private System.Windows.Forms.GroupBox recordsGroupBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.DataGridView recordsGrid;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.CheckBox showHoldNumbersCheckBox;
@@ -1644,19 +1637,13 @@
         private System.Windows.Forms.Button customRoutineBtn;
         private System.Windows.Forms.GroupBox routinesGroupBox;
         private System.Windows.Forms.Button createRoutineButton;
-        private System.Windows.Forms.DataGridView exercisesGrid;
         private System.Windows.Forms.TextBox routineNameText;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label difficultyLabel;
         private System.Windows.Forms.TrackBar routineDifficultyTrackbar;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.DataGridViewComboBoxColumn routinesLeftHandHold;
-        private System.Windows.Forms.DataGridViewComboBoxColumn routinesRightHandHold;
-        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDuration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDescription;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox routineDescriptionText;
         private System.Windows.Forms.Button addExerciseButton;
@@ -1680,11 +1667,20 @@
         private System.Windows.Forms.TextBox trainingNextRightHandHold;
         private System.Windows.Forms.Label trainingNextLabel;
         private System.Windows.Forms.Label trainingInfoLabel;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button trainingSkipButton;
         private System.Windows.Forms.Button trainingPauseButton;
         private System.Windows.Forms.CheckBox enableVoiceCheckbox;
         private System.Windows.Forms.CheckBox enableAbuseCheckbox;
+        private System.Windows.Forms.Label trainingNextInfoLabel;
+        private System.Windows.Forms.Label startingLabel;
+        private System.Windows.Forms.CheckBox enableBeepCheckbox;
+        private System.Windows.Forms.DataGridView exercisesGrid;
+        private System.Windows.Forms.DataGridViewComboBoxColumn routinesLeftHandHold;
+        private System.Windows.Forms.DataGridViewComboBoxColumn routinesRightHandHold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDuration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn routinesDescription;
+        private System.Windows.Forms.DataGridView recordsGrid;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridCategory;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridLeftHandHold;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridRightHandHold;
@@ -1692,9 +1688,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridRecord;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridUnits;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridDescription;
-        private System.Windows.Forms.Label trainingNextInfoLabel;
-        private System.Windows.Forms.Label startingLabel;
-        private System.Windows.Forms.CheckBox enableBeepCheckbox;
+        private System.Windows.Forms.Panel trainingExerciseRect;
     }
 }
 

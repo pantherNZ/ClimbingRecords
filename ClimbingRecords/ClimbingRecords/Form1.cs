@@ -688,6 +688,7 @@ namespace ClimbingRecords
         {
             mainTitle.Text = "Custom Routine";
             saveRoutineButton.Enabled = false;
+            saveRoutineButton.Visible = false;
             recordsGroupBox.Visible = false;
             routinesGroupBox.Visible = true;
             CancelEditingMode();
@@ -812,7 +813,8 @@ namespace ClimbingRecords
 
         private void editRoutineButton_Click( object sender, EventArgs e )
         {
-            saveRoutineButton.Enabled = true;
+            saveRoutineButton.Visible = true;
+ 			saveRoutineButton.Enabled = true;
             mainTitle.Text = "Edit Routine";
             recordsGroupBox.Visible = false;
             routinesGroupBox.Visible = true;
@@ -910,10 +912,9 @@ namespace ClimbingRecords
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void RoutineDifficultyTrackbar_ValueChanged( object sender, EventArgs e )
         {
-            Console.WriteLine( "HELLOO" );
-
+            difficultyLabel.Text = "Difficulty: " + ( sender as TrackBar ).Value;
         }
 
         private void backButton_Click( object sender, EventArgs e )

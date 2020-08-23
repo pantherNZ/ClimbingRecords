@@ -88,50 +88,22 @@ namespace ClimbingRecords
 
         private void LoadNextExercise( bool ignoreSwitch )
         {
-            if( !rest && !ignoreSwitch )
-            {
-                SwitchToRest();
+            SwitchToRest();
 
-                if( CheckFinished() )
-                    return;
-            }
+            if( !ignoreSwitch && CheckFinished() )
+                return;
 
             synthesizer.SpeakAsyncCancelAll();
-            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
-            rest = false;
-            abusePlayed = false;
-
-            // Current holds
-            trainingLeftHandHold.Text = cells[0].Value.ToString();
-            trainingRightHandHold.Text = cells[1].Value.ToString();
-
-            // Next holds
-            if( exerciseIndex + 1 == exercisesGrid.RowCount )
-            {
-                trainingNextLeftHandHold.Text = trainingNextRightHandHold.Text = "None";
-                trainingNextInfoLabel.Text = "";
-            }
-            else
-            {
-                trainingNextLeftHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[0].Value.ToString();
-                trainingNextRightHandHold.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[1].Value.ToString();
-                trainingNextInfoLabel.Text = exercisesGrid.Rows[exerciseIndex + 1].Cells[4].Value.ToString();
-            }
+            rest = abusePlayed = false;
 
             // Durations
+            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
             hangCounter = Convert.ToInt32( cells[2].Value );
             restCounter = Convert.ToInt32( cells[3].Value );
             trainingHangTimerLabel.Text = String.Format( "Hang {0} seconds", hangCounter );
             trainingRestTimerLabel.Text = String.Format( "Rest {0} seconds", restCounter );
 
-            // Description
-            var description = cells[4].Value.ToString();
-            trainingInfoLabel.Text = ( description.Length > 0 ? description : "" );
-
             ++exerciseIndex;
-
-            // Exercises num
-            trainingExerciseCountLabel.Text = String.Format( "Exercise {0} / {1}", exerciseIndex, exercisesGrid.RowCount );
 
             if( hangCounter == 0 )
                 LoadNextExercise( false );
@@ -141,6 +113,11 @@ namespace ClimbingRecords
         {
             trainingHangTimerLabel.Text = "Hang Complete";
             rest = true;
+
+            // Current holds
+            var cells = exercisesGrid.Rows[exerciseIndex].Cells;
+            trainingLeftHandHold.Text = cells[0].Value.ToString();
+            trainingRightHandHold.Text = cells[1].Value.ToString();
 
             if( exerciseIndex == exercisesGrid.RowCount )
             {
@@ -156,12 +133,34 @@ namespace ClimbingRecords
                 {
                     synthesizer.Volume = 100;  // 0...100
                     synthesizer.Rate = -1;     // -10...10
-                    var leftHand = exercisesGrid.Rows[exerciseIndex].Cells[0].Value.ToString();
-                    var rightHand = exercisesGrid.Rows[exerciseIndex].Cells[1].Value.ToString();
-                    var formatText = ( leftHand == rightHand ? "One hand on each number {0}" : "Left hand hold on number {0}. Right hand hold on number {1}." );
+                    var leftHand = cells[0].Value.ToString();
+                    var rightHand = cells[1].Value.ToString();
+                    var formatText = ( leftHand == rightHand ? "Both hands on holds {0}." : "Left hand on hold {0}. Right hand on hold {1}." );
                     synthesizer.SpeakAsync( String.Format( formatText, leftHand , rightHand ) );
                 }
             }
+
+            var cellsNext = exercisesGrid.Rows[exerciseIndex + 1].Cells;
+
+            // Next info
+            if( exerciseIndex + 1 == exercisesGrid.RowCount )
+            {
+                trainingNextLeftHandHold.Text = trainingNextRightHandHold.Text = "None";
+                trainingNextInfoLabel.Text = "";
+            }
+            else
+            {
+                trainingNextLeftHandHold.Text = cellsNext[0].Value.ToString();
+                trainingNextRightHandHold.Text = cellsNext[1].Value.ToString();
+                trainingNextInfoLabel.Text = cellsNext[4].Value.ToString();
+            }
+
+            // Description
+            var description = cells[4].Value.ToString();
+            trainingInfoLabel.Text = ( description.Length > 0 ? description : "" );
+
+            // Exercises num
+            trainingExerciseCountLabel.Text = String.Format( "Exercise {0} / {1}", exerciseIndex + 1, exercisesGrid.RowCount );
         }
 
         private bool CheckFinished()
@@ -252,7 +251,7 @@ namespace ClimbingRecords
 
         private void routineDifficultyTrackbar_ValueChanged( object sender, EventArgs e )
         {
-            label6.Text = "Difficulty: " + routineDifficultyTrackbar.Value.ToString();
+            difficultyLabel.Text = "Difficulty: " + routineDifficultyTrackbar.Value.ToString();
         }
 
         private void trainingCancelButton_Click( object sender, EventArgs e )
@@ -317,17 +316,21 @@ namespace ClimbingRecords
             DrawBorder( e, trainingNextLeftHandHold, 2, Color.Yellow );
             DrawBorder( e, trainingNextRightHandHold, 2, Color.LimeGreen );
 
-            if( exerciseIndex < exercisesGrid.RowCount )
-            {
-                trainingNextInfoLabel.Visible = trainingNextInfoLabel.Text != "";
 
-                // Draw rectangle around current or next holds base on current stage
-                var x = ( rest ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
-                var height = rest && trainingNextInfoLabel.Text != "" ? 155 + trainingNextInfoLabel.Height : 150;
-                var rect = new Rectangle( x - ( rest ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, height );
-                rect.Inflate( 2, 2 );
-                ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
-            }
+            DrawBorder( e, trainingExerciseRect, 2, rest ? Color.Red : Color.Lime );
+
+            //if( exerciseIndex < exercisesGrid.RowCount )
+            //{
+            //    trainingNextInfoLabel.Visible = trainingNextInfoLabel.Text != "";
+            //
+            //    // Draw rectangle around current or next holds base on current stage
+            //    bool highlightNextLabel = false;// rest;
+            //    var x = ( highlightNextLabel ? trainingNextLabel.Location.X : trainingCurrentLabel.Location.X );
+            //    var height = highlightNextLabel && trainingNextInfoLabel.Text != "" ? 155 + trainingNextInfoLabel.Height : 150;
+            //    var rect = new Rectangle( x - ( highlightNextLabel ? 135 : 100 ), trainingCurrentLabel.Location.Y - 10, 380, height );
+            //    rect.Inflate( 2, 2 );
+            //    ControlPaint.DrawBorder( e.Graphics, rect, Color.Aqua, ButtonBorderStyle.Solid );
+            //}
         }
     }
 }
